@@ -39,7 +39,7 @@ const QRScannerModal = ({
         }
 
         codeReader.decodeFromVideoDevice(
-          null,
+          undefined,
           videoRef.current!,
           (result, error) => {
             if (result) {
