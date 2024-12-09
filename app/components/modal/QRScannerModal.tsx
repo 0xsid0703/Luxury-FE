@@ -62,24 +62,24 @@ const QRScannerModal = ({
       startScanning();
     }
 
-    // Cleanup function to stop the video stream when modal is closed
     return () => {
       if (!isModal) {
-        stopScanning(); // Ensure we stop scanning when modal is closed
+        stopScanning();
       }
     };
-  }, [isModal, setQRValue, onClose]); // depend on isModal to ensure effect runs on open/close
+  }, [isModal, setQRValue, onClose]);
 
   // Function to stop video and scanning
   const stopScanning = () => {
     if (videoRef.current) {
-      videoRef.current.pause(); // Pause the video to avoid playing again
+      videoRef.current.pause();
     }
     if (mediaStreamRef.current) {
       const tracks = mediaStreamRef.current.getTracks();
       tracks.forEach((track) => track.stop()); // Stop all tracks of the stream
     }
-    codeReaderRef.current?.reset(); // Reset the code reader
+    // @ts-ignore : cannot find reset function
+    codeReaderRef.current?.reset();
   };
 
   return (
