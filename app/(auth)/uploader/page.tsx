@@ -4,20 +4,20 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 const UploaderPage = () => {
   const [uploadQueue, setUploadQueue] = useState<UploadQueueItem[]>([]);
-  const [languages, setLanguages] = useState<string[]>([
+  const [languages] = useState<string[]>([
     "English",
     "Spanish",
     "French",
     "German",
     "Chinese",
   ]);
-  const [artists, setArtists] = useState<string[]>([
+  const [artists] = useState<string[]>([
     "Maria Rodriguez",
     "John Smith",
     "Elena Kim",
     "Alex Wong",
   ]);
-  const [cards, setCards] = useState<string[]>([
+  const [cards] = useState<string[]>([
     "Climate Action Card",
     "Economic Impact Card",
     "Biodiversity Card",
