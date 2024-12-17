@@ -1,3 +1,5 @@
+import { Card } from "./Card";
+
 export type EventSubGroup = {
   id: number;
   subGroupName: string;
