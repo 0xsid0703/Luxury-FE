@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { ArtistState } from "@/types/Artist";
+import { Artist, ArtistState } from "@/types/Artist";
 import { AppDispatch, RootState } from "@/redux/store";
 import { LanguageState } from "@/types/Language";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,14 +22,14 @@ import { createArtist } from "@/redux/slices/artist.slice";
 const InfoPage = () => {
   const dispatch = useDispatch<AppDispatch>();
   const artist: ArtistState = useSelector<RootState, ArtistState>(
-    (state) => state.artist
+    (state) => state.artists
   );
   const language: LanguageState = useSelector<RootState, LanguageState>(
-    (state) => state.language
+    (state) => state.languages
   );
   const [newLanguage, setNewLanguage] = useState("");
-  const languages = useMemo(() => language.language, [language]);
-  const artists = useMemo(() => artist.artist, [artist]);
+  const languages = useMemo(() => language.languages, [language]);
+  const artists = useMemo(() => artist.artists, [artist]);
 
   const [newArtist, setNewArtist] = useState({ name: "", link: "" });
 
@@ -192,13 +192,13 @@ const InfoPage = () => {
                   <div>Cards Contributed</div>
                   <div className="text-right">Profile</div>
                 </div>
-                {artists.map((artist) => (
+                {artists.map((artist: Artist) => (
                   <div
                     key={artist.name}
                     className="grid grid-cols-3 p-2 border-b items-center"
                   >
                     <div>{artist.name}</div>
-                    <div>{artist.Card.length}</div>
+                    <div>{artist.Card?.length || 0}</div>
                     <div className="text-right">
                       <Button
                         variant="link"

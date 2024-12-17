@@ -10,7 +10,7 @@ export type Artist = {
 };
 
 export interface ArtistState {
-  artist: Artist[];
+  artists: Artist[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

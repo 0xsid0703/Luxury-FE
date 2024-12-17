@@ -2,31 +2,30 @@
 import { UploadQueueItem } from "@/types/UploadQueueItem";
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-const UploaderPage = () => {
-  const [uploadQueue, setUploadQueue] = useState<UploadQueueItem[]>([]);
-  const [languages] = useState<string[]>([
-    "English",
-    "Spanish",
-    "French",
-    "German",
-    "Chinese",
-  ]);
-  const [artists] = useState<string[]>([
-    "Maria Rodriguez",
-    "John Smith",
-    "Elena Kim",
-    "Alex Wong",
-  ]);
-  const [cards] = useState<string[]>([
-    "Climate Action Card",
-    "Economic Impact Card",
-    "Biodiversity Card",
-  ]);
+import axios from "axios";
+import { apiUrl } from "@/redux/apiConfig";
+import { addImages } from "@/redux/slices/images.slice";
+import { AppDispatch } from "@/redux/store";
+import { useDispatch } from "react-redux";
 
+const UploaderPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const [uploadQueue, setUploadQueue] = useState<UploadQueueItem[]>([]);
+  const [isAvailable, setIsAvailable] = useState(true);
   const fileInputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    console.log({ uploadQueue });
+    let flag = true;
+    for (const item of uploadQueue) {
+      if (item.status != "completed") {
+        flag = false;
+      }
+    }
+    setIsAvailable(flag);
   }, [uploadQueue]);
+  useEffect(() => {
+    console.log({ isAvailable });
+  }, [isAvailable]);
   // Handle file selection
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
@@ -35,9 +34,6 @@ const UploaderPage = () => {
         file,
         id: `${Date.now()}-${file.name}`,
         name: file.name,
-        language: "",
-        cardName: "",
-        artist: "",
         progress: 0,
         status: "pending",
       })
@@ -60,9 +56,6 @@ const UploaderPage = () => {
       file,
       id: `${Date.now()}-${file.name}`,
       name: file.name,
-      language: "",
-      cardName: "",
-      artist: "",
       progress: 0,
       status: "pending",
     }));
@@ -70,52 +63,81 @@ const UploaderPage = () => {
     setUploadQueue([...uploadQueue, ...droppedFiles]);
   };
 
-  // Update individual file metadata
-  const updateFileMetadata = (id: string, field: string, value: string) => {
-    setUploadQueue(
-      uploadQueue.map((item) =>
-        item.id === id ? { ...item, [field]: value } : item
-      )
-    );
-  };
-
   // Remove file from upload queue
   const removeFile = (id: string) => {
     setUploadQueue(uploadQueue.filter((item) => item.id !== id));
   };
 
-  // Simulate file upload
-  const uploadFiles = () => {
-    const updatedQueue = uploadQueue.map((item) => {
-      // Validate all required fields are filled
-      if (!item.language || !item.cardName || !item.artist) {
-        return { ...item, status: "error", progress: 0 };
-      }
+  const uploadFiles = async () => {
+    for (const fileItem of uploadQueue) {
+      if (fileItem.status != "completed") {
+        const formData = new FormData();
+        formData.append("file", fileItem.file);
+        formData.append("name", fileItem.id);
 
-      // Simulate upload progress
-      return {
-        ...item,
-        status: "uploading",
-        progress: 0,
-      };
-    });
-
-    setUploadQueue(updatedQueue);
-
-    // Simulated upload process
-    uploadQueue.forEach((item, index) => {
-      if (item.language && item.cardName && item.artist) {
-        setTimeout(() => {
-          setUploadQueue((prev) =>
-            prev.map((file, idx) =>
-              idx === index
-                ? { ...file, status: "completed", progress: 100 }
-                : file
+        try {
+          setUploadQueue((prevQueue) =>
+            prevQueue.map((item) =>
+              item.id === fileItem.id
+                ? { ...item, status: "uploading", progress: 0 }
+                : item
             )
           );
-        }, 2000 + Math.random() * 2000);
+
+          const response = await axios.post(
+            `${apiUrl}/api/image/upload`,
+            formData,
+            {
+              headers: {
+                "Content-Type": "multipart/form-data",
+              },
+              onUploadProgress: (progressEvent) => {
+                if (progressEvent.total) {
+                  const progress = Math.round(
+                    (progressEvent.loaded / progressEvent.total) * 100
+                  );
+                  setUploadQueue((prevQueue) =>
+                    prevQueue.map((item) =>
+                      item.id === fileItem.id ? { ...item, progress } : item
+                    )
+                  );
+                }
+              },
+            }
+          );
+
+          const result = response.data;
+          console.log(result);
+          if (result.success) {
+            dispatch(addImages(result.image));
+            console.log("Hello");
+            setUploadQueue((prevQueue) =>
+              prevQueue.map((item) =>
+                item.id === fileItem.id
+                  ? { ...item, status: "completed", progress: 100 }
+                  : item
+              )
+            );
+          } else {
+            setUploadQueue((prevQueue) =>
+              prevQueue.map((item) =>
+                item.id === fileItem.id
+                  ? { ...item, status: "error", progress: 0 }
+                  : item
+              )
+            );
+          }
+        } catch (error) {
+          setUploadQueue((prevQueue) =>
+            prevQueue.map((item) =>
+              item.id === fileItem.id
+                ? { ...item, status: "error", progress: 0 }
+                : item
+            )
+          );
+        }
       }
-    });
+    }
   };
 
   return (
@@ -146,106 +168,57 @@ const UploaderPage = () => {
       {uploadQueue.length > 0 && (
         <div className="bg-white shadow rounded">
           <h2 className="text-xl p-4 border-b">Upload Queue</h2>
-          {uploadQueue.map((item) => (
-            <div
-              key={item.id}
-              className="p-4 border-b flex items-center space-x-4"
-            >
-              {/* File Preview */}
-              <div className="w-20 h-20 bg-gray-100 flex items-center justify-center">
-                <Image
-                  width={300}
-                  height={300}
-                  src={URL.createObjectURL(item.file)}
-                  alt="Preview"
-                  className="max-w-full max-h-full object-contain"
-                />
+          <div className="grid grid-cols-6 gap-8">
+            {uploadQueue.map((item) => (
+              <div
+                key={item.id}
+                className="p-4 border-b flex items-center justify-center space-x-4 flex-col"
+              >
+                {/* File Preview */}
+                <div className="bg-gray-100 flex items-center justify-center">
+                  <Image
+                    width={300}
+                    height={300}
+                    src={URL.createObjectURL(item.file)}
+                    alt="Preview"
+                    className="w-48 h-48"
+                  />
+                </div>
+                <div className="">{item.name}</div>
+                {/* Progress and Actions */}
+                <div className="w-fit flex items-center space-x-2">
+                  {item.status === "pending" && (
+                    <div className="text-yellow-500">Pending</div>
+                  )}
+                  {item.status === "uploading" && (
+                    <div className="w-full bg-gray-200 rounded-full h-2.5">
+                      <div
+                        className="bg-blue-600 h-2.5 rounded-full"
+                        style={{ width: `${item.progress}%` }}
+                      ></div>
+                    </div>
+                  )}
+                  {item.status === "completed" && (
+                    <div className="text-green-500">Completed</div>
+                  )}
+                  {item.status === "error" && (
+                    <div className="text-red-500">Error</div>
+                  )}
+                  <button
+                    onClick={() => removeFile(item.id)}
+                    className="text-red-500 hover:bg-red-50 p-1 rounded"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
-
-              {/* Metadata Inputs */}
-              <div className="flex-grow grid grid-cols-3 gap-4">
-                <select
-                  value={item.language}
-                  onChange={(e) =>
-                    updateFileMetadata(item.id, "language", e.target.value)
-                  }
-                  className="border p-2 rounded"
-                >
-                  <option value="">Select Language</option>
-                  {languages.map((lang) => (
-                    <option key={lang} value={lang}>
-                      {lang}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  value={item.cardName}
-                  onChange={(e) =>
-                    updateFileMetadata(item.id, "cardName", e.target.value)
-                  }
-                  className="border p-2 rounded"
-                >
-                  <option value="">Select Card</option>
-                  {cards.map((card) => (
-                    <option key={card} value={card}>
-                      {card}
-                    </option>
-                  ))}
-                </select>
-
-                <select
-                  value={item.artist}
-                  onChange={(e) =>
-                    updateFileMetadata(item.id, "artist", e.target.value)
-                  }
-                  className="border p-2 rounded"
-                >
-                  <option value="">Select Artist</option>
-                  {artists.map((artist) => (
-                    <option key={artist} value={artist}>
-                      {artist}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Progress and Actions */}
-              <div className="w-32 flex items-center space-x-2">
-                {item.status === "pending" && (
-                  <div className="text-yellow-500">Pending</div>
-                )}
-                {item.status === "uploading" && (
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
-                    <div
-                      className="bg-blue-600 h-2.5 rounded-full"
-                      style={{ width: `${item.progress}%` }}
-                    ></div>
-                  </div>
-                )}
-                {item.status === "completed" && (
-                  <div className="text-green-500">Completed</div>
-                )}
-                {item.status === "error" && (
-                  <div className="text-red-500">Error</div>
-                )}
-                <button
-                  onClick={() => removeFile(item.id)}
-                  className="text-red-500 hover:bg-red-50 p-1 rounded"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-          ))}
-
+            ))}
+          </div>
           {/* Upload Button */}
           <div className="p-4 text-right">
             <button
               onClick={uploadFiles}
-              disabled={uploadQueue.some(
-                (item) => !item.language || !item.cardName || !item.artist
-              )}
+              disabled={isAvailable}
               className="bg-blue-500 text-white p-2 rounded disabled:opacity-50"
             >
               Upload Files

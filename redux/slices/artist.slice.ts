@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apiUrl } from "../apiConfig";
 
 const initialState: ArtistState = {
-  artist: [],
+  artists: [],
   status: "idle",
   error: null,
 };
@@ -15,7 +15,7 @@ export const artistSlice = createSlice({
   reducers: {
     setArtist: (state, action) => {
       state.status = "succeeded";
-      state.artist = action.payload;
+      state.artists = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,14 +25,14 @@ export const artistSlice = createSlice({
       })
       .addCase(getArtists.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.artist = action.payload;
+        state.artists = action.payload;
       })
       .addCase(getArtists.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message || "Failed to fetch artists";
       })
       .addCase(createArtist.fulfilled, (state, action) => {
-        state.artist.push(action.payload);
+        state.artists.push(action.payload);
       });
   },
 });

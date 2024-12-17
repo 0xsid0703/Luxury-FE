@@ -7,6 +7,7 @@ import { ArtistState } from "@/types/Artist";
 import { CardState } from "@/types/Card";
 import { UserState } from "@/types/User";
 import { LanguageState } from "@/types/Language";
+import { ImageState } from "@/types/ImageType";
 
 type Stat = {
   title: string;
@@ -16,24 +17,22 @@ type Stat = {
 
 const Home = () => {
   const artist: ArtistState = useSelector<RootState, ArtistState>(
-    (state) => state.artist
+    (state) => state.artists
   );
   const card: CardState = useSelector<RootState, CardState>(
-    (state) => state.card
+    (state) => state.cards
   );
   const user: UserState = useSelector<RootState, UserState>(
-    (state) => state.user
+    (state) => state.users
   );
   const language: LanguageState = useSelector<RootState, LanguageState>(
-    (state) => state.language
+    (state) => state.languages
+  );
+  const images: ImageState = useSelector<RootState, ImageState>(
+    (state) => state.images
   );
   useEffect(() => {}, [artist, card]);
   const stats: Stat[] = [
-    {
-      title: "Uploaded Images",
-      number: 15,
-      status: "succeeded",
-    },
     {
       title: "Sessions",
       number: 15,
@@ -47,23 +46,28 @@ const Home = () => {
         <div className="grid grid-cols-2 gap-5 xl:grid-cols-6 sm:grid-cols-3">
           <StatsCard
             title={"Cards"}
-            number={card.card.length || 0}
+            number={card.cards.length || 0}
             status={card.status}
           />
           <StatsCard
             title={"Languages"}
-            number={language.language.length || 0}
+            number={language.languages.length || 0}
             status={language.status}
           />
           <StatsCard
             title={"Artists"}
-            number={artist.artist.length || 0}
+            number={artist.artists.length || 0}
             status={artist.status}
           />
           <StatsCard
             title={"Users"}
-            number={user.user?.length || 0}
+            number={user.users?.length || 0}
             status={user.status}
+          />
+          <StatsCard
+            title={"Uploaded Images"}
+            number={images.images?.length || 0}
+            status={images.status}
           />
 
           {stats.map((stat: Stat, index) => (

@@ -4,7 +4,7 @@ export type User = {
 };
 
 export interface UserState {
-  user: User[];
+  users: User[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

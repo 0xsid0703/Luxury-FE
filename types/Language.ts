@@ -4,7 +4,7 @@ export type Language = {
 };
 
 export interface LanguageState {
-  language: Language[];
+  languages: Language[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

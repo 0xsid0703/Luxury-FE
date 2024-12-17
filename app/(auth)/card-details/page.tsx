@@ -10,23 +10,50 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Artist, ArtistState } from "@/types/Artist";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
+import { Group, GroupState } from "@/types/Group";
+import { EventSubGroup, EventSubGroupState } from "@/types/EventSubGroup";
+import { TypeState } from "@/types/Type";
+import { Language, LanguageState } from "@/types/Language";
+import Image from "next/image";
+import { apiUrl } from "@/redux/apiConfig";
+import placehoderImage from "@/assets/image.png";
+import { ImageState, ImageType } from "@/types/ImageType";
+import clsx from "clsx";
 
 const CardDetailsPage = () => {
   // Placeholder data (would typically come from backend/context)
-  const languages = ["English", "Spanish", "French", "German"];
-  const artists = ["Artist 1", "Artist 2", "Artist 3"];
-  const groups = ["Group A", "Group B", "Group C"];
-  const subGroups = ["Sub Group 1", "Sub Group 2", "Sub Group 3"];
-  const images = ["Image 1", "Image 2", "Image 3"];
-
+  const artists: ArtistState = useSelector<RootState, ArtistState>(
+    (state) => state.artists
+  );
+  const groups: GroupState = useSelector<RootState, GroupState>(
+    (state) => state.groups
+  );
+  const subGroups: EventSubGroupState = useSelector<
+    RootState,
+    EventSubGroupState
+  >((state) => state.subGroups);
+  const types: TypeState = useSelector<RootState, TypeState>(
+    (state) => state.types
+  );
+  const languages: LanguageState = useSelector<RootState, LanguageState>(
+    (state) => state.languages
+  );
+  const images: ImageState = useSelector<RootState, ImageState>(
+    (state) => state.images
+  );
+  const [isModal, setIsModal] = useState(false);
+  const [draftImage, setDraftImage] = useState(-1);
   const [cardDetails, setCardDetails] = useState({
     cardId: "", // auto-generated
     cardName: "",
-    language: "",
-    artist: "",
-    group: "",
-    subGroup: "",
-    type: "",
+    language: -1,
+    artist: -1,
+    group: -1,
+    subGroup: -1,
+    type: -1,
     scene: "",
     actionDescription: "",
     consequencePositive: "",
@@ -48,7 +75,7 @@ const CardDetailsPage = () => {
     }));
   };
 
-  const handleSelectChange = (name: string, value: string) => {
+  const handleSelectChange = (name: string, value: number) => {
     setCardDetails((prev) => ({
       ...prev,
       [name]: value,
@@ -66,17 +93,6 @@ const CardDetailsPage = () => {
       <h1 className="text-3xl mb-6">Card Details</h1>
       <form onSubmit={handleSubmit} className="space-y-4 overflow-y-auto">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-          {/* Card ID (auto-generated, read-only) */}
-          <div>
-            <label className="block text-sm font-medium mb-2">Card ID</label>
-            <Input
-              name="cardId"
-              value={cardDetails.cardId}
-              placeholder="Auto-generated"
-              readOnly
-            />
-          </div>
-
           {/* Card Name */}
           <div>
             <label className="block text-sm font-medium mb-2">Card Name</label>
@@ -92,16 +108,25 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Language</label>
             <Select
-              onValueChange={(value) => handleSelectChange("language", value)}
-              value={cardDetails.language}
+              onValueChange={(value) => {
+                const selectedLanguage = languages.languages.find(
+                  (language: Language) => language.language === value
+                );
+                handleSelectChange("language", selectedLanguage?.id || -1);
+              }}
+              value={
+                languages.languages.find(
+                  (language) => cardDetails.language == language.id
+                )?.language
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select Language" />
               </SelectTrigger>
               <SelectContent>
-                {languages.map((lang) => (
-                  <SelectItem key={lang} value={lang}>
-                    {lang}
+                {languages.languages.map((lang: Language) => (
+                  <SelectItem key={lang.language} value={lang.language}>
+                    {lang.language}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -112,16 +137,25 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Artist</label>
             <Select
-              onValueChange={(value) => handleSelectChange("artist", value)}
-              value={cardDetails.artist}
+              onValueChange={(value) => {
+                const selectedArtist = artists.artists.find(
+                  (artist: Artist) => artist.name === value
+                );
+                handleSelectChange("artist", selectedArtist?.id || -1);
+              }}
+              value={
+                artists.artists.find(
+                  (artist) => cardDetails.artist == artist.id
+                )?.name
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select Artist" />
               </SelectTrigger>
               <SelectContent>
-                {artists.map((artist) => (
-                  <SelectItem key={artist} value={artist}>
-                    {artist}
+                {artists.artists.map((artist: Artist) => (
+                  <SelectItem key={artist.id} value={artist.name}>
+                    {artist.name}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -132,16 +166,24 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Group</label>
             <Select
-              onValueChange={(value) => handleSelectChange("group", value)}
-              value={cardDetails.group}
+              onValueChange={(value) => {
+                const selectedGroup = groups.groups.find(
+                  (group: Group) => group.groupName === value
+                );
+                handleSelectChange("group", selectedGroup?.id || -1);
+              }}
+              value={
+                groups.groups.find((group) => cardDetails.group == group.id)
+                  ?.groupName
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select Group" />
               </SelectTrigger>
               <SelectContent>
-                {groups.map((group) => (
-                  <SelectItem key={group} value={group}>
-                    {group}
+                {groups.groups.map((group) => (
+                  <SelectItem key={group.groupName} value={group.groupName}>
+                    {group.groupName}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -152,16 +194,25 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Sub-Group</label>
             <Select
-              onValueChange={(value) => handleSelectChange("subGroup", value)}
-              value={cardDetails.subGroup}
+              onValueChange={(value) => {
+                const selectedSubGroup = subGroups.eventSubGroups.find(
+                  (subGroup: EventSubGroup) => subGroup.subGroupName === value
+                );
+                handleSelectChange("subGroup", selectedSubGroup?.id || -1);
+              }}
+              value={
+                subGroups.eventSubGroups.find(
+                  (subGroup) => cardDetails.subGroup == subGroup.id
+                )?.subGroupName
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select Sub-Group" />
               </SelectTrigger>
               <SelectContent>
-                {subGroups.map((subGroup) => (
-                  <SelectItem key={subGroup} value={subGroup}>
-                    {subGroup}
+                {subGroups.eventSubGroups.map((subGroup) => (
+                  <SelectItem key={subGroup.id} value={subGroup.subGroupName}>
+                    {subGroup.subGroupName}
                   </SelectItem>
                 ))}
               </SelectContent>
@@ -172,15 +223,26 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Type</label>
             <Select
-              onValueChange={(value) => handleSelectChange("type", value)}
-              value={cardDetails.type}
+              onValueChange={(value) => {
+                const selectedType = subGroups.eventSubGroups.find(
+                  (subGroup: EventSubGroup) => subGroup.subGroupName === value
+                );
+                handleSelectChange("subGroup", selectedType?.id || -1);
+              }}
+              value={
+                types.types.find((type) => cardDetails.type == type.id)
+                  ?.typeName
+              }
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select Type" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="Action">Action</SelectItem>
-                <SelectItem value="Event">Event</SelectItem>
+                {types.types.map((type) => (
+                  <SelectItem key={type.id} value={type.typeName}>
+                    {type.typeName}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>
@@ -293,23 +355,18 @@ const CardDetailsPage = () => {
             <label className="block text-sm font-medium mb-2">
               Associated Image
             </label>
-            <Select
-              onValueChange={(value) =>
-                handleSelectChange("associatedImage", value)
+            <Image
+              width={300}
+              height={300}
+              className="w-32 h-32 shadow-md cursor-pointer"
+              src={
+                cardDetails.associatedImage
+                  ? `${apiUrl}/images/${cardDetails.associatedImage}`
+                  : placehoderImage
               }
-              value={cardDetails.associatedImage}
-            >
-              <SelectTrigger>
-                <SelectValue placeholder="Select Image" />
-              </SelectTrigger>
-              <SelectContent>
-                {images.map((image) => (
-                  <SelectItem key={image} value={image}>
-                    {image}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              alt=""
+              onClick={() => setIsModal(!isModal)}
+            />
           </div>
 
           {/* Submit Button */}
@@ -318,6 +375,46 @@ const CardDetailsPage = () => {
           </div>
         </div>
       </form>
+      {isModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg w-5/6 h-5/6 flex flex-col justify-between">
+            <h2 className="text-2xl mb-4">Uploaded Images</h2>
+            <div className="grid grid-cols-6 gap-10 overflow-y-auto h-[calc(100vh-300px)]">
+              {images.images &&
+                images.images.map((image: ImageType, index: number) => (
+                  <Image
+                    width={300}
+                    height={300}
+                    className={clsx("cursor-pointer", {
+                      "border-4 border-blue-500": draftImage === image.id,
+                    })}
+                    key={index}
+                    src={`${apiUrl}/images/${image.name}`}
+                    onClick={() => setDraftImage(image.id)}
+                    alt=""
+                  />
+                ))}
+            </div>
+            <div className="flex flex-row gap-2 justify-end">
+              <Button onClick={() => setIsModal(false)}>Close</Button>
+              <Button
+                disabled={draftImage == -1}
+                onClick={() => {
+                  setCardDetails((prev) => ({
+                    ...prev,
+                    associatedImage:
+                      images.images.find((image) => image.id === draftImage)
+                        ?.name || "",
+                  }));
+                  setIsModal(false);
+                }}
+              >
+                Choose
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

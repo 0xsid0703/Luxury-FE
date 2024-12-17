@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apiUrl } from "../apiConfig";
 
 const initialState: LanguageState = {
-  language: [],
+  languages: [],
   status: "idle",
   error: null,
 };
@@ -15,7 +15,7 @@ export const languageSlice = createSlice({
   reducers: {
     setLanguage: (state, action) => {
       state.status = "succeeded";
-      state.language = action.payload;
+      state.languages = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,7 +25,7 @@ export const languageSlice = createSlice({
       })
       .addCase(getLanguages.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.language = action.payload;
+        state.languages = action.payload;
       })
       .addCase(getLanguages.rejected, (state, action) => {
         state.status = "failed";
@@ -33,12 +33,12 @@ export const languageSlice = createSlice({
       })
       .addCase(deleteLanguage.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.language = state.language.filter(
+        state.languages = state.languages.filter(
           (item) => item.id !== action.payload.id
         );
       })
       .addCase(createLanguage.fulfilled, (state, action) => {
-        state.language.push(action.payload);
+        state.languages.push(action.payload);
       });
   },
 });

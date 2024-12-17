@@ -18,24 +18,24 @@ type ChangeCardStackState = {
 };
 const CardStacksPage = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const cardstack: CardStackState = useSelector<RootState, CardStackState>(
-    (state) => state.cardstack
+  const cardstacks: CardStackState = useSelector<RootState, CardStackState>(
+    (state) => state.cardstacks
   );
-  const artist: ArtistState = useSelector<RootState, ArtistState>(
-    (state) => state.artist
+  const artists: ArtistState = useSelector<RootState, ArtistState>(
+    (state) => state.artists
   );
-  const language: LanguageState = useSelector<RootState, LanguageState>(
-    (state) => state.language
+  const languages: LanguageState = useSelector<RootState, LanguageState>(
+    (state) => state.languages
   );
   const cardStacks = useMemo(() => {
-    return cardstack.cardstack;
-  }, [cardstack.cardstack]);
+    return cardstacks.cardstacks;
+  }, [cardstacks.cardstacks]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [selectedArtist, setSelectedArtist] = useState("");
-
+  console.log({ cardStacks });
   // Filtering logic
-  const filteredStacks = cardStacks.filter(
+  const filteredStacks = cardStacks?.filter(
     (stack) =>
       (searchTerm === "" ||
         stack.name.toLowerCase().includes(searchTerm.toLowerCase())) &&
@@ -132,7 +132,7 @@ const CardStacksPage = () => {
           onChange={(e) => setSelectedLanguage(e.target.value)}
         >
           <option value="">All Languages</option>
-          {language.language.map((lang: Language) => (
+          {languages.languages.map((lang: Language) => (
             <option key={lang.id} value={lang.language}>
               {lang.language}
             </option>
@@ -144,7 +144,7 @@ const CardStacksPage = () => {
           onChange={(e) => setSelectedArtist(e.target.value)}
         >
           <option value="">All Artists</option>
-          {artist.artist.map((art) => (
+          {artists.artists.map((art) => (
             <option key={art.id} value={art.name}>
               {art.name}
             </option>
@@ -174,7 +174,7 @@ const CardStacksPage = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredStacks.map((stack, index) => (
+          {filteredStacks?.map((stack, index) => (
             <tr key={stack.id} className="border-b">
               <td className="p-3">{stack.name}</td>
               <td className="p-3">{stack.language.language}</td>
@@ -224,7 +224,7 @@ const CardStacksPage = () => {
             <div className="mb-4">
               <label className="block mb-2">Languages</label>
               <select
-                className="w-full border p-2 rounded h-24"
+                className="w-full border p-2 rounded"
                 value={changeCardStack?.languageId}
                 onChange={(e) => {
                   changeCardStack &&
@@ -235,7 +235,7 @@ const CardStacksPage = () => {
                 }}
               >
                 <option value="">Select Language</option>
-                {language.language.map((lang) => (
+                {languages.languages.map((lang) => (
                   <option key={lang.id} value={lang.id}>
                     {lang.language}
                   </option>
@@ -256,7 +256,7 @@ const CardStacksPage = () => {
                 }
               >
                 <option value="">Select Artist</option>
-                {artist.artist.map((art) => (
+                {artists.artists.map((art) => (
                   <option key={art.id} value={art.id}>
                     {art.name}
                   </option>

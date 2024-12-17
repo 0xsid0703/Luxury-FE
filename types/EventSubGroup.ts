@@ -1,7 +1,11 @@
 export type EventSubGroup = {
   id: number;
-  co2: number;
-  nature: number;
-  gdp: number;
-  private_initiative: number;
+  subGroupName: string;
+  Card: Card[];
 };
+
+export interface EventSubGroupState {
+  eventSubGroups: EventSubGroup[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}

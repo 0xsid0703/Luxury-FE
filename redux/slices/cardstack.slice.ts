@@ -8,7 +8,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apiUrl } from "../apiConfig";
 
 const initialState: CardStackState = {
-  cardstack: [],
+  cardstacks: [],
   status: "idle",
   error: null,
 };
@@ -19,7 +19,7 @@ export const cardstackSlice = createSlice({
   reducers: {
     setCardStack: (state, action) => {
       state.status = "succeeded";
-      state.cardstack = action.payload;
+      state.cardstacks = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -29,7 +29,7 @@ export const cardstackSlice = createSlice({
       })
       .addCase(getCardStacks.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.cardstack = action.payload;
+        state.cardstacks = action.payload;
       })
       .addCase(getCardStacks.rejected, (state, action) => {
         state.status = "failed";
@@ -37,15 +37,15 @@ export const cardstackSlice = createSlice({
       })
       .addCase(deleteCardStack.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.cardstack = state.cardstack.filter(
+        state.cardstacks = state.cardstacks.filter(
           (item) => item.id !== action.payload.id
         );
       })
       .addCase(createCardStack.fulfilled, (state, action) => {
-        state.cardstack.push(action.payload);
+        state.cardstacks.push(action.payload);
       })
       .addCase(updateCardStack.fulfilled, (state, action) => {
-        state.cardstack = state.cardstack.map((item) =>
+        state.cardstacks = state.cardstacks.map((item) =>
           item.id === action.payload.id ? action.payload : item
         );
       });

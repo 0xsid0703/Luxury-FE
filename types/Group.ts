@@ -1,8 +1,13 @@
+import { Card } from "./Card";
+
 export type Group = {
   id: number;
-  law: string;
-  infrastructure: string;
-  research: string;
-  private_initiative: string;
-  event: string;
+  groupName: string;
+  Card: Card[];
 };
+
+export interface GroupState {
+  groups: Group[];
+  status: "idle" | "loading" | "succeeded" | "failed";
+  error: string | null;
+}

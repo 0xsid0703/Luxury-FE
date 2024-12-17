@@ -31,7 +31,7 @@ export type Card = {
 };
 
 export interface CardState {
-  card: Card[];
+  cards: Card[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }

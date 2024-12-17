@@ -4,7 +4,7 @@ import { apiUrl } from "../apiConfig";
 import { CardState } from "@/types/Card";
 
 const initialState: CardState = {
-  card: [],
+  cards: [],
   status: "idle",
   error: null,
 };
@@ -15,7 +15,7 @@ export const cardSlice = createSlice({
   reducers: {
     setCard: (state, action) => {
       state.status = "succeeded";
-      state.card = action.payload;
+      state.cards = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,7 +25,7 @@ export const cardSlice = createSlice({
       })
       .addCase(getCards.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.card = action.payload;
+        state.cards = action.payload;
       })
       .addCase(getCards.rejected, (state, action) => {
         state.status = "failed";

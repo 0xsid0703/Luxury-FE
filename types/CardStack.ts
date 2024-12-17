@@ -11,7 +11,7 @@ export type CardStack = {
 };
 
 export interface CardStackState {
-  cardstack: CardStack[];
+  cardstacks: CardStack[];
   status: "idle" | "loading" | "succeeded" | "failed";
   error: string | null;
 }
