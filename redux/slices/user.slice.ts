@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { apiUrl } from "../apiConfig";
 
 const initialState: UserState = {
-  user: [],
+  users: [],
   status: "idle",
   error: null,
 };
@@ -15,7 +15,7 @@ export const userSlice = createSlice({
   reducers: {
     setUser: (state, action) => {
       state.status = "succeeded";
-      state.user = action.payload;
+      state.users = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -25,7 +25,7 @@ export const userSlice = createSlice({
       })
       .addCase(getUsers.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.user = action.payload;
+        state.users = action.payload;
       })
       .addCase(getUsers.rejected, (state, action) => {
         state.status = "failed";
