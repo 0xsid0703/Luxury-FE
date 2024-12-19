@@ -168,7 +168,7 @@ const UploaderPage = () => {
       {uploadQueue.length > 0 && (
         <div className="bg-white shadow rounded">
           <h2 className="text-xl p-4 border-b">Upload Queue</h2>
-          <div className="grid grid-cols-6 gap-8">
+          <div className="grid grid-cols-6 gap-8 overflow-auto h-[calc(100vh-400px)]">
             {uploadQueue.map((item) => (
               <div
                 key={item.id}
