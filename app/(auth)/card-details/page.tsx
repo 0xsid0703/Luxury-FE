@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Input } from "@/components/ui/input";
 import {
   Select,
@@ -11,20 +11,33 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Artist, ArtistState } from "@/types/Artist";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/redux/store";
 import { Group, GroupState } from "@/types/Group";
 import { EventSubGroup, EventSubGroupState } from "@/types/EventSubGroup";
-import { TypeState } from "@/types/Type";
+import { Type, TypeState } from "@/types/Type";
 import { Language, LanguageState } from "@/types/Language";
 import Image from "next/image";
 import { apiUrl } from "@/redux/apiConfig";
 import placehoderImage from "@/assets/image.png";
 import { ImageState, ImageType } from "@/types/ImageType";
 import clsx from "clsx";
+import { createCard } from "@/redux/slices/card.slice";
+import { CardArgs, CardState } from "@/types/Card";
+import { toast } from "@/hooks/use-toast";
+import { useSearchParams } from "next/navigation";
 
 const CardDetailsPage = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const searchParams = useSearchParams();
+  const mode = searchParams.get("mode");
+  const id = searchParams.get("id");
+  const ids = id ? parseInt(id, 10) : 0;
+
   // Placeholder data (would typically come from backend/context)
+  const cards: CardState = useSelector<RootState, CardState>(
+    (state) => state.cards
+  );
   const artists: ArtistState = useSelector<RootState, ArtistState>(
     (state) => state.artists
   );
@@ -44,27 +57,69 @@ const CardDetailsPage = () => {
   const images: ImageState = useSelector<RootState, ImageState>(
     (state) => state.images
   );
+  const ItemList: number[] = [1, 2, 3, 4, 5];
+  const [item, setItem] = useState(-1);
   const [isModal, setIsModal] = useState(false);
   const [draftImage, setDraftImage] = useState(-1);
-  const [cardDetails, setCardDetails] = useState({
-    cardId: "", // auto-generated
-    cardName: "",
-    language: -1,
-    artist: -1,
-    group: -1,
-    subGroup: -1,
-    type: -1,
+  const [disableSubmit, setDisableSubmit] = useState(true);
+  const [cardDetails, setCardDetails] = useState<CardArgs>({
+    name: "",
+    languageId: 0,
+    artistId: 0,
+    groupId: 0,
+    event_sub_groupId: 0,
+    typeId: 0,
     scene: "",
-    actionDescription: "",
-    consequencePositive: "",
-    consequenceNegative: "",
-    co2Level: 0,
-    natureLevel: 0,
-    gdpLevel: 0,
-    qrCode: null,
-    associatedImage: "",
+    action: "",
+    consequence_positive: "",
+    consequence_negative: "",
+    co2_level_number: 0,
+    nature_level_number: 0,
+    gdp_level_number: 0,
+    qrcode: "0 0 0 0",
+    image: "",
   });
-
+  useEffect(() => {
+    if (mode === "edit") {
+      setItem(
+        parseInt(
+          cards.cards[ids].qrcode[cards.cards[ids].qrcode.length - 1],
+          10
+        )
+      );
+      setCardDetails({
+        name: cards.cards[ids].name,
+        languageId: cards.cards[ids].languageId,
+        artistId: cards.cards[ids].artistId,
+        groupId: cards.cards[ids].groupId,
+        event_sub_groupId: 0,
+        typeId: cards.cards[ids].typeId,
+        scene: cards.cards[ids].scene,
+        action: cards.cards[ids].action,
+        consequence_positive: cards.cards[ids].consequence_positive,
+        consequence_negative: cards.cards[ids].consequence_negative,
+        co2_level_number: cards.cards[ids].co2_level_number,
+        nature_level_number: cards.cards[ids].nature_level_number,
+        gdp_level_number: cards.cards[ids].gdp_level_number,
+        qrcode: cards.cards[ids].qrcode,
+        image: cards.cards[ids].image,
+      });
+    }
+  }, [mode]);
+  useEffect(() => {
+    const { name, languageId, artistId, typeId, image } = cardDetails;
+    if (
+      name == "" ||
+      languageId == 0 ||
+      artistId == 0 ||
+      typeId == 0 ||
+      image == ""
+    ) {
+      setDisableSubmit(true);
+    } else {
+      setDisableSubmit(false);
+    }
+  }, [cardDetails]);
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -76,29 +131,76 @@ const CardDetailsPage = () => {
   };
 
   const handleSelectChange = (name: string, value: number) => {
-    setCardDetails((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    if (name === "itemId") setItem(value);
+    const typeId = name === "typeId" ? value : cardDetails.typeId;
+    const artistId = name === "artistId" ? value : cardDetails.artistId;
+    const groupId = name === "groupId" ? value : cardDetails.groupId;
+    const itemId = name === "itemId" ? value : item;
+    const event_sub_groupId =
+      name === "event_sub_groupId" ? value : cardDetails.event_sub_groupId;
+    if (typeId === 1) {
+      setCardDetails((prev) => ({
+        ...prev,
+        [name]: value,
+        event_sub_groupId: 0,
+        qrcode:
+          artistId + " " + groupId + " " + event_sub_groupId + " " + itemId,
+      }));
+    } else if (typeId === 2) {
+      setCardDetails((prev) => ({
+        ...prev,
+        [name]: value,
+        qrcode:
+          artistId + " " + groupId + " " + event_sub_groupId + " " + itemId,
+      }));
+    } else {
+      setCardDetails((prev) => ({
+        ...prev,
+        [name]: value,
+        qrcode:
+          artistId + " " + groupId + " " + event_sub_groupId + " " + itemId,
+      }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Validation and submission logic
-    console.log("Card Details Submitted:", cardDetails);
+  const handleSubmit = () => {
+    console.log({ cardDetails });
+    dispatch(createCard(cardDetails))
+      .then(() => {
+        toast({ description: "Card was created successfully!" });
+        setItem(-1);
+        setCardDetails({
+          name: "",
+          languageId: 0,
+          artistId: 0,
+          groupId: 0,
+          event_sub_groupId: 0,
+          typeId: 0,
+          scene: "",
+          action: "",
+          consequence_positive: "",
+          consequence_negative: "",
+          co2_level_number: 0,
+          nature_level_number: 0,
+          gdp_level_number: 0,
+          qrcode: "0 0 0 0",
+          image: "",
+        });
+      })
+      .catch(() => toast({ description: "Failed to create Card!" }));
   };
 
   return (
     <div className="p-6 h-screen overflow-auto">
       <h1 className="text-3xl mb-6">Card Details</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 overflow-y-auto">
+      <div className="space-y-4 overflow-y-auto">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
           {/* Card Name */}
           <div>
             <label className="block text-sm font-medium mb-2">Card Name</label>
             <Input
-              name="cardName"
-              value={cardDetails.cardName}
+              name="name"
+              value={cardDetails.name}
               onChange={handleInputChange}
               placeholder="Enter card name"
             />
@@ -112,11 +214,11 @@ const CardDetailsPage = () => {
                 const selectedLanguage = languages.languages.find(
                   (language: Language) => language.language === value
                 );
-                handleSelectChange("language", selectedLanguage?.id || -1);
+                handleSelectChange("languageId", selectedLanguage?.id || -1);
               }}
               value={
                 languages.languages.find(
-                  (language) => cardDetails.language == language.id
+                  (language) => cardDetails.languageId == language.id
                 )?.language
               }
             >
@@ -141,11 +243,11 @@ const CardDetailsPage = () => {
                 const selectedArtist = artists.artists.find(
                   (artist: Artist) => artist.name === value
                 );
-                handleSelectChange("artist", selectedArtist?.id || -1);
+                handleSelectChange("artistId", selectedArtist?.id || -1);
               }}
               value={
                 artists.artists.find(
-                  (artist) => cardDetails.artist == artist.id
+                  (artist) => cardDetails.artistId == artist.id
                 )?.name
               }
             >
@@ -170,10 +272,10 @@ const CardDetailsPage = () => {
                 const selectedGroup = groups.groups.find(
                   (group: Group) => group.groupName === value
                 );
-                handleSelectChange("group", selectedGroup?.id || -1);
+                handleSelectChange("groupId", selectedGroup?.id || -1);
               }}
               value={
-                groups.groups.find((group) => cardDetails.group == group.id)
+                groups.groups.find((group) => cardDetails.groupId == group.id)
                   ?.groupName
               }
             >
@@ -194,15 +296,19 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">Sub-Group</label>
             <Select
+              disabled={cardDetails.typeId == 1}
               onValueChange={(value) => {
                 const selectedSubGroup = subGroups.eventSubGroups.find(
                   (subGroup: EventSubGroup) => subGroup.subGroupName === value
                 );
-                handleSelectChange("subGroup", selectedSubGroup?.id || -1);
+                handleSelectChange(
+                  "event_sub_groupId",
+                  selectedSubGroup?.id || -1
+                );
               }}
               value={
                 subGroups.eventSubGroups.find(
-                  (subGroup) => cardDetails.subGroup == subGroup.id
+                  (subGroup) => cardDetails.event_sub_groupId == subGroup.id
                 )?.subGroupName
               }
             >
@@ -218,19 +324,38 @@ const CardDetailsPage = () => {
               </SelectContent>
             </Select>
           </div>
-
+          <div>
+            <label className="block text-sm font-medium mb-2">Item</label>
+            <Select
+              onValueChange={(value) => {
+                handleSelectChange("itemId", Number(value) || -1);
+              }}
+              value={item.toString()}
+            >
+              <SelectTrigger>
+                <SelectValue placeholder="Select Item" />
+              </SelectTrigger>
+              <SelectContent>
+                {ItemList.map((item, index) => (
+                  <SelectItem key={index - 1} value={item.toString()}>
+                    {item.toString()}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
           {/* Type */}
           <div>
             <label className="block text-sm font-medium mb-2">Type</label>
             <Select
               onValueChange={(value) => {
-                const selectedType = subGroups.eventSubGroups.find(
-                  (subGroup: EventSubGroup) => subGroup.subGroupName === value
+                const selectedType = types.types.find(
+                  (type: Type) => type.typeName === value
                 );
-                handleSelectChange("subGroup", selectedType?.id || -1);
+                handleSelectChange("typeId", selectedType?.id || -1);
               }}
               value={
-                types.types.find((type) => cardDetails.type == type.id)
+                types.types.find((type) => cardDetails.typeId == type.id)
                   ?.typeName
               }
             >
@@ -265,8 +390,8 @@ const CardDetailsPage = () => {
               Action Description
             </label>
             <Textarea
-              name="actionDescription"
-              value={cardDetails.actionDescription}
+              name="action"
+              value={cardDetails.action}
               onChange={handleInputChange}
               placeholder="Describe the action"
               rows={3}
@@ -279,8 +404,8 @@ const CardDetailsPage = () => {
               Positive Consequence
             </label>
             <Textarea
-              name="consequencePositive"
-              value={cardDetails.consequencePositive}
+              name="consequence_positive"
+              value={cardDetails.consequence_positive}
               onChange={handleInputChange}
               placeholder="Describe positive consequences"
               rows={3}
@@ -291,8 +416,8 @@ const CardDetailsPage = () => {
               Negative Consequence
             </label>
             <Textarea
-              name="consequenceNegative"
-              value={cardDetails.consequenceNegative}
+              name="consequence_negative"
+              value={cardDetails.consequence_negative}
               onChange={handleInputChange}
               placeholder="Describe negative consequences"
               rows={3}
@@ -304,8 +429,8 @@ const CardDetailsPage = () => {
             <label className="block text-sm font-medium mb-2">CO2 Level</label>
             <Input
               type="number"
-              name="co2Level"
-              value={cardDetails.co2Level}
+              name="co2_level_number"
+              value={cardDetails.co2_level_number}
               onChange={handleInputChange}
               min={0}
               max={100}
@@ -318,8 +443,8 @@ const CardDetailsPage = () => {
             </label>
             <Input
               type="number"
-              name="natureLevel"
-              value={cardDetails.natureLevel}
+              name="nature_level_number"
+              value={cardDetails.nature_level_number}
               onChange={handleInputChange}
               min={0}
               max={100}
@@ -330,8 +455,8 @@ const CardDetailsPage = () => {
             <label className="block text-sm font-medium mb-2">GDP Level</label>
             <Input
               type="number"
-              name="gdpLevel"
-              value={cardDetails.gdpLevel}
+              name="gdp_level_number"
+              value={cardDetails.gdp_level_number}
               onChange={handleInputChange}
               min={0}
               max={100}
@@ -343,10 +468,10 @@ const CardDetailsPage = () => {
           <div>
             <label className="block text-sm font-medium mb-2">QR Code</label>
             <Input
-              type="file"
+              type="text"
               name="qrCode"
-              accept="image/*"
-              onChange={handleInputChange}
+              disabled
+              value={cardDetails.qrcode}
             />
           </div>
 
@@ -360,8 +485,8 @@ const CardDetailsPage = () => {
               height={300}
               className="w-32 h-32 shadow-md cursor-pointer"
               src={
-                cardDetails.associatedImage
-                  ? `${apiUrl}/images/${cardDetails.associatedImage}`
+                cardDetails.image
+                  ? `${apiUrl}/images/${cardDetails.image}`
                   : placehoderImage
               }
               alt=""
@@ -371,10 +496,16 @@ const CardDetailsPage = () => {
 
           {/* Submit Button */}
           <div className="md:col-span-2 flex justify-end">
-            <Button type="submit">Save Card</Button>
+            <Button
+              type="submit"
+              onClick={handleSubmit}
+              disabled={disableSubmit}
+            >
+              Save Card
+            </Button>
           </div>
         </div>
-      </form>
+      </div>
       {isModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-6 rounded-lg w-5/6 h-5/6 flex flex-col justify-between">
@@ -402,7 +533,7 @@ const CardDetailsPage = () => {
                 onClick={() => {
                   setCardDetails((prev) => ({
                     ...prev,
-                    associatedImage:
+                    image:
                       images.images.find((image) => image.id === draftImage)
                         ?.name || "",
                   }));

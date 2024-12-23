@@ -33,7 +33,6 @@ const CardStacksPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [selectedArtist, setSelectedArtist] = useState("");
-  console.log({ cardStacks });
   // Filtering logic
   const filteredStacks = cardStacks?.filter(
     (stack) =>

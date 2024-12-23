@@ -22,6 +22,7 @@ const SideBar = () => {
     { icon: <InfoIcon />, label: "Info", link: "/info" },
     { icon: <ImageIcon />, label: "Images", link: "/images" },
     { icon: <UploadIcon />, label: "Uploader", link: "/uploader" },
+    { icon: <FileTextIcon />, label: "Cards", link: "/cards" },
     { icon: <FileTextIcon />, label: "Card Details", link: "/card-details" },
     { icon: <UsersIcon />, label: "Users", link: "/users" },
     { icon: <ActivityIcon />, label: "Testing", link: "/testing" },

@@ -23,9 +23,6 @@ const UploaderPage = () => {
     }
     setIsAvailable(flag);
   }, [uploadQueue]);
-  useEffect(() => {
-    console.log({ isAvailable });
-  }, [isAvailable]);
   // Handle file selection
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files) return;
@@ -107,10 +104,8 @@ const UploaderPage = () => {
           );
 
           const result = response.data;
-          console.log(result);
           if (result.success) {
             dispatch(addImages(result.image));
-            console.log("Hello");
             setUploadQueue((prevQueue) =>
               prevQueue.map((item) =>
                 item.id === fileItem.id
