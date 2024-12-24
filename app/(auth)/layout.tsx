@@ -5,11 +5,7 @@ const layout = ({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  return (
-    <div className="w-full bg-mainBackground h-screen overflow-hidden">
-      {children}
-    </div>
-  );
+  return <div className="w-full bg-mainBackground h-screen">{children}</div>;
 };
 
 export default layout;
