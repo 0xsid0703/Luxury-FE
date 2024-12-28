@@ -1,14 +1,14 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 const ProductBrand = () => {
   return (
     <div
-      className="bg-center bg-no-repeat bg-cover"
+      className="bg-center bg-no-repeat bg-cover z-10"
       style={{ backgroundImage: "url(/product/brand-bg.png)" }}
     >
-      <div className="relative">
-        <div className="w-full h-full blur-md bg-[#1F1B16] bg-opacity-35 absolute top-0 z-0"></div>
+      <div className="flex flex-col relative">
         <div className="py-20 flex flex-col gap-16 container mx-auto z-[5]">
           <div className="flex flex-col">
             <span className="text-white text-6xl">About the Brand:</span>
@@ -44,18 +44,13 @@ const ProductBrand = () => {
                 </div>
                 <Button className="flex flex-row py-5 px-6 w-fit text-black bg-white rounded-full text-lg">
                   <span>Apply for Access</span>
-                  <Image
-                    src="/right-arrow.svg" // Path relative to the public directory
-                    alt="Right Arrow"
-                    width={12}
-                    height={15}
-                    className="text-black" // Tailwind class (won't work for SVGs unless you use inline SVG)
-                  />
+                  <ArrowRight size={12} color="#000" />
                 </Button>
               </div>
             </div>
           </div>
         </div>
+        <div className="w-full h-full blur-md bg-[#1F1B16] bg-opacity-35 absolute top-0"></div>
       </div>
     </div>
   );

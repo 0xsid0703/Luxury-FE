@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 const Blending = () => {
   const blendings = [
     {
@@ -53,13 +54,7 @@ const Blending = () => {
           </ul>
           <Button className="flex flex-row py-5 px-6 w-fit text-blendingButton bg-blendingButton rounded-full text-lg">
             <span>Apply for Access</span>
-            <Image
-              src="/right-arrow.svg" // Path relative to the public directory
-              alt="Right Arrow"
-              width={12}
-              height={15}
-              className="text-[#FFE281]" // Tailwind class (won't work for SVGs unless you use inline SVG)
-            />
+            <ArrowRight size={12} color="#FFE281" />
           </Button>
         </div>
       </div>

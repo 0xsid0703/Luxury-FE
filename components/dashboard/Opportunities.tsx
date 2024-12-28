@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { ArrowRight } from "lucide-react";
 const Opportunities = () => {
   return (
     <div className="flex flex-col gap-7 py-20 bg-[#E8E8E8]">
@@ -62,13 +63,7 @@ const Opportunities = () => {
         </div>
         <Button className="flex flex-row py-5 px-6 w-fit text-blendingButton bg-blendingButton rounded-full text-lg">
           <span>Become an Investor Now</span>
-          <Image
-            src="/right-arrow.svg" // Path relative to the public directory
-            alt="Right Arrow"
-            width={12}
-            height={15}
-            className="text-[#FFE281]" // Tailwind class (won't work for SVGs unless you use inline SVG)
-          />
+          <ArrowRight size={12} color="#FFE281" />
         </Button>
         <div className="flex flex-col items-center text-center">
           <span className="font-normal text-6xl">What makes Us different?</span>

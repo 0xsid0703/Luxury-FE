@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 const Footer = () => {
   return (
     <div className="bg-[#E8E8E8]">
@@ -24,13 +25,7 @@ const Footer = () => {
             </div>
             <Button className="flex flex-row py-5 px-6 w-fit bg-white rounded-full text-lg border-4 border-[#D49F5E] border-opacity-15 text-black">
               <span>Apply for Access</span>
-              <Image
-                src="/right-arrow.svg" // Path relative to the public directory
-                alt="Right Arrow"
-                width={12}
-                height={15}
-                className="text-[#FFE281]" // Tailwind class (won't work for SVGs unless you use inline SVG)
-              />
+              <ArrowRight size={12} color="#000" />
             </Button>
           </div>
           <div className="flex flex-col gap-7 items-center">

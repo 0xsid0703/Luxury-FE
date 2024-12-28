@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
+import { ArrowRight } from "lucide-react";
 const Description = () => {
   const [selectedTerm, setSelectedTerm] = useState(0);
   return (
@@ -72,7 +73,7 @@ const Description = () => {
                 </div>
                 <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-lg text-white">
                   <span className="text-3xl">Designed for Elite Investors</span>
-                  <span className="text-base text-[#CCCCCC]">
+                  <span className="text-base text-[#766B46]">
                     Built specifically for accredited investors, our platform
                     offers a private, high-end experience with a global
                     perspective.
@@ -100,13 +101,7 @@ const Description = () => {
               </div>
               <div className="bg-white rounded-full py-4 px-8 flex flex-row gap-2">
                 Apply for Access
-                <Image
-                  src="/right-arrow.svg" // Path relative to the public directory
-                  alt="Right Arrow"
-                  width={12}
-                  height={15}
-                  className="text-[#FFE281]" // Tailwind class (won't work for SVGs unless you use inline SVG)
-                />
+                <ArrowRight size={12} color="#FFE281" />
               </div>
             </div>
             <div className="grid grid-cols-3 gap-3">

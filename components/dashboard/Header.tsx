@@ -6,7 +6,7 @@ import { Button } from "../ui/button";
 const Header = () => {
   return (
     <div className="fixed bg-transparent w-full z-10">
-      <div className="m-5 rounded-md bg-white">
+      <div className="m-5 rounded-md bg-[#F7F7F7] shadow-lg">
         <div className="mx-auto px-6 py-1 flex">
           <div className="w-1/2 flex justify-between items-center">
             <Link href="/">

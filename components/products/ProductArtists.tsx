@@ -63,7 +63,7 @@ const ProductArtists = () => {
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-10">
               <div
-                className="bg-cover bg-no-repeat bg-center w-[634px] h-[690px] rounded-[24px]"
+                className="bg-cover bg-no-repeat bg-center w-full h-[690px] rounded-[24px]"
                 style={{ backgroundImage: "url(/artist/man.png)" }}
               ></div>
               <div className="flex flex-row gap-8">
@@ -112,7 +112,7 @@ const ProductArtists = () => {
                   style={{ backgroundImage: "url(/artist/artist2.png)" }}
                 ></div>
                 <div
-                  className="w-2/5 aspect-[2/1] rounded-[24px] bg-cover bg-center bg-no-repeat"
+                  className="w-2/5 h-2/3 rounded-[24px] bg-cover bg-center bg-no-repeat"
                   style={{ backgroundImage: "url(/artist/artist1.png)" }}
                 ></div>
               </div>

@@ -204,7 +204,7 @@ function makeSeries(
   const rMax = 20;
   const nullChance = 0;
   return {
-    label: `Series ${i + 1}`,
+    // label: `Series ${i + 1}`,
     data: [...new Array(length)].map((_, i) => {
       let x;
 

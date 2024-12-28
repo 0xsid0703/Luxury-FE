@@ -5,6 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 const Hero = () => {
   const upcomings = [
     {
@@ -110,19 +111,12 @@ const Hero = () => {
                       </div>
                       <div className="text-greyColor font-normal text-base line-clamp-3">
                         {upcoming.description}
-                      </div>
+                      </div> 
                       <Link
                         href={upcoming.link}
-                        className="text-lg flex flex-row gap-2 text-white"
+                        className="text-lg flex flex-row gap-2 text-white items-center"
                       >
-                        View Sale Details{" "}
-                        <Image
-                          src={"/right-arrow.svg"}
-                          width={12}
-                          height={15}
-                          className="text-white"
-                          alt=""
-                        />
+                        View Sale Details <ArrowRight size={20} color="#FFF" />
                       </Link>
                     </div>
                   </div>
@@ -137,7 +131,7 @@ const Hero = () => {
             Get Access to Private Sales
           </Link>
         </div>
-        <div className="flex flex-col w-full items-center gap-6 pt-6 pb-16 bg-[#1F1B16]">
+        <div className="flex flex-col w-full items-center gap-6 pt-6 pb-16 bg-[#1F1B16] z-[5]">
           <div className="font-medium text-[#B5B7B8] text-sm">
             Proudly Collaborating With:
           </div>
