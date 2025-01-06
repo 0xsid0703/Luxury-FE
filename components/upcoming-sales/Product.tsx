@@ -14,8 +14,8 @@ type Props = {
 const Product = ({ photo, num_limited, title, description, price, link }: Props) => {
     return (
         <div className='w-full flex flex-row gap-10 p-2'>
-            <div className='w-1/3 relative'>
-                <Image src={photo} width={420} height={250} alt={title} className='rounded-3xl w-full h-fit grayscale hover:grayscale-0' />
+            <div className='w-[420px] h-[250px] relative'>
+                <Image src={photo} width={420} height={250} alt={title} className='rounded-3xl grayscale hover:grayscale-0 w-full h-full' />
                 <Image
                     src={"/Play.svg"}
                     className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
@@ -33,9 +33,11 @@ const Product = ({ photo, num_limited, title, description, price, link }: Props)
                     </div>
                     <span className='text-sm'>Limited to {num_limited} bottles worldwide</span>
                 </div>
-                <div className='flex flex-row justify-between'>
+                <div className='flex flex-row justify-between items-center'>
                     <span className='font-semibold text-[42px]'>${price.toLocaleString()}</span>
-                    <Link href={link} className='bg-black text-white px-8 py-4 rounded-3xl font-medium' >View Sale Details</Link>
+                    <Link href={link} className='bg-black h-fit text-white px-8 py-4 rounded-3xl font-medium'>
+                        View Sale Details
+                    </Link>
                 </div>
             </div>
         </div>

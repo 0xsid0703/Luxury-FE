@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
           <div className="border-t border-[#CDCDCD] flex flex-row justify-between pt-8">
             <Link href={"/"} className="text-[#99A1A3] text-base">
-              galery111@copyright
+              GO FUND ART @copyright
             </Link>
             <div className="flex flex-row gap-10">
               <Link href={"/"} className="text-[#99A1A3] text-base">

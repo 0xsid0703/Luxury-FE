@@ -3,9 +3,9 @@ import React from "react";
 
 const ProductFooter = () => {
   return (
-    <div className="py-8">
+    <div className="py-8 container mx-auto w-full flex flex-col gap-12">
       <div
-        className="container mx-auto bg-cover bg-no-repeat bg-center relative w-full rounded-[30px] flex flex-col"
+        className="bg-cover bg-no-repeat bg-center relative rounded-[30px] flex flex-col"
         style={{ backgroundImage: "url(/product/footer.png)" }}
       >
         <div className="absolute top-0 bg-gradient-to-r from-[#020202] to-transparent h-full w-1/3 z-[1] rounded-[30px]"></div>
@@ -43,6 +43,19 @@ const ProductFooter = () => {
               exclusive release
             </span>
           </div>
+        </div>
+      </div>
+      <div className="border-t border-[#CDCDCD] flex flex-row justify-between pt-8">
+        <Link href={"/"} className="text-[#99A1A3] text-base">
+          GO FUND ART @copyright
+        </Link>
+        <div className="flex flex-row gap-10">
+          <Link href={"/"} className="text-[#99A1A3] text-base">
+            Terms of use
+          </Link>
+          <Link href={"/"} className="text-[#99A1A3] text-base">
+            Privacy & Terms
+          </Link>
         </div>
       </div>
     </div>

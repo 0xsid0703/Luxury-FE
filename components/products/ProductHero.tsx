@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
+import Link from "next/link";
 
 const ProductHero = () => {
   return (
@@ -16,10 +17,10 @@ const ProductHero = () => {
           </span>
         </div>
         <div className="mt-12 flex flex-row gap-6">
-          <Image src={"/product/instagram.png"} width={24} height={24} alt="" />
-          <Image src={"/product/facebook.png"} width={24} height={24} alt="" />
-          <Image src={"/product/x.png"} width={24} height={24} alt="" />
-          <Image src={"/product/tiktok.png"} width={24} height={24} alt="" />
+          <Link href={"/"}><Image src={"/product/instagram.png"} width={24} height={24} alt="" /></Link>
+          <Link href={"/"}><Image src={"/product/facebook.png"} width={24} height={24} alt="" /></Link>
+          <Link href={"/"}><Image src={"/product/x.png"} width={24} height={24} alt="" /></Link>
+          <Link href={"/"}><Image src={"/product/tiktok.png"} width={24} height={24} alt="" /></Link>
         </div>
         <div className="w-full h-auto mt-10">
           <Image
