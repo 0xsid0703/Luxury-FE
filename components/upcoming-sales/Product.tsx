@@ -17,7 +17,7 @@ const Product = ({ photo, num_limited, title, description, price, link }: Props)
             <div className='w-1/3 relative'>
                 <Image src={photo} width={420} height={250} alt={title} className='rounded-3xl w-full h-fit grayscale hover:grayscale-0' />
                 <Image
-                    src={"/play.svg"}
+                    src={"/Play.svg"}
                     className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                     width={50}
                     height={50}
