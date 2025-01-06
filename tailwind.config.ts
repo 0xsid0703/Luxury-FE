@@ -22,7 +22,7 @@ const config: Config = {
         },
         heroYellow: "#E5CE87",
         blendingYellow: "#9C7C55",
-        greyColor: "#C1C2C2",
+        greyColor: "#80898B",
         mainGreyColor: "#80898B",
         blendingButton: "#FFE281",
         descColor: "#787878",

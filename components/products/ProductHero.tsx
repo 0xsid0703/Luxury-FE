@@ -80,15 +80,15 @@ const ProductHero = () => {
                 Rare Armagnac with custom-designed bottle by Robert King
               </div>
             </div>
-            <div className="flex flex-row justify-between py-5 w-full">
-              <div className="flex flex-col">
-                <span className="font-bold text-white text-lg">
-                  Available for pre-order:
-                </span>
+            <div className="flex flex-col py-5">
+              <span className="font-bold text-white text-lg">
+                Available for pre-order:
+              </span>
+              <div className="flex flex-row justify-between w-full">
                 <span className="font-bold text-white text-5xl">$1,254</span>
-              </div>
-              <div className="bg-[#E3713D] border-4 border-[#D49F5E] border-opacity-15 text-white rounded-full py-4 px-6 text-lg">
-                Join the Waiting List
+                <button className="bg-[#E3713D] border-4 border-[#D49F5E] border-opacity-15 text-white rounded-full py-4 px-6 text-lg">
+                  Join the Waiting List
+                </button>
               </div>
             </div>
           </div>

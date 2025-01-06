@@ -15,7 +15,7 @@ const Header = () => {
                 width={200}
                 height={100}
                 alt=""
-                className="w-[80px] h-[40]"
+                className="w-[100px] h-[50px]"
               />
             </Link>
             <div className="flex flex-row gap-8  items-center text-sm">

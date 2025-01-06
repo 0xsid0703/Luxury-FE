@@ -3,10 +3,10 @@ import React from "react";
 
 const Pricing = () => {
   return (
-    <div className="w-full bg-white">
-      <div className="pt-36 flex flex-col gap-12 items-center">
+    <div className="w-full">
+      <div className="pt-36 flex flex-col gap-12 items-center text-white">
         <div className="flex flex-col items-center">
-          <div className="text-[#1E1E1E] text-7xl">Pricing</div>
+          <div className="text-7xl">Pricing</div>
           <div className="text-center">
             Unlike traditional collectors, our platform lets you claim assets
             anytime
@@ -15,19 +15,19 @@ const Pricing = () => {
           </div>
         </div>
         <div className="flex flex-row gap-3">
-          <div className="min-w-[420px] rounded-[30px] bg-[#F7F7F7] p-10 flex flex-col gap-8">
+          <div className="min-w-[420px] rounded-[30px] bg-[#2F2A24] p-10 flex flex-col gap-8">
             <div className="flex flex-col gap-4">
               <div className="text-[#99A1A3] text-xl">Basic</div>
-              <div className="text-[#051D1D] text-6xl">
-                $14 <span className="text-[#051D1D] text-base">/mo</span>
+              <div className="text-6xl">
+                $14 <span className="text-base">/mo</span>
               </div>
             </div>
             <div className="bg-[#051D1D] h-[1px] bg-opacity-10"></div>
             <div className="flex flex-col gap-4">
-              <div className="text-[#051D1D] text-lg font-semibold">
+              <div className="text-lg font-semibold">
                 Plan includes:
               </div>
-              <div className="flex flex-col text-[#051D1D] gap-2">
+              <div className="flex flex-col gap-2">
                 <div className="flex flex-row gap-2">
                   <Check />
                   Unlimited 1-1 meetings
@@ -60,7 +60,7 @@ const Pricing = () => {
               <ArrowRight />
             </div>
           </div>
-          <div className="min-w-[420px] rounded-[30px] bg-[#1F1B16] p-10 flex flex-col gap-8">
+          <div className="min-w-[420px] rounded-[30px] bg-[#9C7C55] p-10 flex flex-col gap-8">
             <div className="flex flex-col gap-4 text-white">
               <div className="text-[#DBE3E4] text-xl">Premium</div>
               <div className="text-6xl">
