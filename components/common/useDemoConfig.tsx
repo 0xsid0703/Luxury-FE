@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+
 //
 
 const options = {
@@ -189,58 +190,32 @@ function makeSeries(
   datums: number,
   useR?: boolean
 ) {
-  const start = 0;
-  const startDate = new Date();
-  // startDate.setFullYear(2020);
-  startDate.setUTCHours(0);
-  startDate.setUTCMinutes(0);
-  startDate.setUTCSeconds(0);
-  startDate.setUTCMilliseconds(0);
-  // const length = 5 + Math.round(Math.random() * 15)
-  const length = datums;
-  const min = 0;
-  const max = 100;
-  const rMin = 2;
-  const rMax = 20;
-  const nullChance = 0;
+  const startPrice = 8000;
+  const endPrice = 12000;
+  const startDate = new Date('2021');
+  const endDate = new Date('2025');
+
   return {
-    // label: `Series ${i + 1}`,
-    data: [...new Array(length)].map((_, i) => {
-      let x;
+    label: `Price History`,
+    data: Array(datums)
+      .fill(0)
+      .map((_, i) => {
+        const progress = i / (datums - 1);
+        const date = new Date(
+          startDate.getTime() + progress * (endDate.getTime() - startDate.getTime())
+        );
+        
+        // Generate a smooth price curve with some random variation
+        const basePrice = startPrice + progress * (endPrice - startPrice);
+        const variation = Math.sin(progress * Math.PI * 2) * 1000;
+        const randomness = (Math.random() - 0.5) * 500;
+        const price = basePrice + variation + randomness;
 
-      if (dataType === "ordinal") {
-        x = `Ordinal Group ${start + i}`;
-      } else if (dataType === "time") {
-        x = new Date(startDate.getTime() + 60 * 1000 * 60 * 24 * i);
-      } else if (dataType === "linear") {
-        x =
-          Math.random() < nullChance
-            ? null
-            : min + Math.round(Math.random() * (max - min));
-      } else {
-        x = start + i;
-      }
-
-      const distribution = 1.1;
-
-      const y =
-        Math.random() < nullChance
-          ? null
-          : min + Math.round(Math.random() * (max - min));
-
-      const r = !useR
-        ? undefined
-        : rMax -
-          Math.floor(
-            Math.log(Math.random() * (distribution ** rMax - rMin) + rMin) /
-              Math.log(distribution)
-          );
-
-      return {
-        primary: x,
-        secondary: y,
-        radius: r,
-      };
-    }),
+        return {
+          primary: date,
+          secondary: price,
+          radius: useR ? 8 : undefined,
+        };
+      }),
   };
 }

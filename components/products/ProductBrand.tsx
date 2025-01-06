@@ -42,8 +42,9 @@ const ProductBrand = () => {
                   <span className="#F3CF72">innovation</span>. we need the
                   website link of the brand Cardinal du Four
                 </div>
-                <Button className="flex flex-row py-5 px-6 w-fit text-black bg-white rounded-full text-lg">
-                  <span>Apply for Access</span>
+                <Button className="flex flex-row py-7 px-9 w-fit text-black bg-white rounded-full text-lg outline outline-4 outline-[#F4A341]/20 hover:outline-[#F4A341]/50 hover:bg-white">
+                  <span>Visit Website</span>
+                  <div className="w-[1px] h-6 bg-[#848484]/20"></div>
                   <ArrowRight size={12} color="#000" />
                 </Button>
               </div>

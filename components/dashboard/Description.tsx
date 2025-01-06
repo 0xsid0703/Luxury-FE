@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import clsx from "clsx";
 import { ArrowRight } from "lucide-react";
+import { Button } from "../ui/button";
 const Description = () => {
   const [selectedTerm, setSelectedTerm] = useState(0);
   return (
@@ -25,7 +26,7 @@ const Description = () => {
             </div>
             <div className="flex flex-col gap-3">
               <div className="flex flex-row gap-3">
-                <div className="w-2/5 bg-white p-10 flex flex-col gap-4 rounded-lg">
+                <div className="w-2/5 bg-white p-10 flex flex-col gap-4 rounded-3xl">
                   <span className="text-3xl">Exclusivity Meets Security</span>
                   <span className="text-base text-descColor">
                     Gain access to exclusive art and collectibles sourced
@@ -33,7 +34,7 @@ const Description = () => {
                     brands.
                   </span>
                 </div>
-                <div className="w-2/5 bg-[#59443C] p-10 flex flex-col gap-4 rounded-lg text-white">
+                <div className="w-2/5 bg-[#59443C] p-10 flex flex-col gap-4 rounded-3xl text-white">
                   <span className="text-3xl">Physical & Digital Harmony</span>
                   <span className="text-base text-[#CCCCCC]">
                     Each collectible is authenticated with NFC chips or QR
@@ -46,13 +47,13 @@ const Description = () => {
                     src={"/desc1.png"}
                     width={240}
                     height={240}
-                    className="rounded-lg"
+                    className="rounded-3xl"
                     alt=""
                   />
                 </div>
               </div>
               <div className="flex flex-row gap-3">
-                <div className="w-2/5 bg-[#32302D] p-10 flex flex-col gap-4 rounded-lg">
+                <div className="w-2/5 bg-[#32302D] p-10 flex flex-col gap-4 rounded-3xl">
                   <span className="text-3xl text-white">
                     Trust Beyond Transactions
                   </span>
@@ -67,11 +68,11 @@ const Description = () => {
                     src={"/desc2.png"}
                     width={240}
                     height={240}
-                    className="rounded-lg"
+                    className="rounded-3xl"
                     alt=""
                   />
                 </div>
-                <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-lg text-white">
+                <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-3xl text-white">
                   <span className="text-3xl">Designed for Elite Investors</span>
                   <span className="text-base text-[#766B46]">
                     Built specifically for accredited investors, our platform
@@ -99,10 +100,12 @@ const Description = () => {
                   <br /> for profit
                 </span>
               </div>
-              <div className="bg-white rounded-full py-4 px-8 flex flex-row gap-2">
+              <Button className="text-[#1F1B16] bg-white rounded-full py-7 px-9 flex flex-row gap-2 items-center outline outline-4 outline-[#D49F5E]/20 hover:bg-[#F7F5F2] hover:outline-[#D49F5E]/50 hover:shadow-lg transition duration-300 font-semibold text-lg">
                 Apply for Access
-                <ArrowRight size={12} color="#FFE281" />
-              </div>
+                <div className="w-[1px] h-5 bg-[#848484]/30"></div>
+                <ArrowRight size={20} color="#1F1B16" />
+              </Button>
+
             </div>
             <div className="grid grid-cols-3 gap-3">
               <div

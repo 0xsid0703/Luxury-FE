@@ -10,7 +10,7 @@ const Opportunities = () => {
           <span className="font-normal text-6xl">
             Exclusive Opportunities,{" "}
           </span>
-          <span className="font-normal text-6xl text-heroYellow">
+          <span className="font-normal text-6xl text-[#9C7C55]">
             Tailored For You
           </span>
           <span className="font-normal text-lg text-mainGreyColor mt-8">
@@ -61,10 +61,12 @@ const Opportunities = () => {
             </div>
           </div>
         </div>
-        <Button className="flex flex-row py-5 px-6 w-fit text-blendingButton bg-blendingButton rounded-full text-lg">
+        <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/20 hover:bg-[#2B2720] hover:outline-[#FFE281]/50 hover:shadow-md transition duration-300">
           <span>Become an Investor Now</span>
+          <div className="w-[1px] h-6 bg-[#848484]/20"></div>
           <ArrowRight size={12} color="#FFE281" />
         </Button>
+
         <div className="flex flex-col items-center text-center">
           <span className="font-normal text-6xl">What makes Us different?</span>
           <span className="font-normal text-lg text-mainGreyColor mt-8">

@@ -9,8 +9,7 @@ const ProductAbout = () => {
           style={{ backgroundImage: "url(/product/drink.png)" }}
         ></div>
         <div className="w-1/2 h-[526px] relative">
-          <div className="absolute bottom-0 bg-gradient-to-t from-[#E8E8E8] to-[#E8E8E8] h-48 w-full"></div>
-
+          <div className="absolute bottom-0 bg-gradient-to-t from-[#E8E8E8] to-transparent h-48 w-full z-[5]"></div>
           <div className="h-full overflow-auto flex flex-col gap-12 about-scrollbar">
             <div className="flex flex-col gap-6 z-0">
               <div className="text-[#051D1D] text-3xl font-semibold">

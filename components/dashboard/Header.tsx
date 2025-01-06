@@ -37,16 +37,18 @@ const Header = () => {
             <div className="flex gap-2">
               <Button
                 asChild
-                className="bg-transparent hover:bg-gray-800 hover:text-white text-primary text-base px-4 py-2 font-bold w-36 rounded-md shadow-none"
+                className="bg-transparent hover:bg-gray-800 hover:text-white text-primary text-base px-4 py-2 font-bold w-36 rounded-md shadow-none transition duration-300"
               >
                 <Link href="/sign-up">Log In</Link>
               </Button>
+
               <Button
                 asChild
-                className="bg-yellowColor shadow-none hover:bg-gray-800 hover:text-white text-primary text-base px-4 py-2 font-bold w-36 rounded-md"
+                className="bg-yellowColor shadow-none hover:bg-gray-800 hover:text-white text-primary text-base px-4 py-2 font-bold w-36 rounded-md transition duration-300"
               >
                 <Link href="/sign-up">Sign Up</Link>
               </Button>
+
             </div>
           </div>
         </div>

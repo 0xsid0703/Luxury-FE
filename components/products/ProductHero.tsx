@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { Button } from "../ui/button";
 
 const ProductHero = () => {
   return (
@@ -86,9 +87,9 @@ const ProductHero = () => {
               </span>
               <div className="flex flex-row justify-between w-full">
                 <span className="font-bold text-white text-5xl">$1,254</span>
-                <button className="bg-[#E3713D] border-4 border-[#D49F5E] border-opacity-15 text-white rounded-full py-4 px-6 text-lg">
+                <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 hover:outline-[#D49F5E]/50 text-white rounded-full py-7 px-9 text-lg hover:bg-[#E3713D]">
                   Join the Waiting List
-                </button>
+                </Button>
               </div>
             </div>
           </div>

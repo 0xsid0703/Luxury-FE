@@ -9,7 +9,7 @@ const ProductArtists = () => {
   return (
     <div className="py-14 bg-[#E8E8E8]">
       <div className="container mx-auto flex flex-col gap-16">
-        <div className="flex">
+        <div className="flex gap-2">
           <span className="font-normal text-6xl text-[#9C7C55]">Artists</span>
           <span className="font-normal text-6xl text-black">collaboration</span>
         </div>

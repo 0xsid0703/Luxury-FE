@@ -3,10 +3,24 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Swiper as SwiperType } from 'swiper';
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 const Hero = () => {
+  const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
+
+  const handlePrev = () => {
+    if (swiper) {
+      swiper.slidePrev();
+    }
+  };
+
+  const handleNext = () => {
+    if (swiper) {
+      swiper.slideNext();
+    }
+  };
   const upcomings = [
     {
       image: "/upcoming.png",
@@ -69,64 +83,84 @@ const Hero = () => {
               <br /> meets rare collectibles and long-term investments
             </div>
           </div>
-          <Swiper
-            spaceBetween={30}
-            navigation={true}
-            modules={[Navigation]}
-            className="mySwiper w-2/3 gap-5"
-          >
-            {upcomings.map((upcoming, index) => (
-              <SwiperSlide key={index}>
-                <div
-                  className="flex flex-col rounded-xl p-6 divide-y divide-[#A8A8A852] bg-hero-card text-white"
-                  key={index}
-                >
-                  <div className="pb-5 text-2xl leading-6">Upcoming Sales</div>
-                  <div className="flex flex-row pt-5">
-                    <div className="w-1/3 h-auto relative">
-                      <Image
-                        src={upcoming.image}
-                        className="w-full h-full rounded-xl"
-                        width={391}
-                        height={321}
-                        alt=""
-                      />
-                      <Image
-                        src={"/play.svg"}
-                        className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
-                        width={50}
-                        height={50}
-                        alt=""
-                      />
-                    </div>
-                    <div className="w-2/3 flex flex-col gap-3 py-3 px-10">
-                      <div className="bg-limitedColor rounded-full text-sm text-white w-fit px-2">
-                        Limited to {upcoming.limited_bottles} bottles
+          <div className="relative w-2/3">
+            <Swiper
+              spaceBetween={30}
+              onSwiper={setSwiper}
+              modules={[Navigation]}
+              className="mySwiper w-full gap-5"
+            >
+              {upcomings.map((upcoming, index) => (
+                <SwiperSlide key={index}>
+                  <div
+                    className="flex flex-col rounded-3xl p-6 divide-y divide-[#A8A8A852] bg-hero-card text-white"
+                    key={index}
+                  >
+                    <div className="pb-5 text-2xl leading-6">Upcoming Sales</div>
+                    <div className="flex flex-row pt-5">
+                      <div className="w-1/3 h-auto relative">
+                        <Image
+                          src={upcoming.image}
+                          className="w-full h-full rounded-xl"
+                          width={391}
+                          height={321}
+                          alt=""
+                        />
+                        <Image
+                          src={"/play.svg"}
+                          className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+                          width={50}
+                          height={50}
+                          alt=""
+                        />
                       </div>
-                      <div className="text-white font-extrabold text-[32px]">
-                        {upcoming.title}
+                      <div className="w-2/3 flex flex-col gap-3 py-3 px-10">
+                        <div className="bg-limitedColor rounded-full text-sm text-white w-fit px-2">
+                          Limited to {upcoming.limited_bottles} bottles
+                        </div>
+                        <div className="text-white font-extrabold text-[32px]">
+                          {upcoming.title}
+                        </div>
+                        <div className="text-white font-normal text-lg">
+                          {upcoming.subtitle}
+                        </div>
+                        <div className="text-greyColor font-normal text-base line-clamp-3">
+                          {upcoming.description}
+                        </div> 
+                        <Link
+                          href={upcoming.link}
+                          className="text-lg flex flex-row gap-2 text-white items-center"
+                        >
+                          View Sale Details <ArrowRight size={20} color="#FFF" />
+                        </Link>
                       </div>
-                      <div className="text-white font-normal text-lg">
-                        {upcoming.subtitle}
-                      </div>
-                      <div className="text-greyColor font-normal text-base line-clamp-3">
-                        {upcoming.description}
-                      </div> 
-                      <Link
-                        href={upcoming.link}
-                        className="text-lg flex flex-row gap-2 text-white items-center"
-                      >
-                        View Sale Details <ArrowRight size={20} color="#FFF" />
-                      </Link>
                     </div>
                   </div>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <button className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-[#848484]/50 hover:bg-[#848484]/70 rounded-md -translate-x-16" onClick={handlePrev}>
+              <Image
+                src={"/left-arrow.svg"}
+                width={16}
+                height={20}
+                alt=""
+                className="w-4 h-5"
+                />
+            </button>
+            <button className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-[#848484]/50 hover:bg-[#848484]/70 rounded-md translate-x-16" onClick={handleNext}>
+              <Image
+                src={"/right-arrow-white.svg"}
+                width={16}
+                height={20}
+                alt=""
+                className="w-4 h-5"
+                />
+            </button>
+          </div>
           <Link
             href={"/"}
-            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] border-4 border-[#D49F5E10] rounded-full w-fit mb-14"
+            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] hover:bg-[#F5D25E] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit mb-14"
           >
             Get Access to Private Sales
           </Link>
