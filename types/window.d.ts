@@ -1,3 +1,4 @@
 interface Window {
-  dojoRequire?: (modules: string[], callback: (...args: unknown[]) => void) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dojoRequire?: any;
 }
