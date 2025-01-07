@@ -10,28 +10,39 @@ import Head from "next/head";
 import React, { useState } from "react";
 
 const ProductPage = () => {
-  const [popupLoaded, setPopupLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const loadMailchimpPopup = () => {
-    if (!popupLoaded) {
-      // Dynamically add Mailchimp script
+    console.log({scriptLoaded})
+    if (!scriptLoaded) {
       const script = document.createElement("script");
+      script.id = "mcjs";
       script.src =
         "https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js";
       script.async = true;
       document.body.appendChild(script);
 
-      // Mark script as loaded to prevent reloading
-      script.onload = () => setPopupLoaded(true);
+      script.onload = () => {
+        console.log("Mailchimp popup script loaded.");
+        setScriptLoaded(true);
+      };
     }
   };
   
   return (
     <div className="min-h-screen">
       <Head>
-        {/* Add Mailchimp metadata */}
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta charSet="utf-8" />
+      <script
+          id="mcjs"
+          dangerouslySetInnerHTML={{
+            __html: `
+              !function(c,h,i,m,p){
+                m=c.createElement(h),p=c.getElementsByTagName(h)[0],
+                m.async=1,m.src=i,p.parentNode.insertBefore(m,p)
+              }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js");
+            `,
+          }}
+        ></script>
       </Head>
       <ProductHero loadMailchimpPopup={loadMailchimpPopup} />
       <ProductEdition />
