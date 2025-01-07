@@ -11,14 +11,7 @@ const layout = ({
       <script
         id="mcjs"
         async
-        dangerouslySetInnerHTML={{
-          __html: `
-        !function(c,h,i,m,p){
-          m=c.createElement(h),p=c.getElementsByTagName(h)[0],
-          m.async=1,m.src=i,p.parentNode.insertBefore(m,p)
-        }(document,"script","https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js");
-      `,
-        }}
+        src="https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js"
       ></script>
     </Head>
     <div className="w-full bg-mainBackground h-screen">{children}</div>
