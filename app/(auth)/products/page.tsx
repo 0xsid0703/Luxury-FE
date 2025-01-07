@@ -32,7 +32,7 @@ const ProductPage = () => {
       script.onload = () => {
         console.log("Mailchimp popup script loaded.");
         setScriptLoaded(true);
-        
+        console.log("Hello: ", window.mc4wp)
         if (window.mc4wp) {
           console.log("Opening Mailchimp popup...");
           window.mc4wp.openPopup(); // Trigger Mailchimp popup
