@@ -3,7 +3,11 @@ import React from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-const ProductHero = () => {
+type Props = {
+  loadMailchimpPopup: () => void;
+};
+
+const ProductHero = ({ loadMailchimpPopup }: Props) => {
   return (
     <div className="w-full h-fit bg-product-hero">
       <div className="container mx-auto flex flex-col pt-36 items-center pb-28">
@@ -88,7 +92,7 @@ const ProductHero = () => {
               </span>
               <div className="flex flex-row justify-between w-full">
                 <span className="font-bold text-white text-5xl hidden">$1,254</span>
-                <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 text-white rounded-full py-7 px-9 text-lg   hover:shadow-[0_0_0_0px_black,0_8px_0_0_#63151F] hover:-translate-y-2 transition-all hover:bg-[#E3713D]">
+                <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 text-white rounded-full py-7 px-9 text-lg   hover:shadow-[0_0_0_0px_black,0_8px_0_0_#63151F] hover:-translate-y-2 transition-all hover:bg-[#E3713D]" onClick={loadMailchimpPopup}>
                   Join the Waiting List
                 </Button>
               </div>
