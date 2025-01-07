@@ -126,7 +126,7 @@ const UpcomingSalesPage = () => {
                     </div>
                     {showMore < upcoming_sales.length && (
                         <button
-                            className="border border-black bg-white text-black px-8 py-2 rounded-xl font-medium"
+                            className="border border-black bg-white text-black px-8 py-2 rounded-xl font-medium hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
                             onClick={() => {
                                 showMore + 5 >= upcoming_sales.length
                                     ? setShowMore(upcoming_sales.length)

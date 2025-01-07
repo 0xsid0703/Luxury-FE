@@ -8,7 +8,7 @@ const ProductMarket = () => {
         <div className="flex flex-col">
           <span className="font-normal text-6xl text-[#9C7C55]">Financial</span>
           <span className="font-normal text-6xl text-[#9C7C55]">
-            <span className="text-black">and</span>collaboration
+            <span className="text-black">and{` `}</span>collaboration
           </span>
         </div>
         <div className="flex flex-row gap-8">

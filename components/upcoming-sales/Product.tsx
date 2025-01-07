@@ -35,7 +35,7 @@ const Product = ({ photo, num_limited, title, description, price, link }: Props)
                 </div>
                 <div className='flex flex-row justify-between items-center'>
                     <span className='font-semibold text-[42px]'>${price.toLocaleString()}</span>
-                    <Link href={link} className='bg-black h-fit text-white px-8 py-4 rounded-3xl font-medium'>
+                    <Link href={link} className='bg-black h-fit text-white px-8 py-4 rounded-3xl font-medium hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all'>
                         View Sale Details
                     </Link>
                 </div>
