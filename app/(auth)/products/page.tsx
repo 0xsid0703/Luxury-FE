@@ -11,6 +11,7 @@ import React from "react";
 
 const ProductPage = () => {
   const loadMailchimpPopup = () => {
+    console.log({window})
     if (window.dojoRequire) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       window.dojoRequire(["mojo/signup-forms/Loader"], function (L: any) {
