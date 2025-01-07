@@ -12,7 +12,6 @@ const ProductPage = () => {
   const [scriptLoaded, setScriptLoaded] = useState(false);
 
   const loadMailchimpPopup = () => {
-    console.log({scriptLoaded})
     if (!scriptLoaded) {
       const script = document.createElement("script");
       script.id = "mcjs";
@@ -24,7 +23,16 @@ const ProductPage = () => {
       script.onload = () => {
         console.log("Mailchimp popup script loaded.");
         setScriptLoaded(true);
+        // Now that the script is loaded, trigger the popup
+        if (window.mc4wp) {
+          window.mc4wp.openPopup(); // Show Mailchimp popup
+        }
       };
+    } else {
+      // If the script is already loaded, just show the popup
+      if (window.mc4wp) {
+        window.mc4wp.openPopup();
+      }
     }
   };
   
