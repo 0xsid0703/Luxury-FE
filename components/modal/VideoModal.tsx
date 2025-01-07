@@ -20,7 +20,7 @@ const VideoModal = ({video, onClose}: Props) => {
         {/* YouTube Video */}
         <div className="relative" style={{ paddingBottom: "56.25%", height: 0 }}>
           <iframe
-            src={`https://www.youtube.com/embed/${video}`}
+            src={`${video}?autoplay=1`}
             title="YouTube Video"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

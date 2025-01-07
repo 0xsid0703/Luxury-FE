@@ -26,7 +26,7 @@ const Hero = () => {
   };
   const upcomings = [
     {
-      video: '',
+      video: 'https://www.youtube.com/watch?v=ZVnjOPwW4ZA',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -36,7 +36,7 @@ const Hero = () => {
       link: "#",
     },
     {
-      video: '',
+      video: 'https://www.youtube.com/watch?v=843nec-IvW0&pp=ygUGIzEzc3Ny',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -46,7 +46,7 @@ const Hero = () => {
       link: "#",
     },
     {
-      video: '',
+      video: 'https://www.youtube.com/watch?v=vCOSTG10Y4o',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -56,7 +56,7 @@ const Hero = () => {
       link: "#",
     },
     {
-      video: '',
+      video: 'https://www.youtube.com/watch?v=ZjAqacIC_3c',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
