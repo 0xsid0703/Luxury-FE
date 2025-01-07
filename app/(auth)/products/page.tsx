@@ -25,7 +25,8 @@ const ProductPage = () => {
 
       // Check if the script is appended to the body
       console.log("Appending script to body...");
-      document.body.appendChild(script);
+      document.head.appendChild(script);
+      
 
       // When the script is loaded, open the Mailchimp popup
       script.onload = () => {
