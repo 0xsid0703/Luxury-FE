@@ -25,28 +25,38 @@ const ProductPage = () => {
 
       // Check if the script is appended to the body
       console.log("Appending script to body...");
-      document.head.appendChild(script);
+      document.body.appendChild(script);
       
-
       // When the script is loaded, open the Mailchimp popup
       script.onload = () => {
         console.log("Mailchimp popup script loaded.");
         setScriptLoaded(true);
-        console.log("Hello: ", window.mc4wp)
-        if (window.mc4wp) {
-          console.log("Opening Mailchimp popup...");
-          window.mc4wp.openPopup(); // Trigger Mailchimp popup
-        }
+        
+        // Add a small delay to allow for script initialization
+        setTimeout(() => {
+          console.log("Checking for mc4wp after delay: ", window.mc4wp);
+          if (window.mc4wp) {
+            console.log("Opening Mailchimp popup...");
+            window.mc4wp.openPopup(); // Trigger Mailchimp popup
+          } else {
+            console.error("mc4wp not found after script load. Please verify your Mailchimp form embed code.");
+          }
+        }, 1000); // 1 second delay
       };
 
-      script.onerror = () => {
-        console.error("Failed to load Mailchimp script.");
+      script.onerror = (error) => {
+        console.error("Failed to load Mailchimp script:", error);
+        setScriptLoaded(false);
       };
     } else {
       console.log("Script already loaded. Opening popup...");
       // If script is already loaded, open the popup directly
       if (window.mc4wp) {
         window.mc4wp.openPopup();
+      } else {
+        console.error("mc4wp not found even though script is marked as loaded");
+        // Reset the scriptLoaded state since mc4wp is not actually available
+        setScriptLoaded(false);
       }
     }
   };
