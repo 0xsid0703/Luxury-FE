@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,8 +7,11 @@ import { Swiper as SwiperType } from 'swiper';
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import VideoModal from "../modal/VideoModal";
 const Hero = () => {
-  const [swiper, setSwiper] = React.useState<SwiperType | null>(null);
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  const [video, setVideo] = useState<string>("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handlePrev = () => {
     if (swiper) {
@@ -23,6 +26,7 @@ const Hero = () => {
   };
   const upcomings = [
     {
+      video: '',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -32,6 +36,7 @@ const Hero = () => {
       link: "#",
     },
     {
+      video: '',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -41,6 +46,7 @@ const Hero = () => {
       link: "#",
     },
     {
+      video: '',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -50,6 +56,7 @@ const Hero = () => {
       link: "#",
     },
     {
+      video: '',
       image: "/upcoming.png",
       limited_bottles: 500,
       title: "Cardinal Du Four: Craftsmanship, Heritage, and Innovation",
@@ -111,6 +118,10 @@ const Hero = () => {
                           className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                           width={50}
                           height={50}
+                          onClick={() => {
+                            setVideo(upcoming.video);
+                            setIsOpen(true)
+                          }}
                           alt=""
                         />
                       </div>
@@ -126,7 +137,7 @@ const Hero = () => {
                         </div>
                         <div className="text-greyColor font-normal text-base line-clamp-3">
                           {upcoming.description}
-                        </div> 
+                        </div>
                         <Link
                           href={upcoming.link}
                           className="text-lg flex flex-row gap-2 text-white items-center"
@@ -146,7 +157,7 @@ const Hero = () => {
                 height={20}
                 alt=""
                 className="w-4 h-5"
-                />
+              />
             </button>
             <button className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 flex items-center justify-center bg-[#848484]/50 hover:bg-[#848484]/70 rounded-md translate-x-16" onClick={handleNext}>
               <Image
@@ -155,7 +166,7 @@ const Hero = () => {
                 height={20}
                 alt=""
                 className="w-4 h-5"
-                />
+              />
             </button>
           </div>
           <Link
@@ -222,6 +233,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      {
+        isOpen && (
+          <VideoModal video={video} onClose={() => setIsOpen(false)} />
+        )
+      }
     </div>
   );
 };
