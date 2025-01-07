@@ -29,7 +29,7 @@ const ProductPage = () => {
   return (
     <div className="min-h-screen">
       <Script
-        id="mailchimp-popup"
+        id="mcjs"
         src="https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js"
         strategy="lazyOnload"
         onLoad={() => console.log("Mailchimp script loaded successfully.")}
