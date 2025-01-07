@@ -79,7 +79,8 @@ const Opportunities = () => {
         <div className="grid grid-cols-4 gap-3">
           <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
             <div className=""></div>
-            <div className="flex flex-col gap-2 text-center">
+            <div className="flex flex-col gap-2 text-center items-center">
+              <Image src={"/wallet-add.png"} width={40} height={40} alt="" />
               <div className="text-2xl">
                 Liquid
                 <br /> Investments
@@ -93,7 +94,8 @@ const Opportunities = () => {
           </div>
           <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
             <div className=""></div>
-            <div className="flex flex-col gap-2 text-center">
+            <div className="flex flex-col gap-2 text-center items-center">
+              <Image src={"/frame.png"} width={40} height={40} alt="" />
               <div className="text-2xl">
                 Hybrid
                 <br /> Assets
@@ -108,7 +110,8 @@ const Opportunities = () => {
           </div>
           <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
             <div className=""></div>
-            <div className="flex flex-col gap-2 text-center">
+            <div className="flex flex-col gap-2 text-center items-center">
+              <Image src={"/shield-tick.png"} width={40} height={40} alt="" />
               <div className="text-2xl">
                 Exclusive <br /> Collaborations
               </div>
@@ -122,7 +125,8 @@ const Opportunities = () => {
           </div>
           <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
             <div className=""></div>
-            <div className="flex flex-col gap-2 text-center">
+            <div className="flex flex-col gap-2 text-center items-center">
+              <Image src={"/people.png"} width={40} height={40} alt="" />
               <div className="text-2xl">
                 Community of Elite
                 <br /> Collectors
