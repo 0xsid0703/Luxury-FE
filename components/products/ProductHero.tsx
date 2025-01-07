@@ -83,11 +83,11 @@ const ProductHero = () => {
               </div>
             </div>
             <div className="flex flex-col py-5">
-              <span className="font-bold text-white text-lg">
+              <span className="font-bold text-white text-lg hidden">
                 Available for pre-order:
               </span>
               <div className="flex flex-row justify-between w-full">
-                <span className="font-bold text-white text-5xl">$1,254</span>
+                <span className="font-bold text-white text-5xl hidden">$1,254</span>
                 <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 hover:outline-[#D49F5E]/50 text-white rounded-full py-7 px-9 text-lg hover:bg-[#E3713D]">
                   Join the Waiting List
                 </Button>
