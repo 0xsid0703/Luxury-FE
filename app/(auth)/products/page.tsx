@@ -1,3 +1,4 @@
+"use client";
 import ProductAbout from "@/components/products/ProductAbout";
 import ProductArtists from "@/components/products/ProductArtists";
 import ProductBrand from "@/components/products/ProductBrand";
