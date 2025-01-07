@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/dashboard/Header";
-import Head from "next/head";
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -28,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Head>
+      <head>
         <script
           id="mcjs"
           dangerouslySetInnerHTML={{
@@ -40,7 +39,7 @@ export default function RootLayout({
             `,
           }}
         ></script>
-      </Head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-auto`}
       >
