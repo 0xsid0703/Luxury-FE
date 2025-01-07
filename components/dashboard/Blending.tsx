@@ -52,7 +52,7 @@ const Blending = () => {
               </div>
             ))}
           </ul>
-          <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/30 hover:bg-[#2B2720]">
+          <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/30  hover:shadow-[0_0_0_2px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all hover:bg-[#1F1B16]">
             <span>Apply for Access</span>
             <div className="w-[1px] h-5 bg-[#848484]/30"></div>
             <ArrowRight size={12} color="#FFE281" />

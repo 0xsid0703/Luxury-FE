@@ -171,7 +171,7 @@ const Hero = () => {
           </div>
           <Link
             href={"/"}
-            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] hover:bg-[#F5D25E] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit mb-14"
+            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit mb-14 hover:shadow-[0_0_0_2px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
           >
             Get Access to Private Sales
           </Link>

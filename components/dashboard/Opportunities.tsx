@@ -61,7 +61,7 @@ const Opportunities = () => {
             </div>
           </div>
         </div>
-        <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/20 hover:bg-[#2B2720] hover:outline-[#FFE281]/50 hover:shadow-md transition duration-300">
+        <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/20 hover:bg-[#2B2720]  hover:shadow-[0_0_0_2px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all">
           <span>Become an Investor Now</span>
           <div className="w-[1px] h-6 bg-[#848484]/20"></div>
           <ArrowRight size={12} color="#FFE281" />
