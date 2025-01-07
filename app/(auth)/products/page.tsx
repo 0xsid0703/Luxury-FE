@@ -11,11 +11,16 @@ import React from "react";
 
 const ProductPage = () => {
   const loadMailchimpPopup = () => {
-    console.log({window})
-    if (window.mc) {
-      window.mc.openPopup(); // Trigger the Mailchimp popup
+    if (window.dojoRequire) {
+      window.dojoRequire(["mojo/signup-forms/Loader"], function (L) {
+        L.start({
+          baseUrl: "mc.us1.list-manage.com",
+          uuid: "9ae7f4c2cd8fb05a3073a6f81",
+          lid: "418afc31df317a39db97f2028",
+        });
+      });
     } else {
-      console.error("Mailchimp script not loaded.");
+      console.error("Mailchimp script not loaded properly.");
     }
   };
 

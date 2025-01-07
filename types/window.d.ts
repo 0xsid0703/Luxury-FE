@@ -1,5 +1,3 @@
 interface Window {
-  mc?: {
-    openPopup: () => void;
-  };
+  dojoRequire?: (modules: string[], callback: (...args: unknown[]) => void) => void;
 }
