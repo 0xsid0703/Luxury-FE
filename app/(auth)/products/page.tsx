@@ -11,8 +11,9 @@ import React from "react";
 
 const ProductPage = () => {
   const loadMailchimpPopup = () => {
-    if (window.mc4wp) {
-      window.mc4wp.openPopup(); // Trigger the Mailchimp popup
+    console.log({window})
+    if (window.mc) {
+      window.mc.openPopup(); // Trigger the Mailchimp popup
     } else {
       console.error("Mailchimp script not loaded.");
     }

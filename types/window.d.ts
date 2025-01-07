@@ -1,5 +1,5 @@
 interface Window {
-  mc4wp?: {
+  mc?: {
     openPopup: () => void;
-  }
+  };
 }
