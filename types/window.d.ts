@@ -1,5 +1,5 @@
 interface Window {
-  mc4wp?: {
-    openPopup: () => void;
+  mailchimp_popup?: {
+    show: () => void;
   }
 }
