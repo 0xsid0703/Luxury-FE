@@ -17,7 +17,6 @@ export const loadMailchimpPopup = () => {
   
     const interval = setInterval(() => {
       console.log({window})
-      console.log("Checking for Mailchimp script...", window.dojoRequire);
       if (window.dojoRequire) {
         clearInterval(interval);
         initializePopup();
