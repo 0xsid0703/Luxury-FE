@@ -30,10 +30,3 @@ export const loadMailchimpPopup = () => {
     document.cookie = "MCPopupShown=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     localStorage.removeItem("mcPopupState");
   };
-  
-  export const resetMailchimpOnLoad = () => {
-    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "MCPopupShown=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    localStorage.removeItem("mcPopupState");
-    console.log("Mailchimp state cleared on page load.");
-  };
