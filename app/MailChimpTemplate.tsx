@@ -27,7 +27,7 @@ const MailchimpPopupTemplate = () => {
     loadMailchimpScript();
     
     const preventMailchimpAutoPopup = () => {
-      let originalDojoRequire = window.dojoRequire;1
+      let originalDojoRequire = window.dojoRequire;
 
       Object.defineProperty(window, "dojoRequire", {
         get() {
