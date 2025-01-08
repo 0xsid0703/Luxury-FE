@@ -17,9 +17,7 @@ const preventMailchimpAutoPopup = () => {
                     const originalStart = L.start;
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     L.start = function (config: any) {
-                        if (!config.autoOpenDisabled) {
-                            config.autoOpenDisabled = true; // Prevent auto-popup
-                        }
+                        config.autoOpenDisabled = true; // Prevent auto-popup
                         originalStart.call(this, config);
                     };
                 });
