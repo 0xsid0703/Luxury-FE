@@ -14,7 +14,6 @@ const MailchimpPopupTemplate = () => {
           return originalDojoRequire;
         },
         set(value) {
-            console.log({value}, window._mcPrevented)
           if (value && !window._mcPrevented) {
             window._mcPrevented = true;
             // eslint-disable-next-line @typescript-eslint/no-explicit-any

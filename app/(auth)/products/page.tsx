@@ -6,28 +6,14 @@ import ProductEdition from "@/components/products/ProductEdition";
 import ProductFooter from "@/components/products/ProductFooter";
 import ProductHero from "@/components/products/ProductHero";
 import ProductMarket from "@/components/products/ProductMarket";
-import React, { useEffect, useState } from "react";
-import { loadMailchimpPopup } from "@/utils/mailchimp";
+import React from "react";
+import { loadMailchimpPopup, resetMailchimpPopup } from "@/utils/mailchimp";
 
 const ProductPage = () => {
-  const [scriptLoaded, setScriptLoaded] = useState(false);
 
-  // Set scriptLoaded to true once the script is loaded
-  useEffect(() => {
-    const checkMailchimpScript = () => {
-      if (window._mailchimpLoaded) {
-        setScriptLoaded(true);
-      }
-    };
-    checkMailchimpScript();
-  }, []);
   const handleButtonClick = () => {
-    if (scriptLoaded) {
-      console.log("Button clicked!");
-      loadMailchimpPopup(); // Manually trigger the popup when the button is clicked
-    } else {
-      console.log("Mailchimp script is not loaded yet.");
-    }
+    resetMailchimpPopup();
+    loadMailchimpPopup();
   };
 
   return (
