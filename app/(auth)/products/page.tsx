@@ -6,10 +6,14 @@ import ProductEdition from "@/components/products/ProductEdition";
 import ProductFooter from "@/components/products/ProductFooter";
 import ProductHero from "@/components/products/ProductHero";
 import ProductMarket from "@/components/products/ProductMarket";
-import React from "react";
-import { loadMailchimpPopup, resetMailchimpPopup } from "@/utils/mailchimp";
+import React, { useEffect } from "react";
+import { loadMailchimpPopup, resetMailchimpOnLoad, resetMailchimpPopup } from "@/utils/mailchimp";
 
 const ProductPage = () => {
+  useEffect(() => {
+    resetMailchimpOnLoad();
+  }, []);
+  
   const handleButtonClick = () => {
     resetMailchimpPopup();
     loadMailchimpPopup();
