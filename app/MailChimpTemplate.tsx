@@ -1,6 +1,7 @@
 // components/MailchimpPopupTemplate.tsx
 "use client";
 
+import Script from "next/script";
 import { useEffect } from "react";
 
 const MailchimpPopupTemplate = () => {
@@ -37,12 +38,12 @@ const MailchimpPopupTemplate = () => {
 
 return (
     <head>
-      <script
+      <Script
         id="mcjs"
-        async
-        defer
+        // async
+        // defer
         src="https://chimpstatic.com/mcjs-connected/js/users/9ae7f4c2cd8fb05a3073a6f81/418afc31df317a39db97f2028.js"
-        ></script>
+        ></Script>
     </head>
   );
 };
