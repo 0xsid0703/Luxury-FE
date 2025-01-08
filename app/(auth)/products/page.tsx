@@ -7,28 +7,17 @@ import ProductFooter from "@/components/products/ProductFooter";
 import ProductHero from "@/components/products/ProductHero";
 import ProductMarket from "@/components/products/ProductMarket";
 import React from "react";
-
+import { loadMailchimpPopup, resetMailchimpPopup } from "@/utils/mailchimp";
 
 const ProductPage = () => {
-  const loadMailchimpPopup = () => {
-    console.log({window})
-    if (window.dojoRequire) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      window.dojoRequire(["mojo/signup-forms/Loader"], function (L: any) {
-        L.start({
-          baseUrl: "mc.us12.list-manage.com",
-          uuid: "9ae7f4c2cd8fb05a3073a6f81",
-          lid: "418afc31df317a39db97f2028",
-        });
-      });
-    } else {
-      console.error("Mailchimp script not loaded properly.");
-    }
+  const handleButtonClick = () => {
+    resetMailchimpPopup();
+    loadMailchimpPopup();
   };
 
   return (
     <div className="min-h-screen">
-      <ProductHero loadMailchimpPopup={loadMailchimpPopup} />
+      <ProductHero loadMailchimpPopup={handleButtonClick} />
       <ProductEdition />
       <ProductBrand />
       <ProductAbout />
