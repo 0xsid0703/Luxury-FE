@@ -56,8 +56,7 @@ const Header = () => {
               >
                 <Link href="/sign-up">Sign Up</Link>
               </Button>
-              <GoogleLogin shape="circle" size="medium" text="continue_with" onSuccess={googleLoginSuccessful} />
-
+              {/* <GoogleLogin shape="circle" size="medium" text="continue_with" onSuccess={googleLoginSuccessful} /> */}
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ const Footer = () => {
                 luxury meets rare collectibles and long-term investments
               </div>
             </div>
-            <Button className="flex flex-row py-7 px-9 w-fit bg-white rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 text-black hover:bg-[#F7F5F2]  hover:shadow-[0_0_0_2px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all">
+            <Button className="flex flex-row py-7 px-9 w-fit bg-white rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 text-black hover:bg-[#F7F5F2]  hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all">
               <span>Apply for Access</span>
               <div className="w-[1px] h-6 bg-[#848484]/20"></div>
               <ArrowRight size={12} color="#000" />

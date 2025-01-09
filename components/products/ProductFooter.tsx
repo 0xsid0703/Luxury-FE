@@ -34,7 +34,7 @@ const ProductFooter = () => {
           <div className="flex flex-col gap-4 w-1/3">
             <Link
               href={"/"}
-              className="bg-[#F3CF72] border-4 border-[#D49F5E] border-opacity-50 rounded-full w-fit py-4 px-8 hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all"
+              className="bg-[#F3CF72] border-4 border-[#D49F5E] border-opacity-50 rounded-full w-fit py-4 px-8 hover:shadow-[0_0_0_0px_black,0_8px_0_0_white] hover:-translate-y-2 transition-all"
             >
               Join the Wating List Now
             </Link>
