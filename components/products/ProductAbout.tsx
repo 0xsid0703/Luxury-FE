@@ -1,6 +1,27 @@
-import React from "react";
+"use client"
+import React, { useEffect, useRef, useState } from "react";
 
 const ProductAbout = () => {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const element = scrollRef.current;
+      if (element) {
+        const isBottom =
+          element.scrollHeight - element.scrollTop === element.clientHeight;
+        setIsAtBottom(isBottom);
+      }
+    };
+
+    const element = scrollRef.current;
+    element?.addEventListener("scroll", handleScroll);
+
+    return () => {
+      element?.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="bg-[#E8E8E8] py-20">
       <div className="container mx-auto flex flex-row gap-24">
@@ -9,8 +30,8 @@ const ProductAbout = () => {
           style={{ backgroundImage: "url(/product/drink.png)" }}
         ></div>
         <div className="w-1/2 h-[526px] relative">
-          <div className="absolute bottom-0 bg-gradient-to-t from-[#E8E8E8] to-transparent h-48 w-full z-[5]"></div>
-          <div className="h-full overflow-auto flex flex-col gap-12 about-scrollbar">
+          <div className={`absolute bottom-0 bg-gradient-to-t from-[#E8E8E8] to-transparent h-48 w-full z-[5] ${isAtBottom ? "opacity-0" : "opacity-100"}`}></div>
+          <div className="h-full overflow-auto flex flex-col gap-12 about-scrollbar" ref={scrollRef}>
             <div className="flex flex-col gap-6 z-0">
               <div className="text-[#051D1D] text-3xl font-semibold">
                 Global Flexibility & Security
