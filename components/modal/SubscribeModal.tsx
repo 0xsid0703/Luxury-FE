@@ -16,6 +16,9 @@ const SubscribeModal = ({ onClose }: Props) => {
         return emailRegex.test(email);
     };
     const handleClick = async () => {
+        const API_KEY = process.env.MAILCHIMP_API_KEY!;
+        const LIST_ID = process.env.MAILCHIMP_LIST_ID!;
+        console.log({API_KEY}, {LIST_ID})
         if (!email) {
             setError("Please input email address!")
         }else if(!isValidEmail(email)){ 
@@ -40,6 +43,7 @@ const SubscribeModal = ({ onClose }: Props) => {
                     setStatus(true)
                 }
             } catch (error) {
+                console.log({error})
                 toast({ description: 'Something went wrong' })
             }
         }

@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/dashboard/Header";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+
 
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
@@ -31,11 +33,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen overflow-auto`}
       >
-        <div className="relative">
-          <Header />
-          {children}
-          <Toaster />
-        </div>
+        <GoogleOAuthProvider clientId={process.env.REACT_APP_DFNS_GOOGLE_OAUTH_CLIENT_ID!}>
+          <div className="relative">
+            <Header />
+            {children}
+            <Toaster />
+          </div>
+        </GoogleOAuthProvider>
       </body>
     </html>
   );
