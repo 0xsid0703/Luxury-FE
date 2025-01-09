@@ -3,15 +3,15 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
-import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
+// import { CredentialResponse, GoogleLogin } from '@react-oauth/google'
 
 const Header = () => {
 
-  const googleLoginSuccessful = (response: CredentialResponse) => {
-    if (response.credential !== undefined) {
-      console.log(response.credential)
-    }
-  }
+  // const googleLoginSuccessful = (response: CredentialResponse) => {
+  //   if (response.credential !== undefined) {
+  //     console.log(response.credential)
+  //   }
+  // }
   return (
     <div className="fixed bg-transparent w-full z-10">
       <div className="m-5 rounded-md bg-[#F7F7F7] shadow-lg">
