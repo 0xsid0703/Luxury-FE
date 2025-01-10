@@ -6,8 +6,13 @@ import { ArrowRight } from "lucide-react";
 const Footer = () => {
   return (
     <div className="bg-[#E8E8E8]">
-      <div className="rounded-t-[50px] bg-[#1F1B16]">
-        <div className="container mx-auto pt-44 flex flex-col gap-20 pb-14">
+      <div className="rounded-t-[50px] bg-[#1F1B16] relative">
+        <div className="absolute top-0 px-12 w-full h-full justify-center z-[1]">
+          <div className="w-full h-full bg-center bg-no-repeat bg-cover"
+            style={{ backgroundImage: "url(/footerbg.png)" }}>
+          </div>
+        </div>
+        <div className="container mx-auto pt-44 flex flex-col gap-20 pb-14 z-[5]">
           <div className="flex flex-col gap-12 items-center">
             <div className="flex flex-col gap-8 text-white text-center">
               <div className="text-6xl">
