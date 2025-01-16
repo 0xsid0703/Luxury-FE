@@ -9,7 +9,7 @@ import { trpc } from "@/trpc/server";
 
 const Home = async () => {
   const user = await getCurrentUser();
-  if (user) {
+  if (user && user.id) {
     const customer = await trpc.customer.queryCustomer.query({
       userId: user.id,
     });
