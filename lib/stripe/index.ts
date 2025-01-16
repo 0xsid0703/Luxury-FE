@@ -1,11 +1,11 @@
-// @ts-nocheck : no type definitions
+// Compiler warns about unreachable code error
 import { Stripe } from "stripe";
 
 export * from "./webhooks";
 
 export type { Stripe };
 
-export const stripe = new Stripe(process.env.STRIPE_API_KEY, {
+export const stripe = new Stripe(process.env.STRIPE_API_KEY as string, {
   typescript: true,
 });
 
@@ -327,14 +327,14 @@ declare module "stripe" {
          */
         previous_attributes?: Partial<T>;
       }
-
+      // @ts-expect-error: TODO
       interface AccountApplicationEvent extends Stripe.Event {
         type:
           | "account.application.authorized"
           | "account.application.deauthorized";
         data: DiscriminatedEvent.Data<"application">;
       }
-
+      // @ts-expect-error: TODO
       interface AccountExternalAccountEvent extends Stripe.Event {
         type:
           | "account.external_account.created"
@@ -343,26 +343,31 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Card | Stripe.BankAccount>;
       }
 
+      // @ts-expect-error: TODO
       interface AccountEvent extends Stripe.Event {
         type: "account.updated";
         data: DiscriminatedEvent.Data<Stripe.Account>;
       }
 
+      // @ts-expect-error: TODO
       interface ApplicationFeeRefundEvent extends Stripe.Event {
         type: "application_fee.refund.updated";
         data: DiscriminatedEvent.Data<Stripe.FeeRefund>;
       }
 
+      // @ts-expect-error: TODO
       interface ApplicationFeeEvent extends Stripe.Event {
         type: "application_fee.created" | "application_fee.refunded";
         data: DiscriminatedEvent.Data<Stripe.ApplicationFee>;
       }
 
+      // @ts-expect-error: TODO
       interface BalanceEvent extends Stripe.Event {
         type: "balance.available";
         data: DiscriminatedEvent.Data<Stripe.Balance>;
       }
 
+      // @ts-expect-error: TODO
       interface BillingPortalConfigurationEvent extends Stripe.Event {
         type:
           | "billing_portal.configuration.created"
@@ -370,21 +375,25 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.BillingPortal.Configuration>;
       }
 
+      // @ts-expect-error: TODO
       interface BillingPortalSessionEvent extends Stripe.Event {
         type: "billing_portal.session.created";
         data: DiscriminatedEvent.Data<Stripe.BillingPortal.Session>;
       }
 
+      // @ts-expect-error: TODO
       interface CapabilityEvent extends Stripe.Event {
         type: "capability.updated";
         data: DiscriminatedEvent.Data<Stripe.Capability>;
       }
 
+      // @ts-expect-error: TODO
       interface CashBalanceEvent extends Stripe.Event {
         type: "cash_balance.funds_available";
         data: DiscriminatedEvent.Data<Stripe.CashBalance>;
       }
 
+      // @ts-expect-error: TODO
       interface ChargeDisputeEvent extends Stripe.Event {
         type:
           | "charge.dispute.closed"
@@ -395,11 +404,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Dispute>;
       }
 
+      // @ts-expect-error: TODO
       interface ChargeRefundEvent extends Stripe.Event {
         type: "charge.refund.updated";
         data: DiscriminatedEvent.Data<Stripe.Refund>;
       }
 
+      // @ts-expect-error: TODO
       interface ChargeEvent extends Stripe.Event {
         type:
           | "charge.captured"
@@ -412,6 +423,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Charge>;
       }
 
+      // @ts-expect-error: TODO
       interface CheckoutSessionEvent extends Stripe.Event {
         type:
           | "checkout.session.async_payment_failed"
@@ -421,11 +433,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Checkout.Session>;
       }
 
+      // @ts-expect-error: TODO
       interface CouponEvent extends Stripe.Event {
         type: "coupon.created" | "coupon.deleted" | "coupon.updated";
         data: DiscriminatedEvent.Data<Stripe.Coupon>;
       }
 
+      // @ts-expect-error: TODO
       interface CreditNoteEvent extends Stripe.Event {
         type:
           | "credit_note.created"
@@ -434,11 +448,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.CreditNote>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerCashBalanceTransactionEvent extends Stripe.Event {
         type: "customer_cash_balance_transaction.created";
         data: DiscriminatedEvent.Data<Stripe.CustomerCashBalanceTransaction>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerDiscountEvent extends Stripe.Event {
         type:
           | "customer.discount.created"
@@ -447,6 +463,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Discount>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerSourceEvent extends Stripe.Event {
         type:
           | "customer.source.created"
@@ -456,6 +473,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Card>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerSubscriptionEvent extends Stripe.Event {
         type:
           | "customer.subscription.created"
@@ -469,6 +487,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Subscription>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerTaxIdEvent extends Stripe.Event {
         type:
           | "customer.tax_id.created"
@@ -477,16 +496,19 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.TaxId>;
       }
 
+      // @ts-expect-error: TODO
       interface CustomerEvent extends Stripe.Event {
         type: "customer.created" | "customer.deleted" | "customer.updated";
         data: DiscriminatedEvent.Data<Stripe.Customer>;
       }
 
+      // @ts-expect-error: TODO
       interface FileEvent extends Stripe.Event {
         type: "file.created";
         data: DiscriminatedEvent.Data<Stripe.File>;
       }
 
+      // @ts-expect-error: TODO
       interface FinancialConnectionsAccountEvent extends Stripe.Event {
         type:
           | "financial_connections.account.created"
@@ -497,6 +519,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.FinancialConnections.Account>;
       }
 
+      // @ts-expect-error: TODO
       interface IdentityVerificationSessionEvent extends Stripe.Event {
         type:
           | "identity.verification_session.canceled"
@@ -508,6 +531,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Identity.VerificationSession>;
       }
 
+      // @ts-expect-error: TODO
       interface InvoiceEvent extends Stripe.Event {
         type:
           | "invoice.created"
@@ -526,6 +550,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Invoice>;
       }
 
+      // @ts-expect-error: TODO
       interface InvoiceitemEvent extends Stripe.Event {
         type:
           | "invoiceitem.created"
@@ -534,6 +559,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.InvoiceItem>;
       }
 
+      // @ts-expect-error: TODO
       interface IssuingAuthorizationEvent extends Stripe.Event {
         type:
           | "issuing_authorization.created"
@@ -542,16 +568,19 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Issuing.Authorization>;
       }
 
+      // @ts-expect-error: TODO
       interface IssuingCardEvent extends Stripe.Event {
         type: "issuing_card.created" | "issuing_card.updated";
         data: DiscriminatedEvent.Data<Stripe.Issuing.Card>;
       }
 
+      // @ts-expect-error: TODO
       interface IssuingCardholderEvent extends Stripe.Event {
         type: "issuing_cardholder.created" | "issuing_cardholder.updated";
         data: DiscriminatedEvent.Data<Stripe.Issuing.Cardholder>;
       }
 
+      // @ts-expect-error: TODO
       interface IssuingDisputeEvent extends Stripe.Event {
         type:
           | "issuing_dispute.closed"
@@ -562,21 +591,25 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Issuing.Dispute>;
       }
 
+      // @ts-expect-error: TODO
       interface IssuingTransactionEvent extends Stripe.Event {
         type: "issuing_transaction.created" | "issuing_transaction.updated";
         data: DiscriminatedEvent.Data<Stripe.Issuing.Transaction>;
       }
 
+      // @ts-expect-error: TODO
       interface MandateEvent extends Stripe.Event {
         type: "mandate.updated";
         data: DiscriminatedEvent.Data<Stripe.Mandate>;
       }
 
+      // @ts-expect-error: TODO
       interface OrderEvent extends Stripe.Event {
         type: "order.created";
         data: DiscriminatedEvent.Data<Stripe.Event.Data>;
       }
 
+      // @ts-expect-error: TODO
       interface PaymentIntentEvent extends Stripe.Event {
         type:
           | "payment_intent.amount_capturable_updated"
@@ -590,11 +623,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.PaymentIntent>;
       }
 
+      // @ts-expect-error: TODO
       interface PaymentLinkEvent extends Stripe.Event {
         type: "payment_link.created" | "payment_link.updated";
         data: DiscriminatedEvent.Data<Stripe.PaymentLink>;
       }
 
+      // @ts-expect-error: TODO
       interface PaymentMethodEvent extends Stripe.Event {
         type:
           | "payment_method.attached"
@@ -604,6 +639,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.PaymentMethod>;
       }
 
+      // @ts-expect-error: TODO
       interface PayoutEvent extends Stripe.Event {
         type:
           | "payout.canceled"
@@ -615,31 +651,37 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Payout>;
       }
 
+      // @ts-expect-error: TODO
       interface PersonEvent extends Stripe.Event {
         type: "person.created" | "person.deleted" | "person.updated";
         data: DiscriminatedEvent.Data<Stripe.Person>;
       }
 
+      // @ts-expect-error: TODO
       interface PlanEvent extends Stripe.Event {
         type: "plan.created" | "plan.deleted" | "plan.updated";
         data: DiscriminatedEvent.Data<Stripe.Plan>;
       }
 
+      // @ts-expect-error: TODO
       interface PriceEvent extends Stripe.Event {
         type: "price.created" | "price.deleted" | "price.updated";
         data: DiscriminatedEvent.Data<Stripe.Price>;
       }
 
+      // @ts-expect-error: TODO
       interface ProductEvent extends Stripe.Event {
         type: "product.created" | "product.deleted" | "product.updated";
         data: DiscriminatedEvent.Data<Stripe.Product>;
       }
 
+      // @ts-expect-error: TODO
       interface PromotionCodeEvent extends Stripe.Event {
         type: "promotion_code.created" | "promotion_code.updated";
         data: DiscriminatedEvent.Data<Stripe.PromotionCode>;
       }
 
+      // @ts-expect-error: TODO
       interface QuoteEvent extends Stripe.Event {
         type:
           | "quote.accepted"
@@ -649,6 +691,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Quote>;
       }
 
+      // @ts-expect-error: TODO
       interface RadarEarlyFraudWarningEvent extends Stripe.Event {
         type:
           | "radar.early_fraud_warning.created"
@@ -656,31 +699,37 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Radar.EarlyFraudWarning>;
       }
 
+      // @ts-expect-error: TODO
       interface RecipientEvent extends Stripe.Event {
         type: "recipient.created" | "recipient.deleted" | "recipient.updated";
         data: DiscriminatedEvent.Data<Stripe.Event.Data>;
       }
 
+      // @ts-expect-error: TODO
       interface RefundEvent extends Stripe.Event {
         type: "refund.created" | "refund.updated";
         data: DiscriminatedEvent.Data<Stripe.Refund>;
       }
 
+      // @ts-expect-error: TODO
       interface ReportingReportRunEvent extends Stripe.Event {
         type: "reporting.report_run.failed" | "reporting.report_run.succeeded";
         data: DiscriminatedEvent.Data<Stripe.Reporting.ReportRun>;
       }
 
+      // @ts-expect-error: TODO
       interface ReportingReportTypeEvent extends Stripe.Event {
         type: "reporting.report_type.updated";
         data: DiscriminatedEvent.Data<Stripe.Reporting.ReportType>;
       }
 
+      // @ts-expect-error: TODO
       interface ReviewEvent extends Stripe.Event {
         type: "review.closed" | "review.opened";
         data: DiscriminatedEvent.Data<Stripe.Review>;
       }
 
+      // @ts-expect-error: TODO
       interface SetupIntentEvent extends Stripe.Event {
         type:
           | "setup_intent.canceled"
@@ -691,21 +740,25 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.SetupIntent>;
       }
 
+      // @ts-expect-error: TODO
       interface SigmaScheduledQueryRunEvent extends Stripe.Event {
         type: "sigma.scheduled_query_run.created";
         data: DiscriminatedEvent.Data<Stripe.Sigma.ScheduledQueryRun>;
       }
 
+      // @ts-expect-error: TODO
       interface SkuEvent extends Stripe.Event {
         type: "sku.created" | "sku.deleted" | "sku.updated";
         data: DiscriminatedEvent.Data<Stripe.Event.Data>;
       }
 
+      // @ts-expect-error: TODO
       interface SourceTransactionEvent extends Stripe.Event {
         type: "source.transaction.created" | "source.transaction.updated";
         data: DiscriminatedEvent.Data<Stripe.SourceTransaction>;
       }
 
+      // @ts-expect-error: TODO
       interface SourceEvent extends Stripe.Event {
         type:
           | "source.canceled"
@@ -716,6 +769,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Card>;
       }
 
+      // @ts-expect-error: TODO
       interface SubscriptionScheduleEvent extends Stripe.Event {
         type:
           | "subscription_schedule.aborted"
@@ -728,11 +782,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.SubscriptionSchedule>;
       }
 
+      // @ts-expect-error: TODO
       interface TaxRateEvent extends Stripe.Event {
         type: "tax_rate.created" | "tax_rate.updated";
         data: DiscriminatedEvent.Data<Stripe.TaxRate>;
       }
 
+      // @ts-expect-error: TODO
       interface TerminalReaderEvent extends Stripe.Event {
         type:
           | "terminal.reader.action_failed"
@@ -740,6 +796,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Terminal.Reader>;
       }
 
+      // @ts-expect-error: TODO
       interface TestHelpersTestClockEvent extends Stripe.Event {
         type:
           | "test_helpers.test_clock.advancing"
@@ -750,6 +807,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.TestHelpers.TestClock>;
       }
 
+      // @ts-expect-error: TODO
       interface TopupEvent extends Stripe.Event {
         type:
           | "topup.canceled"
@@ -760,11 +818,13 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Topup>;
       }
 
+      // @ts-expect-error: TODO
       interface TransferEvent extends Stripe.Event {
         type: "transfer.created" | "transfer.reversed" | "transfer.updated";
         data: DiscriminatedEvent.Data<Stripe.Transfer>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryCreditReversalEvent extends Stripe.Event {
         type:
           | "treasury.credit_reversal.created"
@@ -772,6 +832,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.CreditReversal>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryDebitReversalEvent extends Stripe.Event {
         type:
           | "treasury.debit_reversal.completed"
@@ -780,6 +841,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.DebitReversal>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryFinancialAccountEvent extends Stripe.Event {
         type:
           | "treasury.financial_account.closed"
@@ -788,6 +850,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.FinancialAccount>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryInboundTransferEvent extends Stripe.Event {
         type:
           | "treasury.inbound_transfer.canceled"
@@ -797,6 +860,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.InboundTransfer>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryOutboundPaymentEvent extends Stripe.Event {
         type:
           | "treasury.outbound_payment.canceled"
@@ -808,6 +872,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.OutboundPayment>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryOutboundTransferEvent extends Stripe.Event {
         type:
           | "treasury.outbound_transfer.canceled"
@@ -819,6 +884,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.OutboundTransfer>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryReceivedCreditEvent extends Stripe.Event {
         type:
           | "treasury.received_credit.created"
@@ -827,6 +893,7 @@ declare module "stripe" {
         data: DiscriminatedEvent.Data<Stripe.Treasury.ReceivedCredit>;
       }
 
+      // @ts-expect-error: TODO
       interface TreasuryReceivedDebitEvent extends Stripe.Event {
         type: "treasury.received_debit.created";
         data: DiscriminatedEvent.Data<Stripe.Treasury.ReceivedDebit>;
