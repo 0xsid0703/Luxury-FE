@@ -88,9 +88,70 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
       });
     }
   }
+  // Handle Customer Subscription Updated
   if (event.type === "customer.subscription.updated") {
-    //add customer logic
-    console.log("event.type: ", event.type);
+    const subscription = event.data.object as Stripe.Subscription;
+
+    const customerId =
+      typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer.id;
+
+    const { userId } = subscription.metadata;
+    if (!userId) throw new Error("Missing user id in subscription metadata.");
+
+    const customer = await prisma.customer.findFirst({
+      where: { authUserId: userId },
+    });
+
+    if (customer) {
+      const priceId = subscription.items.data[0]?.price.id;
+      const plan = getSubscriptionPlan(priceId) || SubscriptionPlan.FREE;
+
+      return await prisma.customer.update({
+        where: { id: customer.id },
+        data: {
+          stripeCustomerId: customerId,
+          stripeSubscriptionId: subscription.id,
+          stripePriceId: priceId,
+          stripeCurrentPeriodEnd: new Date(
+            subscription.current_period_end * 1000,
+          ),
+          plan,
+        },
+      });
+    }
+  }
+
+  // Handle Customer Subscription Deleted (Cancellation)
+  if (event.type === "customer.subscription.deleted") {
+    const subscription = event.data.object as Stripe.Subscription;
+
+    const customerId =
+      typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer.id;
+
+    const { userId } = subscription.metadata;
+    if (!userId) throw new Error("Missing user id in subscription metadata.");
+
+    const customer = await prisma.customer.findFirst({
+      where: { authUserId: userId },
+    });
+
+    if (customer) {
+      // Set plan to FREE on cancellation
+      return await prisma.customer.update({
+        where: { id: customer.id },
+        data: {
+          stripeCustomerId: customerId,
+          stripeSubscriptionId: null,
+          stripePriceId: null,
+          stripeCurrentPeriodEnd: null,
+          plan: SubscriptionPlan.FREE,
+        },
+      });
+    }
   }
   console.log("✅ Stripe Webhook Processed");
 }
