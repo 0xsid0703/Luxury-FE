@@ -51,7 +51,7 @@ const ProductBrand = () => {
             </div>
           </div>
         </div>
-        <div className="w-full h-full blur-md bg-[#1F1B16] bg-opacity-35 absolute top-0"></div>
+        <div className="w-full h-full bg-[#1F1B16] bg-opacity-35 backdrop-blur-sm absolute top-0"></div>
       </div>
     </div>
   );

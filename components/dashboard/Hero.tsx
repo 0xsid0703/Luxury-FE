@@ -1,3 +1,4 @@
+"use client"
 import React, { useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -73,7 +74,7 @@ const Hero = () => {
     >
       <div className="flex flex-col pt-36 items-center relative">
         <div className="absolute top-0 bg-gradient-to-b from-[#1F1B16] to-transparent h-1/2 w-full z-0"></div>
-        <div className="absolute bg-gradient-to-t from-[#1F1B16] to-transparent h-1/2 w-full z-0 bottom-32"></div>
+        <div className="absolute bg-gradient-to-t from-[#1F1B16] to-transparent h-1/2 w-full z-0 bottom-28"></div>
         <div className="flex flex-col gap-14 items-center w-full z-[5]">
           <div className="flex flex-col items-center gap-8">
             <div className="flex flex-col items-center">
@@ -180,7 +181,7 @@ const Hero = () => {
           <div className="font-medium text-[#B5B7B8] text-sm">
             Proudly Collaborating With:
           </div>
-          <div className="flex flex-row justify-between gap-16 px-20">
+          <div className="flex-row justify-between gap-16 px-20 w-full hidden md:flex">
             <Image
               src={"/WineEnthusiast.svg"}
               alt=""

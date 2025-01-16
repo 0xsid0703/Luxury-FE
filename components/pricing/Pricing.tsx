@@ -1,7 +1,16 @@
-import { ArrowRight, Check, X } from "lucide-react";
+"use client"
+import { UserSubscriptionPlan } from "@/types";
+import { Check, X } from "lucide-react";
 import React from "react";
-
-const Pricing = () => {
+import { BillingFormButton } from "./billing-form-button";
+import { useSigninModal } from "@/hooks/use-signin-modal";
+interface PricingProps {
+  userId?: string;
+  subscriptionPlan?: UserSubscriptionPlan;
+}
+const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
+  const signInModal = useSigninModal();
+  console.log({subscriptionPlan})
   return (
     <div className="w-full">
       <div className="pt-36 flex flex-col gap-12 items-center text-white">
@@ -54,11 +63,16 @@ const Pricing = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full rounded-full justify-center flex flex-row text-[#F3CF72] gap-3 bg-[#1F1B16] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all">
-              <span>Choose Basic</span>
-              <div className="w-[1px] bg-[#E8E8E8]"></div>
-              <ArrowRight />
-            </div>
+            {userId && subscriptionPlan ? (
+              <BillingFormButton
+                pricing={0}
+                subscriptionPlan={subscriptionPlan}
+              />
+            ) : (
+              <div className="w-full rounded-full justify-center flex flex-row text-[#F3CF72] gap-3 bg-[#1F1B16] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
+                <span>Sign Up</span>
+              </div>
+            )}
           </div>
           <div className="min-w-[420px] rounded-[30px] bg-[#9C7C55] p-10 flex flex-col gap-8">
             <div className="flex flex-col gap-4 text-white">
@@ -97,11 +111,16 @@ const Pricing = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full rounded-full justify-center flex flex-row text-[#1F1B16] gap-3 bg-[#DBE3E4] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all">
-              <span>Choose Basic</span>
-              <div className="w-[1px] bg-[#E8E8E8]"></div>
-              <ArrowRight />
-            </div>
+            {userId && subscriptionPlan ? (
+              <BillingFormButton
+                pricing={1}
+                subscriptionPlan={subscriptionPlan}
+              />
+            ) : (
+              <div className="w-full rounded-full justify-center flex flex-row text-[#1F1B16] gap-3 bg-[#DBE3E4] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
+                <span>Sign Up</span>
+              </div>
+            )}
           </div>
         </div>
       </div>

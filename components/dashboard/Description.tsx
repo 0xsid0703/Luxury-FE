@@ -72,8 +72,8 @@ const Description = () => {
                     alt=""
                   />
                 </div>
-                <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-3xl text-white">
-                  <span className="text-3xl">Designed for Elite Investors</span>
+                <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-3xl text-[#1F1B16]">
+                  <span className="text-3xl">Designed for<br/> Elite Investors</span>
                   <span className="text-base text-[#766B46]">
                     Built specifically for accredited investors, our platform
                     offers a private, high-end experience with a global

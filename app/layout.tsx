@@ -4,6 +4,8 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Header from "@/components/dashboard/Header";
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import { ModalProvider } from "@/components/modal-provider";
+import { getCurrentUser } from "@/lib/auth";
 
 
 const geistMono = localFont({
@@ -22,11 +24,12 @@ export const metadata: Metadata = {
   description: "Created by 0xsid0703",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const user = await getCurrentUser();
 
   return (
     <html lang="en">
@@ -35,7 +38,8 @@ export default function RootLayout({
       >
         <GoogleOAuthProvider clientId={process.env.REACT_APP_DFNS_GOOGLE_OAUTH_CLIENT_ID!}>
           <div className="relative">
-            <Header />
+            <Header user={user}/>
+            <ModalProvider />
             {children}
             <Toaster />
           </div>
