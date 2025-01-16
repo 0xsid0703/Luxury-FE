@@ -49,7 +49,7 @@ export const stripeRouter = createTRPCRouter({
       });
 
 
-      const returnUrl = process.env.NEXTAUTH_URL + "/";
+      const returnUrl = process.env.NEXTAUTH_URL + "/pricing";
 
       if (customer && customer.plan !== "FREE") {
         /**

@@ -24,7 +24,10 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
         authUserId: userId,
       },
     });
-
+    console.log({customer});
+    /**
+     * User is already subscribed, update their info
+     */
     if (customer) {
       return await prisma.customer.update({
         where: {
@@ -67,7 +70,8 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
       }
 
       const plan = getSubscriptionPlan(priceId) || SubscriptionPlan.FREE;
-      console.log("plan: ", plan);
+      console.log({ plan });
+      console.log(SubscriptionPlan.FREE);
       return await prisma.customer.update({
         where: {
           id: customer.id,
@@ -79,7 +83,7 @@ export async function handleEvent(event: Stripe.DiscriminatedEvent) {
           stripeCurrentPeriodEnd: new Date(
             subscription.current_period_end * 1000,
           ),
-          plan,
+          plan: plan,
         },
       });
     }

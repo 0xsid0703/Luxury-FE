@@ -4,8 +4,8 @@ export const PLANS: Record<
   string,
   (typeof SubscriptionPlan)[keyof typeof SubscriptionPlan]
 > = {
-  [process.env.NEXT_PUBLIC_STRIPE_PRO_MONTHLY_PRICE_ID!]: SubscriptionPlan.BASIC,
-  [process.env.NEXT_PUBLIC_STRIPE_BUSINESS_MONTHLY_PRICE_ID!]:
+  [process.env.NEXT_PUBLIC_STRIPE_BASIC_MONTHLY_PRICE_ID!]: SubscriptionPlan.BASIC,
+  [process.env.NEXT_PUBLIC_STRIPE_PREMIUM_MONTHLY_PRICE_ID!]:
     SubscriptionPlan.PREMIUM,
 };
 
