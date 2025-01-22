@@ -4,11 +4,10 @@ import Link from "next/link";
 import ProductItemWithCollection from "./ProductItemWithCollection";
 
 type Props = {
-  loadMailchimpPopup: () => void;
   products: any[];
 };
 
-const ProductHero = ({ loadMailchimpPopup, products }: Props) => {
+const ProductHero = ({ products }: Props) => {
   console.log({ products })
   return (
     <div className="w-full h-fit bg-product-hero">
@@ -78,7 +77,6 @@ const ProductHero = ({ loadMailchimpPopup, products }: Props) => {
                 product_type={product.metafields.find((metafield: any) => metafield.key === "type").value}
                 price_amount={product.variants[0].price.amount}
                 currency={product.variants[0].price.currencyCode}
-                loadMailchimpPopup={loadMailchimpPopup}
               />
             ))
           }

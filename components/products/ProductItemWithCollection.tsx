@@ -11,10 +11,9 @@ type Props = {
     price_amount: string,
     currency: string,
     artist: string,
-    loadMailchimpPopup: () => void;
 }
 
-const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, artist, price_amount, currency, loadMailchimpPopup }: Props) => {
+const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, artist, price_amount, currency }: Props) => {
     return (
         <div className="rounded-2xl bg-[#380B11] flex flex-row gap-40 p-10">
             <div className="w-1/3 flex flex-col gap-10">

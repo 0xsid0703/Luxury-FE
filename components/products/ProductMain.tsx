@@ -14,23 +14,16 @@ type Props = {
 }
 
 const ProductPage = ({ products }: Props) => {
-    const [isOpen, setIsOpen] = useState(false)
-    const handleButtonClick = () => {
-      setIsOpen(true)
-    };
   
     return (
       <div className="min-h-screen">
-        <ProductHero loadMailchimpPopup={handleButtonClick} products={products}/>
+        <ProductHero products={products}/>
         <ProductEdition />
         <ProductBrand />
         <ProductAbout />
         <ProductArtists />
         <ProductMarket />
         <ProductFooter />
-        {
-          isOpen && <SubscribeModal onClose={() => setIsOpen(false)} />
-        }
       </div>
     );
   };
