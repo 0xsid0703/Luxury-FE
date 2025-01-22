@@ -16,15 +16,15 @@ type Props = {
 const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, artist, price_amount, currency }: Props) => {
     return (
         <div className="rounded-2xl bg-[#380B11] flex flex-row gap-40 p-10">
-            <div className="w-1/3 flex flex-col gap-10">
+            <div className="w-1/3 flex flex-col gap-5">
                 <div className="text-white flex flex-col">
                     <span className="text-3xl font-bold">{collection_name}</span>
                     <span className="text-lg text-opacity-50">({volume} ml)</span>
                 </div>
                 <Image
                     src={product_image}
-                    width={400}
-                    height={400}
+                    width={350}
+                    height={350}
                     className="w-full aspect-square object-cover object-center rounded-3xl"
                     alt=""
                 />
