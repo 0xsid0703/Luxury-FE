@@ -1,22 +1,31 @@
 "use client";
+
 import { getCurrentUser } from "@/lib/auth";
-import { redirect } from "next/navigation";
-import React, { PropsWithChildren } from "react";
+import { useRouter } from "next/navigation";
+import React, { PropsWithChildren, useEffect, useState } from "react";
 
 const RootTemplate = ({ children }: PropsWithChildren) => {
-    return <>
-        <MainComponent />
-        {children}
-    </>;
+  const [user, setUser] = useState<any>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const currentUser = await getCurrentUser();
+      if (!currentUser) {
+        router.push("/login"); // Redirect if user is not logged in
+      } else {
+        setUser(currentUser); // Save user state if logged in
+      }
+    };
+
+    checkUser();
+  }, [router]);
+
+  if (!user) {
+    return null; // Render nothing while checking authentication
+  }
+
+  return <>{children}</>;
 };
 
 export default RootTemplate;
-"use server"
-const MainComponent = async () => {
-    const user = await getCurrentUser();
-    console.log({user});
-    if(!user) {
-        redirect("/login");
-    }
-    return <></>;
-};
