@@ -1,7 +1,7 @@
 import React from 'react'
 import UpcomingSale from '@/components/upcoming-sales/UpcomingSale';
 import {  getCollectionProducts, getCollections } from '@/lib/shopify';
-export async function UpcomingSalesPage() {
+export default async function UpcomingSalesPage() {
     const collections = await getCollections();
     const products = [];
     for(const collection of collections){
@@ -9,7 +9,6 @@ export async function UpcomingSalesPage() {
         products.push(...prods);        
     }
     
-    console.log({ products })
     return (
         <div className="min-h-screen">
             <div className="w-full bg-white">
@@ -18,5 +17,3 @@ export async function UpcomingSalesPage() {
         </div>
     )
 }
-
-export default UpcomingSalesPage;
