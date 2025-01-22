@@ -14,6 +14,7 @@ const RootTemplate = ({ children }: PropsWithChildren) => {
 export default RootTemplate;
 const MainComponent = async() => {
     const user = await getCurrentUser();
+    console.log({user});
     if(!user) {
         redirect("/login");
     }
