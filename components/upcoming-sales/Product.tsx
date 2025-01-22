@@ -1,21 +1,17 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 type Props = {
-    photo: string,
-    num_limited: number,
-    title: string,
-    description: string,
-    price: number,
-    link: string,
+    collection: any,
+    product: any,
 }
 
-const Product = ({ photo, num_limited, title, description, price, link }: Props) => {
+const Product = ({ collection, product }: Props) => {
+    console.log({ collection, product })
     return (
         <div className='w-full flex flex-row gap-10 p-2'>
             <div className='w-[420px] h-[250px] relative'>
-                <Image src={photo} width={420} height={250} alt={title} className='rounded-3xl grayscale hover:grayscale-0 w-full h-full' />
+                <Image src={product.featuredImage.url} width={420} height={250} alt={product.featuredImage.altText} className='rounded-3xl grayscale hover:grayscale-0 w-full h-full' />
                 <Image
                     src={"/Play.svg"}
                     className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
@@ -27,17 +23,21 @@ const Product = ({ photo, num_limited, title, description, price, link }: Props)
             <div className='w-2/3 flex flex-col gap-4 justify-around'>
                 <div className='flex flex-row justify-between gap-5'>
                     <div className='flex flex-col gap-2'>
-                        <span className='text-lg'>{'Cardinal Du Four'}</span>
-                        <span className='text-3xl font-semibold'>{title}</span>
-                        <span className='text-base'>{description}</span>
+                        <span className='text-lg'>{collection.title}</span>
+                        <span className='text-3xl font-semibold'>{product.title}</span>
+                        <span className='text-base'>{product.description}</span>
                     </div>
-                    <span className='text-sm'>Limited to {num_limited} bottles worldwide</span>
+                    <span className='text-sm'>{product.tags.length > 0 && product.tags[0]}</span>
                 </div>
                 <div className='flex flex-row justify-between items-center'>
-                    <span className='font-semibold text-[42px]'>${price.toLocaleString()}</span>
-                    <Link href={link} className='bg-black h-fit text-white px-8 py-4 rounded-3xl font-medium hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all'>
+                    <span className='font-semibold text-[42px]'>{`${new Intl.NumberFormat(undefined, {
+                        style: 'currency',
+                        currency: product.variants[0].price.currencyCode,
+                        currencyDisplay: 'narrowSymbol'
+                    }).format(parseFloat(product.variants[0].price.amount))}`}</span>
+                    <a href={`/products/${collection.handle}`} className='bg-black h-fit text-white px-8 py-4 rounded-2xl font-medium hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all'>
                         View Sale Details
-                    </Link>
+                    </a>
                 </div>
             </div>
         </div>
