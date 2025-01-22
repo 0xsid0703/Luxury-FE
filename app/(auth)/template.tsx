@@ -7,12 +7,11 @@ const RootTemplate = ({ children }: PropsWithChildren) => {
     return <>
         <MainComponent />
         {children}
-
     </>;
 };
 
 export default RootTemplate;
-const MainComponent = async() => {
+const MainComponent = async () => {
     const user = await getCurrentUser();
     console.log({user});
     if(!user) {
