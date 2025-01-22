@@ -30,7 +30,7 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                     alt=""
                 />
             </div>
-            <div className="w-2/3 flex flex-col divide-y divide-white divide-opacity-10 p-10">
+            <div className="w-2/3 flex flex-col divide-y divide-white divide-opacity-10">
                 <div className="flex flex-row gap-6 pb-5">
                     <div className="w-1/3 text-white font-medium">Brand:</div>
                     <div className="w-2/3 text-lg text-white">{collection_name}</div>
