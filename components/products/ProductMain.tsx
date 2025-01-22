@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from 'react'
+import React from 'react'
 import ProductHero from './ProductHero';
 import ProductEdition from './ProductEdition';
 import ProductBrand from './ProductBrand';
@@ -7,7 +7,6 @@ import ProductAbout from './ProductAbout';
 import ProductArtists from './ProductArtists';
 import ProductMarket from './ProductMarket';
 import ProductFooter from './ProductFooter';
-import SubscribeModal from '../modal/SubscribeModal';
 
 type Props = {
     products: any[];
