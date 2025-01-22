@@ -63,8 +63,8 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                             currency: currency,
                             currencyDisplay: 'narrowSymbol'
                         }).format(parseFloat(price_amount))}`}</span>
-                        <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 text-white rounded-full py-7 px-9 text-lg   hover:shadow-[0_0_0_0px_black,0_8px_0_0_#63151F] hover:-translate-y-2 transition-all hover:bg-[#E3713D]" onClick={loadMailchimpPopup}>
-                            Join the Waiting List
+                        <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 text-white rounded-full py-7 px-9 text-lg   hover:shadow-[0_0_0_0px_black,0_8px_0_0_#63151F] hover:-translate-y-2 transition-all hover:bg-[#E3713D]">
+                            Buy Now
                         </Button>
                     </div>
                 </div>

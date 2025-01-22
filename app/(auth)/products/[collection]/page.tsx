@@ -9,7 +9,6 @@ export default async function Page(props: { params: Promise<{ collection: string
   if (!collection) {
     redirect(`/`);
   }
-  console.log({ products })
 
   return <div><ProductPage products={products} /></div>;
 }
