@@ -11,6 +11,7 @@ const RootTemplate = ({ children }: PropsWithChildren) => {
 };
 
 export default RootTemplate;
+"use server"
 const MainComponent = async () => {
     const user = await getCurrentUser();
     console.log({user});
