@@ -23,33 +23,35 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                 </div>
                 <Image
                     src={product_image}
-                    width={500}
-                    height={500}
+                    width={400}
+                    height={400}
                     className="w-full aspect-square object-cover object-center rounded-3xl"
                     alt=""
                 />
             </div>
-            <div className="w-2/3 flex flex-col divide-y divide-white divide-opacity-10">
-                <div className="flex flex-row gap-6 pb-5">
-                    <div className="w-1/3 text-white font-medium">Brand:</div>
-                    <div className="w-2/3 text-lg text-white">{collection_name}</div>
-                </div>
-                <div className="flex flex-row gap-6 py-5">
-                    <div className="w-1/3 text-white font-medium">Product name:</div>
-                    <div className="w-2/3 text-lg text-white">
-                        {product_name} (Collaboration with {artist})
+            <div className="w-2/3 flex flex-col justify-between divide-y divide-white divide-opacity-10">
+                <div className='flex flex-col divide-y divide-white divide-opacity-10'>
+                    <div className="flex flex-row gap-6 pb-5">
+                        <div className="w-1/3 text-white font-medium">Brand:</div>
+                        <div className="w-2/3 text-lg text-white">{collection_name}</div>
                     </div>
-                </div>
-                <div className="flex flex-row gap-6 py-5">
-                    <div className="w-1/3 text-white font-medium">Edition:</div>
-                    <div className="w-2/3 text-lg text-white">
-                        {edition}
+                    <div className="flex flex-row gap-6 py-5">
+                        <div className="w-1/3 text-white font-medium">Product name:</div>
+                        <div className="w-2/3 text-lg text-white">
+                            {product_name} (Collaboration with {artist})
+                        </div>
                     </div>
-                </div>
-                <div className="flex flex-row gap-6 py-5">
-                    <div className="w-1/3 text-white font-medium">Product Type:</div>
-                    <div className="w-2/3 text-lg text-white">
-                        {product_type}
+                    <div className="flex flex-row gap-6 py-5">
+                        <div className="w-1/3 text-white font-medium">Edition:</div>
+                        <div className="w-2/3 text-lg text-white">
+                            {edition}
+                        </div>
+                    </div>
+                    <div className="flex flex-row gap-6 py-5">
+                        <div className="w-1/3 text-white font-medium">Product Type:</div>
+                        <div className="w-2/3 text-lg text-white">
+                            {product_type}
+                        </div>
                     </div>
                 </div>
                 <div className="flex flex-col py-5">

@@ -55,7 +55,7 @@ const productFragment = /* GraphQL */ `
       ...seo
     }
     tags
-    metafields(identifiers: [{ namespace: "custom", key: "artist" }, { namespace: "custom", key: "type" }]) {
+    metafields(identifiers: [{ namespace: "custom", key: "artist" }, { namespace: "custom", key: "type" }, { namespace: "custom", key: "volume" }]) {
       namespace
       key
       value

@@ -70,7 +70,7 @@ const ProductHero = ({ products }: Props) => {
                 key={index}
                 product_image={product.featuredImage.url}
                 collection_name={product.collection.title}
-                volume={product.variants[0].selectedOptions[0].value}
+                volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}
                 product_name={product.title}
                 edition={product.tags[0]}
                 artist={product.metafields.find((metafield: any) => metafield.key === "artist").value}
