@@ -21,7 +21,7 @@ const Home = async () => {
   }
   // const accout
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Hero />
       <Blending />
       <Description />
@@ -29,7 +29,6 @@ const Home = async () => {
       <Footer />
     </div>
   );
-
 };
 
 export default Home;

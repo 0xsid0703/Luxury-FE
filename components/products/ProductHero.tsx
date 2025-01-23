@@ -68,6 +68,7 @@ const ProductHero = ({ products }: Props) => {
             products.length > 0 && products.map((product: any, index: number) => (
               <ProductItemWithCollection
                 key={index}
+                product={product}
                 product_image={product.featuredImage.url}
                 collection_name={product.collection.title}
                 volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}

@@ -1,7 +1,10 @@
 import React from 'react'
-import { Button } from '../ui/button'
 import Image from 'next/image'
+import { AddToCart } from '../cart/add-to-cart'
+import { Product } from '@/lib/shopify/types';
+
 type Props = {
+    product: Product,
     product_image: string,
     collection_name: string,
     volume: string,
@@ -13,7 +16,7 @@ type Props = {
     artist: string,
 }
 
-const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, artist, price_amount, currency }: Props) => {
+const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, artist, price_amount, currency, product }: Props) => {
     return (
         <div className="rounded-2xl bg-[#380B11] flex flex-row gap-40 p-10">
             <div className="w-1/3 flex flex-col gap-5">
@@ -64,9 +67,7 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                             currency: currency,
                             currencyDisplay: 'narrowSymbol'
                         }).format(parseFloat(price_amount))}`}</span>
-                        <Button className="bg-[#E3713D] outline outline-4 outline-[#D49F5E]/20 text-white rounded-full py-7 px-9 text-lg   hover:shadow-[0_0_0_0px_black,0_8px_0_0_#63151F] hover:-translate-y-2 transition-all hover:bg-[#E3713D]">
-                            Buy Now
-                        </Button>
+                        <AddToCart product={product}/>
                     </div>
                 </div>
             </div>
