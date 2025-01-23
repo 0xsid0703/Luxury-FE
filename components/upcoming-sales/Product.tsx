@@ -7,7 +7,6 @@ type Props = {
 }
 
 const Product = ({ collection, product }: Props) => {
-    console.log({ collection, product })
     return (
         <div className='w-full flex flex-row gap-10 p-2'>
             <div className='w-[420px] h-[250px] relative'>

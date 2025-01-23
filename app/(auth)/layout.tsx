@@ -1,5 +1,5 @@
-import { getCurrentUser } from "@/lib/auth";
-import { redirect } from "next/navigation";
+// import { getCurrentUser } from "@/lib/auth";
+// import { redirect } from "next/navigation";
 import React from "react";
 
 const layout = async({
@@ -7,10 +7,10 @@ const layout = async({
 }: Readonly<{
   children: React.ReactNode;
 }>) => {
-  const user = await getCurrentUser();
-  if (!user) {
-    redirect('/login')
-  }
+  // const user = await getCurrentUser();
+  // if (!user) {
+  //   redirect('/login')
+  // }
   return (
     <div className="w-full bg-mainBackground h-screen">{children}</div>
   );
