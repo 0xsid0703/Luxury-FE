@@ -41,6 +41,7 @@ export const customerRouter = createTRPCRouter({
     .input(insertCustomerSchema)
     .mutation(async ({ input }) => {
       const { userId } = input;
+      console.log("Backend: ", {userId})
       await prisma.customer.create({
         data: {
           authUserId: userId,

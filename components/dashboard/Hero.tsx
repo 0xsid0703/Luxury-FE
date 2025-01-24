@@ -9,11 +9,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import VideoModal from "../modal/VideoModal";
+import SubscribeModal from "../modal/SubscribeModal";
 const Hero = () => {
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [video, setVideo] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
-
+  const [isWaitingOpen, setIsWaitingOpen] = useState(false)
+  const handleButtonClick = () => {
+    setIsWaitingOpen(true)
+  };
   const handlePrev = () => {
     if (swiper) {
       swiper.slidePrev();
@@ -170,12 +174,12 @@ const Hero = () => {
               />
             </button>
           </div>
-          <Link
-            href={"/"}
-            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit mb-14 hover:shadow-[0_0_0_2px_black,0_8px_0_0_white] hover:-translate-y-2 transition-all"
+          <div
+            className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit mb-14 hover:shadow-[0_0_0_2px_black,0_8px_0_0_white] hover:-translate-y-2 transition-all cursor-pointer"
+            onClick={handleButtonClick}
           >
-            Get Access to Private Sales
-          </Link>
+            Register to Waiting List
+          </div>
         </div>
         <div className="flex flex-col w-full items-center gap-6 pt-6 pb-16 bg-[#1F1B16] z-[5]">
           <div className="font-medium text-[#B5B7B8] text-sm">
@@ -238,6 +242,9 @@ const Hero = () => {
         isOpen && (
           <VideoModal video={video} onClose={() => setIsOpen(false)} />
         )
+      }
+      {
+        isWaitingOpen && <SubscribeModal onClose={() => setIsWaitingOpen(false)}/>
       }
     </div>
   );

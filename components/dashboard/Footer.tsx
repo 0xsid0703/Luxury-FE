@@ -1,9 +1,15 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import SubscribeModal from "../modal/SubscribeModal";
 const Footer = () => {
+  const [isWaitingOpen, setIsWaitingOpen] = useState(false)
+  const handleButtonClick = () => {
+    setIsWaitingOpen(true)
+  };
   return (
     <div className="bg-[#E8E8E8]">
       <div className="rounded-t-[50px] bg-[#1F1B16] relative">
@@ -28,8 +34,8 @@ const Footer = () => {
                 luxury meets rare collectibles and long-term investments
               </div>
             </div>
-            <Button className="flex flex-row py-7 px-9 w-fit bg-white rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 text-black hover:bg-[#F7F5F2]  hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all">
-              <span>Apply for Access</span>
+            <Button className="flex flex-row py-7 px-9 w-fit bg-white rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 text-black hover:bg-[#F7F5F2]  hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={handleButtonClick}>
+              <span>Register to Waiting List</span>
               <div className="w-[1px] h-6 bg-[#848484]/20"></div>
               <ArrowRight size={12} color="#000" />
             </Button>
@@ -65,6 +71,9 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {
+        isWaitingOpen && <SubscribeModal onClose={() => setIsWaitingOpen(false)}/>
+      }
     </div>
   );
 };

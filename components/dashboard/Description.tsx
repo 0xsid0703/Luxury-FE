@@ -4,8 +4,14 @@ import Image from "next/image";
 import clsx from "clsx";
 import { ArrowRight } from "lucide-react";
 import { Button } from "../ui/button";
+import { useRouter } from "next/navigation";
+
 const Description = () => {
   const [selectedTerm, setSelectedTerm] = useState(0);
+  const router = useRouter();
+  const gotoPricing = () => {
+    router.push("/pricing");
+  };
   return (
     <div className="bg-[#E8E8E8]">
       <div className="bg-[#1F1B16] rounded-b-[50px]">
@@ -73,7 +79,7 @@ const Description = () => {
                   />
                 </div>
                 <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-3xl text-[#1F1B16]">
-                  <span className="text-3xl">Designed for<br/> Elite Investors</span>
+                  <span className="text-3xl">Designed for<br /> Elite Investors</span>
                   <span className="text-base text-[#766B46]">
                     Built specifically for accredited investors, our platform
                     offers a private, high-end experience with a global
@@ -100,7 +106,7 @@ const Description = () => {
                   <br /> for profit
                 </span>
               </div>
-              <Button className="text-[#1F1B16] bg-white rounded-full py-7 px-9 flex flex-row gap-2 items-center hover:bg-[#F7F5F2] duration-300 font-semibold text-lg hover:shadow-[0_0_0_2px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all">
+              <Button className="text-[#1F1B16] bg-white rounded-full py-7 px-9 flex flex-row gap-2 items-center hover:bg-[#F7F5F2] duration-300 font-semibold text-lg hover:shadow-[0_0_0_2px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={gotoPricing}>
                 Apply for Access
                 <div className="w-[1px] h-5 bg-[#848484]/30"></div>
                 <ArrowRight size={20} color="#1F1B16" />
