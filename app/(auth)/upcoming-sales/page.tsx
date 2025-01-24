@@ -3,6 +3,7 @@ import UpcomingSale from '@/components/upcoming-sales/UpcomingSale';
 import { getCollectionProducts, getCollections } from '@/lib/shopify';
 export default async function UpcomingSalesPage() {
     const collections = await getCollections();
+    console.log({ collections })
     const products = [];
     for (const collection of collections) {
         const prods = await getCollectionProducts({ collection: collection.handle });
