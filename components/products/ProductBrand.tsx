@@ -9,45 +9,46 @@ const ProductBrand = () => {
       style={{ backgroundImage: "url(/product/brand-bg.png)" }}
     >
       <div className="flex flex-col relative">
-        <div className="py-20 flex flex-col gap-16 container mx-auto z-[5]">
-          <div className="flex flex-col">
-            <span className="text-white text-6xl">About the Brand:</span>
-            <span className="text-blendingYellow text-6xl">
-              Cardinal Du Four
-            </span>
-          </div>
-          <div className="grid grid-cols-2">
+        <div className="sm:py-20 py-10 grid sm:grid-cols-2 grid-cols-1 sm:gap-16 gap-9 container mx-auto z-[5] sm:px-0 px-6">
+          <div className="flex flex-col sm:gap-14 gap-7 items-center">
+            <div className="flex flex-col sm:text-6xl text-3xl">
+              <span className="text-white">About the Brand:</span>
+              <span className="text-blendingYellow">
+                Cardinal Du Four
+              </span>
+            </div>
             <Image src={"/product/map.png"} width={440} height={440} alt="" />
-            <div className="flex flex-col gap-15">
+          </div>
+          <div className="flex flex-col gap-15 bg-[#63151F] py-24 px-20 rounded-[32px]">
+            <div className="flex flex-col gap-16">
               <div className="gap-6 flex flex-col text-white">
                 <div className="text-xl">
-                  <span className="#F3CF72">Cardinal Du Four</span> is one of
+                  <span className="text-[#F3CF72]">Cardinal Du Four</span> is one of
                   the most prestigious brands in the world of{" "}
-                  <span className="#F3CF72">Armagnac</span>, France’s oldest
+                  <span className="text-[#F3CF72]">Armagnac</span>, France’s oldest
                   spirit. With a legacy dating back more than{" "}
-                  <span className="#F3CF72">700 years</span>, Cardinal Du Four
+                  <span className="text-[#F3CF72]">700 years</span>, Cardinal Du Four
                   blends centuries-old craftsmanship with contemporary luxury,
                   making it a leading choice among collectors and connoisseurs
                 </div>
                 <div className="text-xl">
                   Named after{" "}
-                  <span className="#F3CF72">Cardinal Vital Du Four</span>, the
+                  Cardinal Vital Du Four, the
                   brand honors his intellectual legacy and historic discoveries
                   in distillation, which are still celebrated today. By
                   combining ancient traditions with modern design, Cardinal Du
                   Four offers a
-                  <span className="#F3CF72">timeless experience</span> that is
+                  timeless experience that is
                   rooted in{" "}
-                  <span className="#F3CF72">authenticity, heritage</span>, and{" "}
-                  <span className="#F3CF72">innovation</span>. we need the
+                  authenticity, heritage, and{" "}
+                  innovation. we need the
                   website link of the brand Cardinal du Four
                 </div>
-                <Button className="flex flex-row py-7 px-9 w-fit text-black bg-white rounded-full text-lg outline outline-4 outline-[#F4A341]/20 hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all hover:bg-white">
-                  <span>Visit Website</span>
-                  <div className="w-[1px] h-6 bg-[#848484]/20"></div>
-                  <ArrowRight size={12} color="#000" />
-                </Button>
               </div>
+              <Button className="flex flex-row py-7 px-9 w-fit text-[#0B1934] bg-[#FFBC8A] rounded-full text-lg outline outline-4 outline-[#F4A341]/20 hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all hover:bg-[#FFBC8A]">
+                <span>Visit Website</span>
+                <ArrowRight size={12} color="#000" />
+              </Button>
             </div>
           </div>
         </div>

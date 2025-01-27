@@ -23,6 +23,11 @@ const collectionFragment = /* GraphQL */ `
     image {
       ...image
     }
+    metafields(identifiers: [{ namespace: "custom", key: "hightlights" }, { namespace: "custom", key: "video" }, { namespace: "custom", key: "heading_sale" }, { namespace: "custom", key: "sale_name" }]) {
+      namespace
+      key
+      value
+    }
   }
   ${seoFragment}
   ${imageFragment}

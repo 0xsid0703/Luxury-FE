@@ -5,24 +5,21 @@ import Link from 'next/link';
 
 type Props = {
     collections: any[];
-    products: any[]
 }
 
-const UpcomingSale = ({ collections, products }: Props) => {
+const UpcomingSale = ({ collections }: Props) => {
     const [showMore, setShowMore] = useState(4);
-    console.log({ products })
     return (
         <div className="container mx-auto pt-36 pb-14 flex flex-col gap-12 items-center">
-            <div className='flex flex-col w-full'>
-                <span className="text-[#1E1E1E] text-3xl font-semibold">Upcoming Sales</span>
-                <span className=''>Get ready for exclusive, upcoming  releases. Be the first<br /> to get your hands on rares.</span>
+            <div className='flex flex-col w-full  justify-center items-center gap-7'>
+                <span className="text-[#1E1E1E] sm:text-7xl text-4xl">Upcoming Sales</span>
+                <span className='text-center sm:text-lg text-sm'>Get ready for exclusive, upcoming  releases. Be the first to<br /> get your hands on rares.</span>
             </div>
-            <div className='flex flex-col gap-4 w-full'>
-                {products.slice(0, showMore).map((product, index:number) => (
-                    <Product
+            <div className='flex flex-col w-full items-center justify-center'>
+                {collections.slice(0, showMore).map((collection, index:number) => (
+                    <Product 
                         key={index}
-                        collection={collections.find((collection) => collection.handle === product.collection.handle)}
-                        product={product}
+                        collection={collection}
                     />
                 ))}
             </div>
@@ -32,13 +29,13 @@ const UpcomingSale = ({ collections, products }: Props) => {
                     onClick={() => {
                         showMore + 5 >= collections.length
                             ? setShowMore(collections.length)
-                            : setShowMore(showMore + 5)
+                            : setShowMore(showMore + 4)
                     }}
                 >
                     Show More
                 </button>
             )}
-            <div className="border-t border-[#CDCDCD] flex flex-row justify-between pt-8 w-full">
+            <div className="border-t border-[#CDCDCD] sm:flex flex-row justify-between pt-8 w-full hidden">
                 <Link href={"/"} className="text-[#99A1A3] text-base">
                     GO FUND ART @copyright
                 </Link>

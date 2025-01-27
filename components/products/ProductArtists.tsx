@@ -7,9 +7,9 @@ import React, { useState } from "react";
 const ProductArtists = () => {
   const [selectedArtist, setSelectedArtist] = useState(0);
   return (
-    <div className="py-14 bg-[#E8E8E8]">
+    <div className="py-14 bg-[#E8E8E8] hidden">
       <div className="container mx-auto flex flex-col gap-16">
-        <div className="flex gap-2">
+        <div className="flex sm:flex-row flex-col gap-2">
           <span className="font-normal text-6xl text-[#9C7C55]">Artists</span>
           <span className="font-normal text-6xl text-black">collaboration</span>
         </div>

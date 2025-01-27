@@ -10,9 +10,8 @@ const PricingPage = async () => {
   if (user) {
     subscriptionPlan = await trpc.stripe.userPlans.query();
   }
-  console.log({ user })
   return (
-    <div className="min-h-screen bg-[#1F1B16]">
+    <div className="min-h-screen bg-white sm:p-0 p-6">
       <Pricing subscriptionPlan={subscriptionPlan} userId={user?.id} />
       <Faq />
     </div>

@@ -119,7 +119,7 @@ const Hero = () => {
                           alt=""
                         />
                         <Image
-                          src={"/Play.svg"}
+                          src={"/play.png"}
                           className="w-20 h-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer"
                           width={50}
                           height={50}

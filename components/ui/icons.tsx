@@ -209,3 +209,13 @@ export const Google: Icon = (props) => (
     />
   </svg>
 );
+
+
+export const ListHightLight: Icon = (props) => (
+  <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+    <rect y="5" width="7.07107" height="7.07107" transform="rotate(-45 0 5)" fill="#DADEEB" />
+    <path d="M5.00144 0.00585938V4.99949H0.0078125L5.00144 0.00585938Z" fill="#A88573" />
+    <path d="M5.00247 9.99323V4.9996H9.99609L5.00247 9.99323Z" fill="#0B1934" />
+  </svg>
+
+);

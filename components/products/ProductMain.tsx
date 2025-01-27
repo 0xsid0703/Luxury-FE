@@ -7,6 +7,7 @@ import ProductAbout from './ProductAbout';
 import ProductArtists from './ProductArtists';
 import ProductMarket from './ProductMarket';
 import ProductFooter from './ProductFooter';
+import ProductHeader from './ProductHeader';
 
 type Props = {
     products: any[];
@@ -16,6 +17,7 @@ const ProductPage = ({ products }: Props) => {
   
     return (
       <div className="min-h-screen">
+        <ProductHeader />
         <ProductHero products={products}/>
         <ProductEdition />
         <ProductBrand />

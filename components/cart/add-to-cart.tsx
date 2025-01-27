@@ -28,7 +28,7 @@ function SubmitButton({
   return (
     <Button
       aria-label="Buy Now"
-      className="flex flex-row py-7 px-9 w-fit text-white bg-[#E3713D] rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all hover:bg-[#E3713D]"
+      className="flex flex-row py-7 px-9 sm:w-fit w-full text-white bg-[#A88573] rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all hover:bg-[#A88573]"
     >
       Buy now
     </Button>
