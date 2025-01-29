@@ -8,14 +8,13 @@ import { Swiper as SwiperType } from 'swiper';
 import Image from "next/image";
 import VideoModal from "../modal/VideoModal";
 import SubscribeModal from "../modal/SubscribeModal";
-import { useRouter } from "next/router";
+import Link from "next/link";
 
 type HeroProps = {
   collections: any[]
 }
 
 const Hero = ({ collections }: HeroProps) => {
-  const router = useRouter();
   const [swiper, setSwiper] = useState<SwiperType | null>(null);
   const [video, setVideo] = useState<string>("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -90,7 +89,7 @@ const Hero = ({ collections }: HeroProps) => {
                             <div className="sm:text-3xl text-x l font-semibold">{collection.title} : <span className="font-normal ">{collection.metafields.find((metafield: any) => metafield.key === "sale_name")?.value}</span></div>
                           </div>
                           <div className="flex flex-row justify-between">
-                            <div className="rounded-full bg-[#DDE2EA] sm:px-5 sm:py-4 p-3 capitalize text-xs" onClick={() => router.push(`/products/${collection.handle}`)}>VIEW DETAILS</div>
+                            <Link className="rounded-full bg-[#DDE2EA] sm:px-5 sm:py-4 p-3 capitalize text-xs" href={`/products/${collection.handle}`}>VIEW DETAILS</Link>
                             <div className="flex flex-row gap-5 items-center">
                               <div className="text-[#8C99A1] font-medium text-xs ">{selectedCollection} / {collections.length}</div>
                               <div className="flex flex-row gap-2">
