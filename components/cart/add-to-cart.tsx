@@ -51,7 +51,7 @@ export function AddToCart({ product, collection, subscriptionPlan }: { product: 
   const actionWithVariant = formAction.bind(null, selectedVariantId);
   const finalVariant = variants.find((variant: any) => variant.id === selectedVariantId)!;
   const checkAvailableOther = async () => {
-    if (cart.cart?.lines.length && subscriptionPlan?.title != "Free") {
+    if (cart.cart?.lines.length && subscriptionPlan?.title == "Free") {
       if (cart.cart?.lines[0].merchandise.product.collections?.edges[0].node.handle != collection) {
         return true;
       } else {
