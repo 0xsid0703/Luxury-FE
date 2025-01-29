@@ -145,12 +145,7 @@ export type ShopifyProduct = {
   images: Connection<Image>;
   seo: SEO;
   tags: string[];
-  collections: {
-    id: string;
-    handle: string;
-    title: string;
-    description: string;
-  };
+  collections: Connection<Collection>;
   metafields: Array<{ key: string; value: string }>;
   updatedAt: string;
 };
