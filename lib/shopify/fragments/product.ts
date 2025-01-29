@@ -60,6 +60,16 @@ const productFragment = /* GraphQL */ `
       key
       value
     }
+    collections(first: 1) {
+      edges {
+        node {
+          id
+          handle
+          title
+          description
+        }
+      }
+    }
     updatedAt
   }
   ${imageFragment}

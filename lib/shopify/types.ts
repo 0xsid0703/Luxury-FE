@@ -17,6 +17,7 @@ export type CartProduct = {
   handle: string;
   title: string;
   featuredImage: Image;
+  collections: Connection<Collection>;
 };
 
 export type CartItem = {
@@ -87,6 +88,13 @@ export type ProductVariant = {
     name: string;
     value: string;
   }[];
+  collection: {
+    id: string;
+    handle: string;
+    title: string;
+    description: string;
+    products: Connection<ShopifyProduct>;
+  };
   price: Money;
 };
 
@@ -137,6 +145,12 @@ export type ShopifyProduct = {
   images: Connection<Image>;
   seo: SEO;
   tags: string[];
+  collections: {
+    id: string;
+    handle: string;
+    title: string;
+    description: string;
+  };
   metafields: Array<{ key: string; value: string }>;
   updatedAt: string;
 };

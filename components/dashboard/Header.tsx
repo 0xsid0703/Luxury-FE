@@ -18,7 +18,7 @@ const Header = ({ user }: HeaderProps) => {
 
   const [toggle, setToggle] = useState(true)
   return (
-    <div className="fixed bg-transparent w-full z-10 h-screen">
+    <div className={clsx("fixed bg-transparent w-full z-10", toggle ? "h-fit" : 'h-full')}>
       <div className={clsx("bg-[#F7F7F7] shadow-lg", toggle ? "h-fit" : 'h-full')}>
         <div className="mx-auto px-6 py-1 sm:flex hidden">
           <div className="w-1/2 flex justify-between items-center">

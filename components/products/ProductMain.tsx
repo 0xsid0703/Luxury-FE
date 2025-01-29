@@ -8,17 +8,19 @@ import ProductArtists from './ProductArtists';
 import ProductMarket from './ProductMarket';
 import ProductFooter from './ProductFooter';
 import ProductHeader from './ProductHeader';
+import { UserSubscriptionPlan } from '@/types';
 
 type Props = {
     products: any[];
+    collection: string;
+    subscriptionPlan: UserSubscriptionPlan;
 }
 
-const ProductPage = ({ products }: Props) => {
-  
+const ProductPage = ({ products, collection, subscriptionPlan }: Props) => {
     return (
       <div className="min-h-screen">
         <ProductHeader />
-        <ProductHero products={products}/>
+        <ProductHero products={products} collection={collection} subscriptionPlan={subscriptionPlan} />
         <ProductEdition />
         <ProductBrand />
         <ProductAbout />

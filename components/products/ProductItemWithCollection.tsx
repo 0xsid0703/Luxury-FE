@@ -2,6 +2,7 @@ import React from 'react'
 import { AddToCart } from '../cart/add-to-cart'
 import { Product } from '@/lib/shopify/types';
 import { ProductProvider } from '../product/product-context';
+import { UserSubscriptionPlan } from '@/types';
 
 type Props = {
     product: Product,
@@ -14,9 +15,11 @@ type Props = {
     price_amount: string,
     currency: string,
     artist: string,
+    collection: string,
+    subscriptionPlan: UserSubscriptionPlan
 }
 
-const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, price_amount, currency, product }: Props) => {
+const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, collection, product_type, price_amount, currency, product, subscriptionPlan }: Props) => {
     const productJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -77,7 +80,7 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                                 currencyDisplay: 'narrowSymbol'
                             }).format(parseFloat(price_amount))}`}</span>
                         </div>
-                        <AddToCart product={product} />
+                        <AddToCart product={product} collection={collection} subscriptionPlan={subscriptionPlan} />
                     </div>
                 </div>
             </div>

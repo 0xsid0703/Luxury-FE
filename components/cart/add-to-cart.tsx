@@ -7,6 +7,8 @@ import { useCart } from './cart-context';
 import { useFormState } from 'react-dom';
 import { addItem } from './actions';
 import { Button } from '../ui/button';
+import { toast } from '@/hooks/use-toast';
+import { UserSubscriptionPlan } from '@/types';
 
 function SubmitButton({
   availableForSale,
@@ -35,12 +37,12 @@ function SubmitButton({
   );
 }
 
-export function AddToCart({ product }: { product: any }) {
+export function AddToCart({ product, collection, subscriptionPlan }: { product: any, collection: string, subscriptionPlan: UserSubscriptionPlan }) {
+  const cart = useCart();
   const { variants, availableForSale } = product;
   const { addCartItem } = useCart();
   const { state } = useProduct();
   const [message, formAction] = useFormState(addItem, null);
-  console.log({ useFormState });
   const variant = variants.find((variant: ProductVariant) =>
     variant.selectedOptions.every((option) => option.value === state[option.name.toLowerCase()])
   );
@@ -48,12 +50,29 @@ export function AddToCart({ product }: { product: any }) {
   const selectedVariantId = variant?.id || defaultVariantId;
   const actionWithVariant = formAction.bind(null, selectedVariantId);
   const finalVariant = variants.find((variant: any) => variant.id === selectedVariantId)!;
-
+  const checkAvailableOther = async () => {
+    if (cart.cart?.lines.length && subscriptionPlan?.title != "Free") {
+      if (cart.cart?.lines[0].merchandise.product.collections?.edges[0].node.handle != collection) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+  console.log({ cart })
   return (
     <form
       action={async () => {
-        addCartItem(finalVariant, product);
-        await actionWithVariant();
+        const available = await checkAvailableOther();
+        if (available) {
+          toast({ description: "You can only add one item of this product to the cart" })
+          return;
+        } else {
+          addCartItem(finalVariant, product);
+          await actionWithVariant();
+        }
       }}
     >
       <SubmitButton availableForSale={availableForSale} />

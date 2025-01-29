@@ -1,13 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import ProductItemWithCollection from "./ProductItemWithCollection";
+import { UserSubscriptionPlan } from "@/types";
 
 type Props = {
   products: any[];
+  collection: string;
+  subscriptionPlan: UserSubscriptionPlan
 };
 
-const ProductHero = ({ products }: Props) => {
-  console.log({ products })
+const ProductHero = ({ products, collection, subscriptionPlan }: Props) => {
   return (
     <div className="w-full h-fit bg-white sm:px-0 px-4 pb-20">
       <div className="container mx-auto flex flex-col items-center">
@@ -55,6 +57,7 @@ const ProductHero = ({ products }: Props) => {
                   <ProductItemWithCollection
                     key={index}
                     product={product}
+                    collection={collection}
                     product_image={product.featuredImage.url}
                     collection_name={product.collection.title}
                     volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}
@@ -64,6 +67,7 @@ const ProductHero = ({ products }: Props) => {
                     product_type={product.metafields.find((metafield: any) => metafield.key === "type").value}
                     price_amount={product.variants[0].price.amount}
                     currency={product.variants[0].price.currencyCode}
+                    subscriptionPlan={subscriptionPlan}
                   />
                 ))
               }
