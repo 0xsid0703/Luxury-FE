@@ -124,11 +124,16 @@ const Header = ({ user }: HeaderProps) => {
                 </div>
                 <div className="flex flex-col gap-2">
                   {
-                    !user && <Button
+                    !user ? <Button
                       asChild
                       className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}
                     >
                       <div>Sign Up</div>
+                    </Button> : <Button
+                      asChild
+                      className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={()=> signOut()}
+                    >
+                      <div>Sign Out</div>
                     </Button>
                   }
                   {
