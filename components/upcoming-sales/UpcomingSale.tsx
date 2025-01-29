@@ -5,9 +5,10 @@ import Link from 'next/link';
 
 type Props = {
     collections: any[];
+    userId?: string;
 }
 
-const UpcomingSale = ({ collections }: Props) => {
+const UpcomingSale = ({ collections, userId }: Props) => {
     const [showMore, setShowMore] = useState(4);
     return (
         <div className="container mx-auto pt-36 pb-14 flex flex-col gap-12 items-center">
@@ -20,6 +21,7 @@ const UpcomingSale = ({ collections }: Props) => {
                     <Product 
                         key={index}
                         collection={collection}
+                        userId={userId}
                     />
                 ))}
             </div>
