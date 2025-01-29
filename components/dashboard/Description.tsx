@@ -1,220 +1,86 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
 import clsx from "clsx";
-import { ArrowRight } from "lucide-react";
-import { Button } from "../ui/button";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import React, { useState } from "react";
 
 const Description = () => {
   const [selectedTerm, setSelectedTerm] = useState(0);
-  const router = useRouter();
-  const gotoPricing = () => {
-    router.push("/pricing");
-  };
   return (
-    <div className="bg-[#E8E8E8]">
-      <div className="bg-[#1F1B16] rounded-b-[50px]">
-        <div className="container mx-auto py-24 flex flex-col gap-24 ">
-          <div className="flex flex-col gap-16">
-            <div className="flex flex-col items-center">
-              <span className="font-normal text-6xl text-white">
-                Own and Trade Exclusive
-              </span>
-              <span className="font-normal text-6xl text-heroYellow">
-                Art & Collecibles
-              </span>
-              <span className="font-normal text-lg text-greyColor mt-8">
-                Our platform offers a luxurious, exclusive experience with rare
-                art and collectibles
-                <br /> from top artists and brands, beyond just investment.
-              </span>
+    <div className="bg-white flex flex-col gap-16 pt-16">
+      <div className="container mx-auto flex flex-col sm:gap-10 gap-6 sm:px-0 px-6">
+        <div className="font-light sm:text-6xl text-3xl text-[#2A2B39]">
+          Own, store, or trade, <br className="sm:block hidden" />
+          <span className="text-[#A88573]">on your terms</span>
+        </div>
+        <div className="flex sm:flex-row flex-col justify-between sm:gap-0 gap-12 sm:items-center items-start">
+          <div className="sm:w-2/5 w-full text-[#2A2B39] font-medium sm:text-xl text-base">Unlike traditional collectors, our platform lets you claim assets anytime or store them in secure vaults. Sell easily through our secondary market for profit</div>
+          <div className="w-fit">Apply for Access</div>
+        </div>
+      </div>
+      <div className="w-full relative bg-no-repeat bg-cover bg-center sm:aspect-[1440/528] h-full" style={{ backgroundImage: "url(/description.png)" }}>
+        <div className="absolute top-0 left-0 bg-[#151322] h-full z-[1] w-full opacity-60"></div>
+        <div className="container mx-auto sm:flex hidden flex-row  h-full gap-6 py-16 ">
+          <div className="w-1/3 relative flex flex-col h-full justify-end gap-9 z-[5]">
+            <div className="px-12 flex flex-col gap-9">
+              <Image src={'/desc01.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer" onClick={() => setSelectedTerm(0)} />
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Claim on your own</div>
             </div>
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-row gap-3">
-                <div className="w-2/5 bg-white p-10 flex flex-col gap-4 rounded-3xl">
-                  <span className="text-3xl">Exclusivity Meets Security</span>
-                  <span className="text-base text-descColor">
-                    Gain access to exclusive art and collectibles sourced
-                    directly from internationally recognized artists and luxury
-                    brands.
-                  </span>
-                </div>
-                <div className="w-2/5 bg-[#59443C] p-10 flex flex-col gap-4 rounded-3xl text-white">
-                  <span className="text-3xl">Physical & Digital Harmony</span>
-                  <span className="text-base text-[#CCCCCC]">
-                    Each collectible is authenticated with NFC chips or QR
-                    stickers linked to VERISART certificates, ensuring your
-                    investment is tangible and verifiable.
-                  </span>
-                </div>
-                <div className="">
-                  <Image
-                    src={"/desc1.png"}
-                    width={240}
-                    height={240}
-                    className="rounded-3xl"
-                    alt=""
-                  />
-                </div>
-              </div>
-              <div className="flex flex-row gap-3">
-                <div className="w-2/5 bg-[#32302D] p-10 flex flex-col gap-4 rounded-3xl">
-                  <span className="text-3xl text-white">
-                    Trust Beyond Transactions
-                  </span>
-                  <span className="text-base text-[#CCCCCC]">
-                    Whether for passion or profit, our curated collections
-                    guarantee wise investments, backed by authentication and
-                    global storage.
-                  </span>
-                </div>
-                <div className="">
-                  <Image
-                    src={"/desc2.png"}
-                    width={240}
-                    height={240}
-                    className="rounded-3xl"
-                    alt=""
-                  />
-                </div>
-                <div className="w-2/5 bg-[#E5CE87] p-10 flex flex-col gap-4 rounded-3xl text-[#1F1B16]">
-                  <span className="text-3xl">Designed for<br /> Elite Investors</span>
-                  <span className="text-base text-[#766B46]">
-                    Built specifically for accredited investors, our platform
-                    offers a private, high-end experience with a global
-                    perspective.
-                  </span>
-                </div>
-              </div>
+            <div className={clsx("w-full bg-white sm:px-12 sm:py-9 px-5 py-6 flex flex-col sm:gap-9 gap-6 rounded-xl", selectedTerm === 0 ? "visible" : "invisible")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
             </div>
           </div>
-          <div className="flex flex-col gap-9">
-            <div className="flex flex-row justify-between items-end">
-              <div className="flex flex-col items-start">
-                <span className="font-normal text-6xl text-white">
-                  Own, Store, or Trade
-                </span>
-                <span className="font-normal text-6xl text-heroYellow">
-                  On Your Terms
-                </span>
-                <span className="font-normal text-lg text-greyColor">
-                  Unlike traditional collectors, our platform lets you claim
-                  assets anytime
-                  <br /> or store them in secure vaults. Sell easily through our
-                  secondary market
-                  <br /> for profit
-                </span>
-              </div>
-              <Button className="text-[#1F1B16] bg-white rounded-full py-7 px-9 flex flex-row gap-2 items-center hover:bg-[#F7F5F2] duration-300 font-semibold text-lg hover:shadow-[0_0_0_2px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={gotoPricing}>
-                Apply for Access
-                <div className="w-[1px] h-5 bg-[#848484]/30"></div>
-                <ArrowRight size={20} color="#1F1B16" />
-              </Button>
-
+          <div className="w-1/3 relative flex flex-col h-full justify-end gap-9 z-[5]">
+            <div className={clsx("w-full bg-white sm:px-12 sm:py-9 px-5 py-6 flex flex-col sm:gap-9 gap-6 rounded-xl", selectedTerm === 1 ? "visible" : "invisible")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
             </div>
-            <div className="grid grid-cols-3 gap-3">
-              <div
-                className="flex flex-col gap-4 cursor-pointer"
-                onClick={() => setSelectedTerm(0)}
-              >
-                <div className="text-xl text-white">{`(01)`}</div>
-                <div
-                  className={clsx(
-                    "h-[1px]",
-                    selectedTerm == 0 ? "bg-[#F3CF72]" : "bg-white"
-                  )}
-                ></div>
-                <div className="text-3xl text-white">Claim on your own</div>
-                <div
-                  className={clsx(
-                    "text-lg text-white",
-                    selectedTerm == 0 ? "block" : "hidden"
-                  )}
-                >
-                  Your assets are always within reach—whether you want them
-                  displayed at home or securely stored
-                </div>
-              </div>
-              <div
-                className="flex flex-col gap-4 cursor-pointer"
-                onClick={() => setSelectedTerm(1)}
-              >
-                <div className="text-xl text-white">{`(02)`}</div>
-                <div
-                  className={clsx(
-                    "h-[1px]",
-                    selectedTerm == 1 ? "bg-[#F3CF72]" : "bg-white"
-                  )}
-                ></div>
-                <div className="text-3xl text-white">
-                  Global Vault Partnerships
-                </div>
-                <div
-                  className={clsx(
-                    "text-lg text-white",
-                    selectedTerm == 1 ? "block" : "hidden"
-                  )}
-                >
-                  We partner with the most secure vault facilities in Worldwide
-                  ultra-vault.com, offering peace of mind for your physical
-                  goods.
-                </div>
-              </div>
-              <div
-                className="flex flex-col gap-4 cursor-pointer"
-                onClick={() => setSelectedTerm(2)}
-              >
-                <div className="text-xl text-white">{`(03)`}</div>
-                <div
-                  className={clsx(
-                    "h-[1px]",
-                    selectedTerm == 2 ? "bg-[#F3CF72]" : "bg-white"
-                  )}
-                ></div>
-                <div className="text-3xl text-white">Trade in Style</div>
-                <div
-                  className={clsx(
-                    "text-lg text-white",
-                    selectedTerm == 2 ? "block" : "hidden"
-                  )}
-                >
-                  Our secondary marketplace offers a seamless experience to
-                  resell your NFTs, allowing you to capitalize on market demand
-                  without leaving our ecosystem
-                </div>
-              </div>
+            <div className="px-12 flex flex-col gap-9">
+              <Image src={'/desc02.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer" onClick={() => setSelectedTerm(1)} />
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Trade in Style</div>
             </div>
-            <Image
-              src={"/desc3.png"}
-              className={clsx(
-                "w-full h-auto rounded-[50px]",
-                selectedTerm == 0 ? "block" : "hidden"
-              )}
-              width={1200}
-              height={560}
-              alt=""
-            />
-            <Image
-              src={"/desc3.png"}
-              className={clsx(
-                "w-full h-auto rounded-[50px]",
-                selectedTerm == 1 ? "block" : "hidden"
-              )}
-              width={1200}
-              height={560}
-              alt=""
-            />
-            <Image
-              src={"/desc3.png"}
-              className={clsx(
-                "w-full h-auto rounded-[50px]",
-                selectedTerm == 2 ? "block" : "hidden"
-              )}
-              width={1200}
-              height={560}
-              alt=""
-            />
+          </div>
+          <div className="w-1/3 relative flex flex-col h-full justify-end gap-9 z-[5]">
+            <div className={clsx("w-full bg-white sm:px-12 sm:py-9 px-5 py-6 flex flex-col sm:gap-9 gap-6 rounded-xl", selectedTerm === 2 ? "visible" : "invisible")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
+            </div>
+            <div className="px-12 flex flex-col gap-9">
+              <Image src={'/desc03.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer" onClick={() => setSelectedTerm(2)} />
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Store in Vault</div>
+            </div>
+          </div>
+        </div>
+        <div className="container mx-auto sm:hidden flex flex-col p-6 gap-14">
+          <div className="w-full flex flex-col gap-5 z-[5]">
+            <div className="flex flex-col gap-5">
+              <Image src={'/desc01.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer"/>
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Claim on your own</div>
+            </div>
+            <div className={clsx("w-full bg-white px-5 py-6 flex flex-col gap-6 rounded-xl")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col gap-5 z-[5]">
+            <div className="flex flex-col gap-5">
+              <Image src={'/desc02.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer"/>
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Trade in Style</div>
+            </div>
+            <div className={clsx("w-full bg-white px-5 py-6 flex flex-col gap-6 rounded-xl")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
+            </div>
+          </div>
+          <div className="w-full flex flex-col gap-5 z-[5]">
+            <div className="flex flex-col gap-5">
+              <Image src={'/desc03.png'} width={58} height={58} alt="" className="w-14 h-14 cursor-pointer"/>
+              <div className="sm:text-[53px] font-light text-3xl text-white leading-10">Store in Vault</div>
+            </div>
+            <div className={clsx("w-full bg-white px-5 py-6 flex flex-col gap-6 rounded-xl")}>
+              <div className="sm:text-lg text-sm">Your assets are always within reach—whether you want them displayed at home or securely stored</div>
+              <div className="sm:text-sm text-xs text-[#A88573] capitalize">REQUEST ACCESS</div>
+            </div>
           </div>
         </div>
       </div>

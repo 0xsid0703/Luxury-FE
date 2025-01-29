@@ -19,10 +19,10 @@ const ProductBrand = () => {
             </div>
             <Image src={"/product/map.png"} width={440} height={440} alt="" />
           </div>
-          <div className="flex flex-col gap-15 bg-[#63151F] py-24 px-20 rounded-[32px]">
-            <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-15 bg-[#63151F] sm:py-24 py-10 sm:px-20 px-6 rounded-[32px]">
+            <div className="flex flex-col sm:gap-16 gap-8">
               <div className="gap-6 flex flex-col text-white">
-                <div className="text-xl">
+                <div className="sm:text-xl text-base">
                   <span className="text-[#F3CF72]">Cardinal Du Four</span> is one of
                   the most prestigious brands in the world of{" "}
                   <span className="text-[#F3CF72]">Armagnac</span>, France’s oldest
@@ -31,7 +31,7 @@ const ProductBrand = () => {
                   blends centuries-old craftsmanship with contemporary luxury,
                   making it a leading choice among collectors and connoisseurs
                 </div>
-                <div className="text-xl">
+                <div className="sm:text-xl text-base">
                   Named after{" "}
                   Cardinal Vital Du Four, the
                   brand honors his intellectual legacy and historic discoveries

@@ -6,9 +6,12 @@ import Hero from "@/components/dashboard/Hero";
 import Opportunities from "@/components/dashboard/Opportunities";
 import { getCurrentUser } from "@/lib/auth";
 import { trpc } from "@/trpc/server";
+import { getCollections } from "@/lib/shopify";
 
 const Home = async () => {
   const user = await getCurrentUser();
+  const collections = await getCollections();
+
   console.log({user})
   if (user && user.id) {
     const customer = await trpc.customer.queryCustomer.query({
@@ -24,7 +27,7 @@ const Home = async () => {
   // const accout
   return (
     <div className="min-h-screen relative">
-      <Hero />
+      <Hero collections={collections}/>
       <Blending />
       <Description />
       <Opportunities />

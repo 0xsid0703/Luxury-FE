@@ -8,10 +8,10 @@ const ProductHeader = () => {
             <div className="container mx-auto flex flex-col sm:pt-36 pt-32 items-center sm:pb-36 pb-32">
                 <div className="text-[#B5B7B8] sm:text-base text-sm">Product Overview</div>
                 <div className="flex flex-col items-center">
-                    <span className="font-normal sm:text-6xl text-4xl text-[#E3713D]">
+                    <span className="font-normal sm:text-6xl text-3xl text-[#E3713D]">
                         Cardinal Du Four:{" "}
                     </span>
-                    <span className="font-normal sm:text-6xl text-4xl text-white text-center">
+                    <span className="font-normal sm:text-6xl text-3xl text-white text-center">
                         Craftsmanship, Heritage, and Innovation
                     </span>
                 </div>

@@ -1,15 +1,8 @@
 "use client"
 import React from "react";
 import Image from "next/image";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
-import { useRouter } from "next/navigation";
 const Blending = () => {
-  const router = useRouter();
 
-  const gotoPricing = () => {
-    router.push("/pricing");
-  };
   const blendings = [
     {
       title: "Seamless Ownership",
@@ -33,37 +26,35 @@ const Blending = () => {
     },
   ];
   return (
-    <div className="container mx-auto bg-white flex flex-col gap-24 py-16">
-      <div className="flex flex-col">
-        <span className="text-black text-6xl">Blending Art, Blockchain,</span>
-        <span className="text-blendingYellow text-6xl">
-          and Bespoke Service
-        </span>
-        <span className="text-greyColor text-lg">
+    <div className="container mx-auto bg-white flex flex-col py-16 sm:px-0 px-6">
+      <div className="flex flex-col gap-10">
+        <div className="flex flex-col">
+          <span className="text-black sm:text-6xl text-3xl font-light">Blending Art, Blockchain,</span>
+          <span className="text-blendingYellow sm:text-6xl text-3xl font-light">
+            and Bespoke Service
+          </span>
+        </div> 
+        <div className="flex flex-col text-[#2A2B39] sm:text-xl text-base sm:w-1/3 w-full">
           Where art meets blockchain: Our platform lets collectors own, store,
-        </span>
-        <span className="text-greyColor text-lg">
           and trade exclusive art as NFTs
-        </span>
+        </div>
       </div>
-      <div className="flex flex-row gap-32 justify-center">
-        <Image src={"/blending.png"} width={600} height={550} alt="" />
-        <div className="flex flex-col gap-12">
-          <ul className="flex flex-col gap-7 list-disc">
-            {blendings.map((blending, index) => (
-              <div className="flex flex-col" key={index}>
-                <li className="text-[22px]">{blending.title}</li>
-                <span className="text-greyColor text-base">
-                  {blending.desc}
-                </span>
-              </div>
-            ))}
-          </ul>
-          <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/30  hover:shadow-[0_0_0_2px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all hover:bg-[#1F1B16]" onClick={gotoPricing}>
-            <span>Apply for Access</span>
-            <div className="w-[1px] h-5 bg-[#848484]/30"></div>
-            <ArrowRight size={12} color="#FFE281" />
-          </Button>
+      <div className="flex sm:flex-row flex-col justify-center">
+        <div className="sm:pt-[75px] flex flex-row sm:gap-5 gap-3 sm:w-1/2 w-full">
+          <div className="sm:w-1/3 w-2/5 bg-[#740C26] aspect-[1/1] h-fit rounded-xl">
+            <Image src={"/blending1.png"} width={220} height={220} alt="" className="rounded-xl w-full h-full"/>
+          </div>
+          <div className="sm:w-2/3 w-3/5 bg-no-repeat bg-cover bg-center rounded-xl mt-[75px] aspect-[1/1] sm:aspect-[480/620]" style={{ backgroundImage: `url(/blending2.png)`}}></div>
+        </div>
+        <div className="flex flex-col gap-10 sm:p-[75px] sm:w-1/2 w-full p-8">
+          {blendings.map((blending, index) => (
+            <div className="flex flex-col gap-2" key={index}>
+              <span className="sm:text-lg text-base">{blending.title}</span>
+              <span className="text-greyColor text-sm">
+                {blending.desc}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

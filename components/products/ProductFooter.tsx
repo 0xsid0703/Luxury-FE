@@ -8,18 +8,16 @@ const ProductFooter = () => {
         className="bg-cover bg-no-repeat bg-center relative rounded-[30px] flex flex-col"
         style={{ backgroundImage: "url(/product/footer.png)" }}
       >
-        <div className="absolute top-0 bg-gradient-to-r from-[#020202] to-transparent h-full w-1/3 z-[1] rounded-[30px]"></div>
-        <div className="flex flex-col p-20 z-[5] gap-14">
+        <div className="absolute top-0 left-0 bg-gradient-to-r from-[#020202] via-black to-transparent h-full w-1/2 z-[1] rounded-[30px]"></div>
+        <div className="flex flex-col sm:p-20 px-5 py-10 z-[5] sm:gap-14 gap-10">
           <div className="flex flex-col items-start">
-            <span className="font-normal text-6xl text-white">
-              Join the <span className="text-[#F3CF72]">Exclusive</span>
-            </span>
-            <span className="font-normal text-6xl text-white">
+            <span className="font-light sm:text-6xl text-3xl text-white">
+              Join the <span className="text-[#F3CF72]">Exclusive</span> {" "}
               Waiting List
             </span>
           </div>
-          <div className="flex flex-col gap-10 w-1/3">
-            <span className="text-white font-semibold text-lg">
+          <div className="flex flex-col sm:gap-10 gap-5 sm:w-1/3 w-full">
+            <span className="text-white text-lg">
               Be one of the first to own a piece of this historic collaboration
               between <span className="text-[#F3CF72]">Shayne Bufog</span> and{" "}
               <span className="text-[#F3CF72]">Cardinal Du Four</span>.{" "}
@@ -31,7 +29,7 @@ const ProductFooter = () => {
               investment in heritage, art, and excellence.
             </span>
           </div>
-          <div className="flex flex-col gap-4 w-1/3">
+          <div className="flex flex-col gap-4 sm:w-1/3 w-full">
             <Link
               href={"/"}
               className="bg-[#F3CF72] border-4 border-[#D49F5E] border-opacity-50 rounded-full w-fit py-4 px-8 hover:shadow-[0_0_0_0px_black,0_8px_0_0_white] hover:-translate-y-2 transition-all"
@@ -45,7 +43,7 @@ const ProductFooter = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-[#CDCDCD] flex flex-row justify-between pt-8">
+      <div className="border-t border-[#CDCDCD] flex-row justify-between pt-8 sm:flex hidden">
         <Link href={"/"} className="text-[#99A1A3] text-base">
           GO FUND ART @copyright
         </Link>

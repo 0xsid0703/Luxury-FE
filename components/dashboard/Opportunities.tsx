@@ -1,141 +1,40 @@
-import React from "react";
 import Image from "next/image";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
+import React from "react";
 const Opportunities = () => {
   return (
-    <div className="flex flex-col gap-7 py-20 bg-[#E8E8E8]">
-      <div className="container mx-auto flex flex-col items-center gap-16">
-        <div className="flex flex-col items-center text-center">
-          <span className="font-normal text-6xl">
-            Exclusive Opportunities,{" "}
-          </span>
-          <span className="font-normal text-6xl text-[#9C7C55]">
-            Tailored For You
-          </span>
-          <span className="font-normal text-lg text-mainGreyColor mt-8">
-            We value your time and investments. Our platform offers a<br />{" "}
-            curated selection of rare art and luxury goods, ensuring top
-            <br /> craftsmanship and investment potential.
-          </span>
+    <div className="flex flex-col gap-7 sm:py-20 py-16 sm:px-0 px-6">
+      <div className="container mx-auto flex sm:flex-row flex-col items-start sm:gap-16 gap-12">
+        <div className="sm:w-2/5 w-full flex flex-col sm:gap-12 gap-6">
+          <div className="sm:text-6xl text-3xl font-light text-[#051B1B]">What makes <br className="sm:block hidden" /><span className="text-[#A88573]">us different</span></div>
+          <div className="text-[#2A2B39] sm:text-lg text-base">Unlike traditional collectors, our platform lets you claim assets anytime or store them in secure vaults. Sell easily through our secondary market for profit</div>
         </div>
-        <div className="grid grid-cols-3">
-          <div className="py-20 flex flex-col gap-10">
-            <div className="bg-white rounded-3xl flex flex-col gap-2 p-5 text-center">
-              <span className="text-2xl">Handpicked Collections</span>
-              <span className="text-mainGreyColor">
-                Curated collections from renowned artists and brands ensure
-                artistic and financial value
-              </span>
-            </div>
-            <div className="bg-white rounded-3xl flex flex-col gap-2 p-5 text-center">
-              <span className="text-2xl">Liquid Investments</span>
-              <span className="text-mainGreyColor">
-                Our marketplace lets you confidently liquidate investments or
-                diversify your portfolio.
-              </span>
+        <div className="sm:w-3/5 w-full flex flex-col">
+          <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
+            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <div className="flex flex-col sm:gap-5 gap-3">
+              <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Liquid Investments</div>
+              <div className="text-[#8C99A2] sm:text-sm text-xs">Our marketplace lets you confidently liquidate investments or diversify your portfolio.</div>
             </div>
           </div>
-          <div className="px-8">
-            <Image
-              src={"/art.png"}
-              width={300}
-              height={400}
-              className="w-full h-full rounded-xl"
-              alt=""
-            />
-          </div>
-          <div className="py-20 flex flex-col gap-10">
-            <div className="bg-white rounded-3xl flex flex-col gap-2 p-5 text-center">
-              <span className="text-2xl">Effortless Payments</span>
-              <span className="text-mainGreyColor">
-                Pay by credit card or cryptocurrency, whichever fits your needs
-              </span>
-            </div>
-            <div className="bg-white rounded-3xl flex flex-col gap-2 p-5 text-center">
-              <span className="text-2xl">Liquid Investments</span>
-              <span className="text-mainGreyColor">
-                Our marketplace lets you confidently liquidate investments or
-                diversify your portfolio.
-              </span>
+          <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
+            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <div className="flex flex-col sm:gap-5 gap-3">
+              <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Hybrid Assets</div>
+              <div className="text-[#8C99A2] sm:text-sm text-xs">Our NFTs are not just digital representations—they are tied to real, valuable physical goods</div>
             </div>
           </div>
-        </div>
-        <Button className="flex flex-row py-7 px-9 w-fit text-[#FFE281] bg-[#1F1B16] rounded-full text-lg outline outline-4 outline-[#848484]/20 hover:bg-[#2B2720]  hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all">
-          <span>Become an Investor Now</span>
-          <div className="w-[1px] h-6 bg-[#848484]/20"></div>
-          <ArrowRight size={12} color="#FFE281" />
-        </Button>
-
-        <div className="flex flex-col items-center text-center">
-          <span className="font-normal text-6xl">What makes Us different?</span>
-          <span className="font-normal text-lg text-mainGreyColor mt-8">
-            Unlike other platforms, we combine tangible art and luxury
-            collectibles
-            <br /> with blockchain-authenticated NFTs, creating a new investment
-            <br /> category that merges physical assets with NFT flexibility.
-          </span>
-        </div>
-        <div className="grid grid-cols-4 gap-3">
-          <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
-            <div className=""></div>
-            <div className="flex flex-col gap-2 text-center items-center">
-              <Image src={"/wallet-add.png"} width={40} height={40} alt="" />
-              <div className="text-2xl">
-                Liquid
-                <br /> Investments
-              </div>
-              <div className="text-base text-mainGreyColor">
-                Our marketplace lets you confidently
-                <br /> liquidate investments or diversify
-                <br /> your portfolio.
-              </div>
+          <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
+            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <div className="flex flex-col sm:gap-5 gap-3">
+              <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Exclusive Collaborations</div>
+              <div className="text-[#8C99A2] sm:text-sm text-xs">Partnering with top artists and brands ensures each drop is unique and secure.</div>
             </div>
           </div>
-          <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
-            <div className=""></div>
-            <div className="flex flex-col gap-2 text-center items-center">
-              <Image src={"/frame.png"} width={40} height={40} alt="" />
-              <div className="text-2xl">
-                Hybrid
-                <br /> Assets
-              </div>
-              <div className="text-base text-mainGreyColor">
-                Our NFTs are not just digital
-                <br /> representations—they are tied to
-                <br />
-                real, valuable physical goods
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
-            <div className=""></div>
-            <div className="flex flex-col gap-2 text-center items-center">
-              <Image src={"/shield-tick.png"} width={40} height={40} alt="" />
-              <div className="text-2xl">
-                Exclusive <br /> Collaborations
-              </div>
-              <div className="text-base text-mainGreyColor">
-                Partnering with top artists and
-                <br /> brands ensures each drop is
-                <br />
-                unique and secure.
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col py-8 px-5 rounded-3xl bg-white">
-            <div className=""></div>
-            <div className="flex flex-col gap-2 text-center items-center">
-              <Image src={"/people.png"} width={40} height={40} alt="" />
-              <div className="text-2xl">
-                Community of Elite
-                <br /> Collectors
-              </div>
-              <div className="text-base text-mainGreyColor">
-                Network with like-minded individuals
-                <br /> and investors who appreciate the
-                <br /> fine art of collecting
-              </div>
+          <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
+            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <div className="flex flex-col sm:gap-5 gap-3">
+              <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Community of Elite Collectors</div>
+              <div className="text-[#8C99A2] sm:text-sm text-xs">Network with like-minded individuals and investors who appreciate the fine art of collecting</div>
             </div>
           </div>
         </div>

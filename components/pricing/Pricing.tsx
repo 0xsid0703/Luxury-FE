@@ -26,7 +26,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
           <div className="sm:min-w-[420px] w-full rounded-[30px] bg-[#F9F7F6] sm:p-10 p-8 flex flex-col sm:gap-8 gap-4 items-start">
             <div className="flex flex-col gap-4">
               <div className="text-[#8C99A1] text-sm sm:text-xl">FREE</div>
-              <div className="sm:text-6xl text-4xl text-[#051D1D]">
+              <div className="sm:text-6xl text-3xl text-[#051D1D]">
                 $0 <span className="sm:text-base text-sm text-[#8C99A1]">/mo</span>
               </div>
             </div>
@@ -78,7 +78,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
           <div className="sm:min-w-[420px] w-full rounded-[30px] bg-[#0B1934] sm:p-10 p-8 flex flex-col sm:gap-8 gap-4">
             <div className="flex flex-col gap-4 text-white">
               <div className="text-[#DBE3E4] sm:text-xl text-base">PREMIUM</div>
-              <div className="sm:text-6xl text-4xl">
+              <div className="sm:text-6xl text-3xl">
                 $49 <span className="sm:text-base text-sm">/mo</span>
               </div>
             </div>
