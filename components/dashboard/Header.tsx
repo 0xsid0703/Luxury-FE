@@ -41,6 +41,9 @@ const Header = ({ user }: HeaderProps) => {
               <Link className="" href={"/vault-partner"}>
                 Vault Partner
               </Link>
+              <Link className="" href={"/pricing"}>
+                Pricing
+              </Link>
               <Link className="" href={"/faq"}>
                 FAQ
               </Link>
@@ -110,6 +113,7 @@ const Header = ({ user }: HeaderProps) => {
               <Link href={"/"} className="text-2xl font-light py-3">How It Works</Link>
               <Link href={"/"} className="text-2xl font-light py-3">Private Sales</Link>
               <Link href={"/"} className="text-2xl font-light py-3">Vault Partner</Link>
+              <Link href={"/pricing"} className="text-2xl font-light py-3">Pricing</Link>
               <Link href={"/"} className="text-2xl font-light py-3">FAQ</Link>
             </div>
             <div className="flex flex-col gap-16 pb-6">
