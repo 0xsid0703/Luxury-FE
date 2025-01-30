@@ -13,9 +13,6 @@ export default async function Page(props: { params: Promise<{ collection: string
   if (!collection) {
     redirect(`/`);
   }
-  if (!user) {
-    redirect(`/login`);
-  }
   let subscriptionPlan;
   if (user) {
     subscriptionPlan = await trpc.stripe.userPlans.query();
