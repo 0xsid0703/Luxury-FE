@@ -6,7 +6,7 @@ import { UserSubscriptionPlan } from "@/types";
 type Props = {
   products: any[];
   collection: string;
-  subscriptionPlan: UserSubscriptionPlan
+  subscriptionPlan: UserSubscriptionPlan | undefined
 };
 
 const ProductHero = ({ products, collection, subscriptionPlan }: Props) => {

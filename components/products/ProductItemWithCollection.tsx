@@ -3,6 +3,8 @@ import { AddToCart } from '../cart/add-to-cart'
 import { Product } from '@/lib/shopify/types';
 import { ProductProvider } from '../product/product-context';
 import { UserSubscriptionPlan } from '@/types';
+import CustomButton from '../ui/CustomButton';
+import { useSigninModal } from "@/hooks/use-signin-modal";
 
 type Props = {
     product: Product,
@@ -16,10 +18,11 @@ type Props = {
     currency: string,
     artist: string,
     collection: string,
-    subscriptionPlan: UserSubscriptionPlan
+    subscriptionPlan: UserSubscriptionPlan | undefined
 }
 
 const ProductItemWithCollection = ({ product_image, collection_name, volume, product_name, edition, collection, product_type, price_amount, currency, product, subscriptionPlan }: Props) => {
+    const signInModal = useSigninModal();    
     const productJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -44,9 +47,9 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                     __html: JSON.stringify(productJsonLd)
                 }}
             />
-            <div className="rounded-xl bg-[#F3F4F6] flex sm:flex-row flex-col sm:gap-16 gap-6">
+            <div className="rounded-xl bg-[#F3F4F6] flex sm:flex-row flex-col">
                 <div className="sm:w-2/5 w-full aspect-[500/447] bg-center bg-no-repeat bg-cover sm:rounded-l-xl rounded-t-xl" style={{ backgroundImage: `url(${product_image})` }}></div>
-                <div className="sm:w-3/5 w-full flex flex-col justify-start sm:gap-0 gap-8 sm:justify-between py-9 text-[#0B1934] sm:px-0 px-3">
+                <div className="sm:w-3/5 w-full flex flex-col justify-start sm:gap-0 gap-8 sm:justify-between py-9 text-[#0B1934] sm:px-[70px] px-3">
                     <div className='flex flex-col sm:gap-11 gap-6'>
                         <div className="flex flex-col sm:gap-3 gap-1">
                             <span className="sm:text-lg text-sm text-[#A88573]">{collection_name}</span>
@@ -80,7 +83,12 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                                 currencyDisplay: 'narrowSymbol'
                             }).format(parseFloat(price_amount))}`}</span>
                         </div>
-                        <AddToCart product={product} collection={collection} subscriptionPlan={subscriptionPlan} />
+                        {
+                            subscriptionPlan ? 
+                            <AddToCart product={product} collection={collection} subscriptionPlan={subscriptionPlan} />
+                            : 
+                            <CustomButton text='Sign Up' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit py-2 px-6' onClick={() => signInModal.onOpen()}/>
+                        }
                     </div>
                 </div>
             </div>

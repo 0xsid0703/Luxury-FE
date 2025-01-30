@@ -18,7 +18,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
           <div className="text-center sm:text-lg text-sm text-[#0B1934]">
             Unlike traditional collectors, our platform lets you claim assets
             anytime
-            <br className="sm:block hidden"/> or store them in secure vaults. Sell easily through our
+            <br className="sm:block hidden" /> or store them in secure vaults. Sell easily through our
             secondary{" "}
           </div>
         </div>
@@ -69,7 +69,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
                   subscriptionPlan={subscriptionPlan}
                 />
               ) : (
-                <div className="w-full rounded-full justify-center flex flex-row text-[#F3CF72] gap-3 bg-[#1F1B16] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
+                <div className="w-full rounded-full justify-center flex flex-row text-white gap-3 bg-[#A88573] py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
                   <span>Sign Up</span>
                 </div>
               )}
@@ -118,7 +118,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
                 subscriptionPlan={subscriptionPlan}
               />
             ) : (
-              <div className="w-full rounded-full justify-center flex flex-row text-[#F3CF72] gap-3 bg-[#1F1B16] border-4 border-[#D49F5E] border-opacity-15 py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
+              <div className="w-full rounded-full justify-center flex flex-row text-[#0B1934] gap-3 bg-[#E6AA8B] py-4 font-semibold cursor-pointer hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}>
                 <span>Sign Up</span>
               </div>
             )}

@@ -37,7 +37,7 @@ function SubmitButton({
   );
 }
 
-export function AddToCart({ product, collection, subscriptionPlan }: { product: any, collection: string, subscriptionPlan: UserSubscriptionPlan }) {
+export function AddToCart({ product, collection, subscriptionPlan }: { product: any, collection: string, subscriptionPlan: UserSubscriptionPlan | undefined }) {
   const cart = useCart();
   const { variants, availableForSale } = product;
   const { addCartItem } = useCart();

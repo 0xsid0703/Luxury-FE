@@ -35,7 +35,7 @@ const UpcomingSale = ({ collections }: Props) => {
                     Show More
                 </button>
             )}
-            <div className="border-t border-[#CDCDCD] sm:flex flex-row justify-between pt-8 w-full hidden">
+            <div className="hidden border-t border-[#CDCDCD] flex-row justify-between pt-8 w-full">
                 <Link href={"/"} className="text-[#99A1A3] text-base">
                     GO FUND ART @copyright
                 </Link>

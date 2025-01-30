@@ -9,11 +9,12 @@ import ProductMarket from './ProductMarket';
 import ProductFooter from './ProductFooter';
 import ProductHeader from './ProductHeader';
 import { UserSubscriptionPlan } from '@/types';
+import ProductInvestment from './ProductInvestment';
 
 type Props = {
     products: any[];
     collection: string;
-    subscriptionPlan: UserSubscriptionPlan;
+    subscriptionPlan: UserSubscriptionPlan | undefined;
 }
 
 const ProductPage = ({ products, collection, subscriptionPlan }: Props) => {
@@ -26,6 +27,7 @@ const ProductPage = ({ products, collection, subscriptionPlan }: Props) => {
         <ProductAbout />
         <ProductArtists />
         <ProductMarket />
+        <ProductInvestment />
         <ProductFooter />
       </div>
     );

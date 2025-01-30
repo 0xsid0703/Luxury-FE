@@ -9,6 +9,7 @@ import Image from "next/image";
 import VideoModal from "../modal/VideoModal";
 import SubscribeModal from "../modal/SubscribeModal";
 import Link from "next/link";
+import CustomButton from "../ui/CustomButton";
 
 type HeroProps = {
   collections: any[]
@@ -62,12 +63,7 @@ const Hero = ({ collections }: HeroProps) => {
                     Join our exclusive community of collectors and investors, where
                     luxury meets rare collectibles and long-term investments
                   </div>
-                  <div
-                    className="text-lg font-semibold px-9 py-4 bg-[#FFDF7C] outline outline-4 outline-[#D49F5E]/10 rounded-full w-fit hover:shadow-[0_0_0_2px_black,0_8px_0_0_white] hover:-translate-y-2 transition-all cursor-pointer"
-                    onClick={handleButtonClick}
-                  >
-                    Register to Waiting List
-                  </div>
+                  <CustomButton text="Register to Waiting List" onClick={handleButtonClick} className="text-lg bg-[#FFDF7C] w-fit hover:shadow-[0_0_0_0px_black,0_8px_0_0_white] hover:-translate-y-2 px-6 py-2"/>
                 </div>
               </div>
               <div className="sm:w-2/5 w-full">

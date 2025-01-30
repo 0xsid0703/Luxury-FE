@@ -17,10 +17,13 @@ export default async function Page(props: { params: Promise<{ collection: string
   if (user) {
     subscriptionPlan = await trpc.stripe.userPlans.query();
   }
-  return (subscriptionPlan && <div className="relative">
-    <ProductPage products={products} collection={collection} subscriptionPlan={subscriptionPlan} />
-    <div className="fixed sm:right-20 sm:bottom-20 right-10 bottom-10 z-50">
-      <CartModal />
+  console.log("subscriptionPlan", subscriptionPlan);
+  return (
+    <div className="relative">
+      <ProductPage products={products} collection={collection} subscriptionPlan={subscriptionPlan} />
+      <div className="fixed sm:right-20 sm:bottom-20 right-10 bottom-10 z-50">
+        <CartModal />
+      </div>
     </div>
-  </div>);
+  );
 }

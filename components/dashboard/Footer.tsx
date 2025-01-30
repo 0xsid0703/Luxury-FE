@@ -1,9 +1,8 @@
 "use client"
 import React, { useState } from "react";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
 import SubscribeModal from "../modal/SubscribeModal";
 import Image from "next/image";
+import CustomButton from "../ui/CustomButton";
 const Footer = () => {
   const [isWaitingOpen, setIsWaitingOpen] = useState(false)
   const handleButtonClick = () => {
@@ -25,11 +24,7 @@ const Footer = () => {
             luxury meets rare collectibles and long-term investments
           </div>
         </div>
-        <Button className="flex flex-row py-7 px-9 w-fit bg-white rounded-full text-lg outline outline-4 outline-[#D49F5E]/20 text-black hover:bg-[#F7F5F2]  hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all" onClick={handleButtonClick}>
-          <span>Register to Waiting List</span>
-          <div className="w-[1px] h-6 bg-[#848484]/20"></div>
-          <ArrowRight size={12} color="#000" />
-        </Button>
+        <CustomButton text="Register to Waiting List" onClick={handleButtonClick} className="px-6 py-2 w-fit bg-[#FFBC8A] text-lg text-[#0B1934] hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2" />
         {/* <div className="flex flex-col gap-7 items-center z-10">
             <span className="text-[#C1C2C2] text-xl">
               Join community of investors & collectors

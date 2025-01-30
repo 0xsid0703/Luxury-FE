@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { Button } from "../ui/button";
-import { ArrowRight } from "lucide-react";
+import CustomButton from "../ui/CustomButton";
 const ProductBrand = () => {
   return (
     <div
@@ -45,10 +44,7 @@ const ProductBrand = () => {
                   website link of the brand Cardinal du Four
                 </div>
               </div>
-              <Button className="flex flex-row py-7 px-9 w-fit text-[#0B1934] bg-[#FFBC8A] rounded-full text-lg outline outline-4 outline-[#F4A341]/20 hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all hover:bg-[#FFBC8A]">
-                <span>Visit Website</span>
-                <ArrowRight size={12} color="#000" />
-              </Button>
+              <CustomButton text="Visit Website" className="py-2 px-6 w-fit bg-[#FFBC8A] text-lg text-[#0B1934] hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2"/>
             </div>
           </div>
         </div>

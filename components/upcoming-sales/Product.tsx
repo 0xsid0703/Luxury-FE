@@ -31,7 +31,8 @@ const Product = ({ collection }: Props) => {
                     <a href={`/products/${collection.handle}`} className='sm:w-fit w-full flex flex-row justify-center gap-3 items-center bg-[#A88573] h-fit text-white px-6 py-4 rounded-full font-semibold hover:shadow-[0_0_0_0px_black,0_8px_0_0_#FFE281] hover:-translate-y-2 transition-all text-base'>
                         View Sale Details
                         <div className='bg-white rounded-full p-2 hidden sm:block'>
-                            <ArrowRight color='#000000' /></div>
+                            <ArrowRight color='#000000' />
+                        </div>
                     </a>
                 </div>
             </div>
