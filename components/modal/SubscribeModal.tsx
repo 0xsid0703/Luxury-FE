@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import { Button } from '../ui/button'
-import { X } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 import Image from 'next/image'
 import { toast } from '@/hooks/use-toast'
 type Props = {
@@ -13,15 +13,15 @@ const SubscribeModal = ({ onClose }: Props) => {
     const [status, setStatus] = useState(false)
     const isValidEmail = (email: string): boolean => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+        return emailRegex.test(email); 
     };
     const handleClick = async () => {
         const API_KEY = process.env.MAILCHIMP_API_KEY!;
         const LIST_ID = process.env.MAILCHIMP_LIST_ID!;
-        console.log({API_KEY}, {LIST_ID})
+        console.log({ API_KEY }, { LIST_ID })
         if (!email) {
             setError("Please input email address!")
-        }else if(!isValidEmail(email)){ 
+        } else if (!isValidEmail(email)) {
             setError("Please input valid email address!")
         }
         else {
@@ -43,32 +43,32 @@ const SubscribeModal = ({ onClose }: Props) => {
                     setStatus(true)
                 }
             } catch (error) {
-                console.log({error})
+                console.log({ error })
                 toast({ description: 'Something went wrong' })
             }
         }
     }
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 pb-36">
-            <div className="bg-white shadow-lg w-full sm:w-[600px] relative m-5">
-                <Button className='absolute w-8 h-8 top-0 right-0 translate-x-1/2 -translate-y-1/2 rounded-full bg-gray-300 p-2 hover:bg-gray-300' onClick={onClose}><X size={16} color='#000' /></Button>
-                {!status && <div className='w-full h-full flex flex-row'>
-                    <div className='w-full sm:w-3/5 flex flex-col py-8 pl-8 pr-4 gap-10'>
-                        <div className='text-2xl text-center font-semibold'>Get exclusive updates<br /> and offers!</div>
-                        <div className='flex flex-col gap-0'>
-                            <span className='text-base'>Email *</span>
-                            <input name='text' className='rounded-md hover:outline-none p-2 border border-black' onChange={(e) => setEmail(e.target.value)}></input>
-                            <span className='text-sm text-[#ff0000]'>{error}</span>
+            <div className="bg-white shadow-lg w-full sm:w-[864px] relative m-5 rounded-2xl">
+                <Button className='absolute w-8 h-8 top-5 right-5 translate-x-1/2 -translate-y-1/2' onClick={onClose}><X className='w-6 h-6' color='#F9F7F6' /></Button>
+                {!status && <div className='w-full h-full flex flex-row rounded-2xl'>
+                    <div className='w-full sm:w-1/2 flex flex-col py-14 pl-11 pr-20 gap-12'>
+                        <div className='flex flex-col gap-3'>
+                            <div className='text-3xl font-normal'>Get exclusive updates<br /> and offers!</div>
+                            <div className='text-sm text-[#8C99A1]'>Be the first to know about exclusive releases, special offers, and luxury collectibles. Subscribe now and never miss an update!</div>
                         </div>
-                        <div className='w-full flex flex-col items-center gap-5'>
-                            <Button className='bg-[#1F1B16] w-full rounded-md py-6 text-white hover:bg-[#1F1B16] hover:text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all text-lg font-medium' onClick={handleClick}>Subscribe</Button>
-                            <Image src={'/mailchimp.svg'} width={250} height={100} alt='' className='w-2/5' />
+                        <div className='flex flex-col gap-1'>
+                            <span className='text-sm font-medium'>Enter your email</span>
+                            <input name='text' className='py-4 px-6 rounded-2xl hover:outline-none border border-[#DDE2EA] text-sm' placeholder='name@example.com' onChange={(e) => setEmail(e.target.value)}></input>
+                            <span className='text-sm text-[#ff0000]'>{error}</span>
+                            <Button className='mt-6 bg-[#A88573] w-full rounded-2xl py-6 text-white hover:bg-[#A88573] hover:text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all text-base font-medium flex flex-row justify-center gap-2' onClick={handleClick}><span>Subscribe</span><ArrowRight color='#fff' size={16} /></Button>
                         </div>
                     </div>
-                    <div className='hidden sm:block w-2/5 bg-cover bg-no-repeat bg-center' style={{ backgroundImage: "url(/subscribe.png)" }}>
+                    <div className='hidden sm:block w-1/2 bg-cover bg-no-repeat bg-center rounded-r-2xl' style={{ backgroundImage: "url(/subscribe.png)" }}>
                     </div>
                 </div>}
-                {status && <div className='w-full h-full flex flex-col gap-14 items-center py-20'>
+                {status && <div className='w-full h-full flex flex-col gap-14 items-center py-20 rounded-2xl'>
                     <span className='text-2xl text-center font-semibold'>Thanks for subscribing!</span>
                     <Image src={'/mailchimp.svg'} width={250} height={100} alt='' className='w-[150px] h-[50px]' />
                 </div>}

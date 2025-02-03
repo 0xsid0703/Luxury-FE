@@ -9,7 +9,7 @@ const Faq = () => {
     {
       title: "What happens at the  end of my trial",
       desc: "At the end of your 14-day trial, you'll automatically be downgraded to the Free tier and you’ll be able to continue to use Calendly as long as you’d like. If you decide to upgrade to a paid plan, you can do so from the billing page in your account at any time during or after your trial.",
-    },
+    }, 
     {
       title: "What happens at the  end of my trial",
       desc: "At the end of your 14-day trial, you'll automatically be downgraded to the Free tier and you’ll be able to continue to use Calendly as long as you’d like. If you decide to upgrade to a paid plan, you can do so from the billing page in your account at any time during or after your trial.",
@@ -42,10 +42,10 @@ const Faq = () => {
               className="border-b last:border-b-0 border-gray-200"
             >
               <Accordion.Header>
-                <Accordion.Trigger className="flex justify-between w-full px-4 py-6 text-left sm:text-3xl text-base transition">
+                <Accordion.Trigger className="flex justify-between items-center w-full px-4 py-6 text-left sm:text-3xl text-base transition group">
                   <span>{faq.title}</span>
                   <ChevronDownIcon
-                    className="w-5 h-5 transition-transform duration-200 ease-in-out text-[#0B1934]"
+                    className="w-5 h-5 transition-transform duration-200 ease-in-out text-[#0B1934] group-data-[state=open]:rotate-180"
                     aria-hidden
                   />
                 </Accordion.Trigger>

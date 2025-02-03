@@ -10,28 +10,28 @@ const Opportunities = () => {
         </div>
         <div className="sm:w-3/5 w-full flex flex-col">
           <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
-            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <Image src={'/opportunity1.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
             <div className="flex flex-col sm:gap-5 gap-3">
               <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Liquid Investments</div>
               <div className="text-[#8C99A2] sm:text-sm text-xs">Our marketplace lets you confidently liquidate investments or diversify your portfolio.</div>
             </div>
           </div>
           <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
-            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <Image src={'/opportunity2.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
             <div className="flex flex-col sm:gap-5 gap-3">
               <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Hybrid Assets</div>
               <div className="text-[#8C99A2] sm:text-sm text-xs">Our NFTs are not just digital representations—they are tied to real, valuable physical goods</div>
             </div>
           </div>
           <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
-            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <Image src={'/opportunity3.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
             <div className="flex flex-col sm:gap-5 gap-3">
               <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Exclusive Collaborations</div>
               <div className="text-[#8C99A2] sm:text-sm text-xs">Partnering with top artists and brands ensures each drop is unique and secure.</div>
             </div>
           </div>
           <div className="sm:py-11 sm:px-14 py-5 px-6 flex flex-row sm:gap-14 gap-6 sm:items-center items-start">
-            <Image src={'/opportunity.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
+            <Image src={'/opportunity4.png'} width={104} height={104} alt="" className="sm:w-[104px] sm:h-[104px] w-12 h-12" />
             <div className="flex flex-col sm:gap-5 gap-3">
               <div className="font-light text-[#051B1B] sm:text-3xl text-lg">Community of Elite Collectors</div>
               <div className="text-[#8C99A2] sm:text-sm text-xs">Network with like-minded individuals and investors who appreciate the fine art of collecting</div>

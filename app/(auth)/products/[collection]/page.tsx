@@ -5,10 +5,12 @@ import React from "react";
 import CartModal from '@/components/cart/modal';
 import { getCurrentUser } from "@/lib/auth";
 import { trpc } from "@/trpc/server";
+import { getCollection } from "@/lib/shopify";
 
 export default async function Page(props: { params: Promise<{ collection: string }> }) {
   const { collection } = await props.params;
   const user = await getCurrentUser();
+  const collectionData = await getCollection(collection);
   const products = await getCollectionProducts({ collection });
   if (!collection) {
     redirect(`/`);
@@ -17,10 +19,9 @@ export default async function Page(props: { params: Promise<{ collection: string
   if (user) {
     subscriptionPlan = await trpc.stripe.userPlans.query();
   }
-  console.log("subscriptionPlan", subscriptionPlan);
   return (
     <div className="relative">
-      <ProductPage products={products} collection={collection} subscriptionPlan={subscriptionPlan} />
+      <ProductPage products={products} collectionData={collectionData} subscriptionPlan={subscriptionPlan} />
       <div className="fixed sm:right-20 sm:bottom-20 right-10 bottom-10 z-50">
         <CartModal />
       </div>

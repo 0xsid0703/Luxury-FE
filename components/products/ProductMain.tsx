@@ -13,15 +13,15 @@ import ProductInvestment from './ProductInvestment';
 
 type Props = {
     products: any[];
-    collection: string;
     subscriptionPlan: UserSubscriptionPlan | undefined;
+    collectionData: any
 }
 
-const ProductPage = ({ products, collection, subscriptionPlan }: Props) => {
+const ProductPage = ({ products,  subscriptionPlan, collectionData }: Props) => {
     return (
       <div className="min-h-screen">
         <ProductHeader />
-        <ProductHero products={products} collection={collection} subscriptionPlan={subscriptionPlan} />
+        <ProductHero products={products} subscriptionPlan={subscriptionPlan} collectionData={collectionData} />
         <ProductEdition />
         <ProductBrand />
         <ProductAbout />
