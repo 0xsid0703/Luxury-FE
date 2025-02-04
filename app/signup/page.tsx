@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 
-export default function LoginPage() {
+export default function SignUpPage() {
   const signInModal = useSigninModal();
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState("");
@@ -45,12 +45,12 @@ export default function LoginPage() {
         <Image src="/logo.png" width={100} height={50} alt="" className="w-[100px] h-[50px]" />
         <div className="flex flex-col items-center gap-12 justify-center bg-white sm:py-12 sm:px-20 py-6 px-8 rounded-2xl max-w-lg">
           <div className="flex flex-col gap-[14px] items-center">
-            <div className="sm:text-[40px] text-[36px] text-[#0B1934] leading-10 text-center">Welcome Back!</div>
+            <div className="sm:text-[40px] text-[36px] text-[#0B1934] leading-10 text-center">Join the {" "}<span className="text-[#A88573]">Exclusive Collectors' Circle</span></div>
             <div className="text-sm text-[#8C99A1] text-center">Log in to access exclusive collectibles, manage your portfolio, and explore upcoming sales.</div>
           </div>
           <div className="flex flex-col gap-5 w-full">
             <div className="flex flex-col gap-1 w-full">
-              <span className="text-sm">Log in with email</span>
+              <span className="text-sm">Sign Up with email</span>
               <input type="email" placeholder="Email" className="border border-[#DDE2EA] outline-none rounded-lg px-6 py-3 text-sm" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="flex flex-col gap-2 w-full items-center">
@@ -81,30 +81,12 @@ export default function LoginPage() {
                 {"Continue with Google"}
               </Button>
               <div className="mt-6 text-sm flex flex-row items-center gap-2">
-                <span className="text-[#8C99A1]">Don't have an account?</span><Link href={'/signup'} className="text-[#A88573] font-semibold cursor-pointer hover:underline"> Sign Up</Link>
+                <span className="text-[#8C99A1]">Already have an account?</span><Link href={'/login'} className="text-[#A88573] font-semibold cursor-pointer hover:underline"> Log In</Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
-        <div className="flex flex-col space-y-2 text-center sm:px-0 px-6">
-          <Image
-            src="/signin-logo.svg"
-            className="mx-auto"
-            width="64"
-            height="64"
-            alt=""
-          />
-          <h1 className="text-2xl font-semibold tracking-tight text-white">
-            {"Welcome Back"}
-          </h1>
-          <p className="text-sm text-muted-foreground text-white">
-            {"Sign in to your account"}
-          </p>
-        </div>
-        <UserAuthForm />
-      </div> */}
     </div>
   );
 }
