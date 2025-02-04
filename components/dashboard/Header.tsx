@@ -24,7 +24,7 @@ const Header = ({ user }: HeaderProps) => {
           <div className="w-1/2 flex justify-between items-center">
             <Link href="/">
               <Image
-                src={"/Logo.svg"}
+                src={"/logo.png"}
                 width={400}
                 height={200}
                 alt=""
@@ -54,18 +54,18 @@ const Header = ({ user }: HeaderProps) => {
               <div className="flex gap-2">
                 <Button
                   asChild
-                  className="bg-transparent text-primary text-base px-4 py-2 font-bold w-36 rounded-md shadow-none hover:shadow-[0_0_0_1px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
+                  className="bg-transparent text-primary text-base px-4 py-2 font-bold w-36 rounded-md shadow-none hover:shadow-[0_0_0_1px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer"
+                  onClick={signInModal.onOpen}
                 >
-                  <Link href="/login">Log In</Link>
+                  <div>Log In</div>
                 </Button>
 
                 <Button
                   asChild
-                  className="bg-yellowColor hover:bg-yellowColor shadow-none text-primary text-base px-4 py-2 font-bold w-36 rounded-md hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}
+                  className="bg-yellowColor hover:bg-yellowColor shadow-none text-primary text-base px-4 py-2 font-bold w-36 rounded-md hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer" onClick={signInModal.onOpen}
                 >
                   <div>Sign Up</div>
                 </Button>
-                {/* <GoogleLogin shape="circle" size="medium" text="continue_with" onSuccess={googleLoginSuccessful} /> */}
               </div>) : null}
             {user ? (
               <UserAccountNav
@@ -78,7 +78,7 @@ const Header = ({ user }: HeaderProps) => {
           <div className="flex flex-row justify-between items-center py-2">
             <Link href="/">
               <Image
-                src={"/Logo.svg"}
+                src={"/logo.png"}
                 width={400}
                 height={200}
                 alt=""
@@ -135,7 +135,7 @@ const Header = ({ user }: HeaderProps) => {
                       <div>Sign Up</div>
                     </Button> : <Button
                       asChild
-                      className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={()=> signOut()}
+                      className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={() => signOut()}
                     >
                       <div>Sign Out</div>
                     </Button>
@@ -143,9 +143,10 @@ const Header = ({ user }: HeaderProps) => {
                   {
                     !user && <Button
                       asChild
-                      className="bg-white hover:bg-white shadow-none text-[#0B1934] text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
+                      className="bg-white hover:bg-white shadow-none text-[#0B1934] text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer"
+                      onClick={signInModal.onOpen}
                     >
-                      <Link href="/login">Log In</Link>
+                      <div>Log In</div>
                     </Button>
                   }
                 </div>

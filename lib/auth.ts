@@ -7,9 +7,8 @@ import { getServerSession, type NextAuthOptions, type User } from "next-auth";
 import EmailProvider from "next-auth/providers/email";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-
 import { MagicLinkEmail, resend, siteConfig } from "./magic-link";
-
+import axios from "axios";
 import prisma from "./prisma";
 type UserId = string;
 type IsAdmin = boolean;
@@ -19,13 +18,54 @@ declare module "next-auth" {
     user: User & {
       id: UserId;
       isAdmin: IsAdmin;
+      shopifyCustomerId: string | number;
     };
   }
+
 }
 
 declare module "next-auth" {
   interface JWT {
     isAdmin: IsAdmin;
+    shopifyCustomerId: string | number;
+  }
+}
+async function findShopifyCustomerByEmail(email: string) {
+  const shopifyDomain = process.env.SHOPIFY_STORE_DOMAIN!;
+  const response = await axios.get(
+    `https://${shopifyDomain}/admin/api/${process.env.SHOPIFY_API_VERSION}/customers/search.json?query=email:${email}`,
+    {
+      headers: { "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY! },
+    }
+  );
+  return response.data.customers[0]; // Return first matched customer
+}
+
+async function syncWithShopify(user: any) {
+  const shopifyDomain = process.env.SHOPIFY_STORE_DOMAIN!;
+  const existingCustomer = await findShopifyCustomerByEmail(user.email);
+  if (!existingCustomer) {
+    // Create new customer
+    const response = await axios.post(
+      `https://${shopifyDomain}/admin/api/${process.env.SHOPIFY_API_VERSION}/customers.json`,
+      {
+        customer: {
+          email: user.email,
+          first_name: user.name.split(" ")[0] || "",
+          last_name: user.name.split(" ")[1] || "",
+          metafields: [
+            {
+              namespace: 'custom',
+              key: 'premium_type',
+              value: 'free',
+              type: 'single_line_text_field'
+            }
+          ]
+        }
+      },
+      { headers: { "X-Shopify-Access-Token": process.env.SHOPIFY_API_KEY! } }
+    );
+    return response.data.customer.id;
   }
 }
 
@@ -85,6 +125,10 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   callbacks: {
+    async signIn({ user }) {
+      await syncWithShopify(user);
+      return true;
+    },
     async redirect({ url, baseUrl }) {
       // Always redirect to the home page after login
       if (url === `${baseUrl}/login`) {
