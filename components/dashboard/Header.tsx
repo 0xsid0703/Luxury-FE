@@ -5,7 +5,6 @@ import React, { useState } from "react";
 import { Button } from "../ui/button";
 import type { User } from "next-auth";
 import { UserAccountNav } from "../common/user-account-nav";
-import { useSigninModal } from "@/hooks/use-signin-modal";
 import clsx from "clsx";
 import { signOut } from "next-auth/react";
 
@@ -14,8 +13,6 @@ interface HeaderProps {
 }
 
 const Header = ({ user }: HeaderProps) => {
-  const signInModal = useSigninModal();
-
   const [toggle, setToggle] = useState(true)
   return (
     <div className={clsx("fixed bg-transparent w-full z-10", toggle ? "h-fit" : 'h-full')}>
@@ -55,16 +52,15 @@ const Header = ({ user }: HeaderProps) => {
                 <Button
                   asChild
                   className="bg-transparent text-primary text-base px-4 py-2 font-bold w-36 rounded-md shadow-none hover:shadow-[0_0_0_1px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer"
-                  onClick={signInModal.onOpen}
                 >
-                  <div>Log In</div>
+                  <Link href={"/login"}>Log In</Link>
                 </Button>
 
                 <Button
                   asChild
-                  className="bg-yellowColor hover:bg-yellowColor shadow-none text-primary text-base px-4 py-2 font-bold w-36 rounded-md hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer" onClick={signInModal.onOpen}
+                  className="bg-yellowColor hover:bg-yellowColor shadow-none text-primary text-base px-4 py-2 font-bold w-36 rounded-md hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer"
                 >
-                  <div>Sign Up</div>
+                  <Link href={"/signup"}>Sign Up</Link>
                 </Button>
               </div>) : null}
             {user ? (
@@ -89,9 +85,9 @@ const Header = ({ user }: HeaderProps) => {
               {
                 !user ? <Button
                   asChild
-                  className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}
+                  className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
                 >
-                  <div>Sign Up</div>
+                  <Link href={"/signup"}>Sign Up</Link>
                 </Button> : <Button
                   asChild
                   className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={() => {
@@ -130,9 +126,9 @@ const Header = ({ user }: HeaderProps) => {
                   {
                     !user ? <Button
                       asChild
-                      className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={signInModal.onOpen}
+                      className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all"
                     >
-                      <div>Sign Up</div>
+                      <Link href={"/signup"}>Sign Up</Link>
                     </Button> : <Button
                       asChild
                       className="bg-[#0B1934] hover:bg-[#0B1934] shadow-none text-white text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all" onClick={() => signOut()}
@@ -144,9 +140,8 @@ const Header = ({ user }: HeaderProps) => {
                     !user && <Button
                       asChild
                       className="bg-white hover:bg-white shadow-none text-[#0B1934] text-base px-3 py-2 font-bold rounded-full hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 transition-all cursor-pointer"
-                      onClick={signInModal.onOpen}
                     >
-                      <div>Log In</div>
+                      <Link href={"/login"}>Log In</Link>
                     </Button>
                   }
                 </div>
