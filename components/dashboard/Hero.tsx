@@ -46,7 +46,7 @@ const Hero = ({ collections }: HeroProps) => {
       className="w-full"
     >
       <div className="flex flex-col bg-white min-h-screen">
-        <div className="flex-col pt-36 w-full  relative h-fit  bg-white">
+        <div className="flex-col sm:pt-36 pt-20 w-full  relative h-fit  bg-white">
           <div className="absolute top-0 w-full bg-[#0B1934] z-[2] sm:h-[628px] h-[763px]"></div>
           <div className="absolute top-0 w-full bg-center bg-no-repeat bg-cover sm:h-[628px] h-[763px] z-[3]" style={{ backgroundImage: "url(/hero.png)" }}></div>
           <div className="flex flex-col sm:px-0 px-6 h-fit">

@@ -8,7 +8,7 @@ const ProductMarket = () => {
         <div className="flex flex-col">
           <span className="font-light sm:text-6xl text-3xl text-[#0B1934]">Financial & Market</span>
         </div>
-        <div className="flex flex-col sm:gap-11 gap-5 bg-[#F3F4F6] sm:py-[60px] sm:px-12 px-5 py-5">
+        <div className="flex flex-col sm:gap-11 gap-5 bg-[#F3F4F6] sm:py-[60px] sm:px-12 px-5 py-5 rounded-xl">
           <div className="flex sm:flex-row flex-col sm:gap-10 gap-5">
             <div className="sm:w-1/2 w-full flex flex-col divide-y divide-[#C1C2C2]">
               <div className="grid grid-cols-2 gap-10 pb-6">

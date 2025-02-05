@@ -3,7 +3,7 @@ import React from "react";
 
 const ProductFooter = () => {
   return (
-    <div className="py-8 container mx-auto w-full flex flex-col gap-12">
+    <div className="py-8 container mx-auto w-full flex flex-col gap-12 sm:px-0 px-2">
       <div
         className="bg-cover bg-no-repeat bg-center relative rounded-[30px] flex flex-col"
         style={{ backgroundImage: "url(/product/footer.png)" }}

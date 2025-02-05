@@ -12,7 +12,7 @@ const Pricing = ({ userId, subscriptionPlan }: PricingProps) => {
   const signInModal = useSigninModal();
   return (
     <div className="w-full">
-      <div className="pt-36 flex flex-col gap-12 items-center text-white">
+      <div className="sm:pt-36 pt-20 flex flex-col gap-12 items-center text-white">
         <div className="flex flex-col items-center sm:gap-7 gap-5">
           <div className="sm:text-7xl text-4xl text-[#0B1934]">Pricing</div>
           <div className="text-center sm:text-lg text-sm text-[#0B1934]">

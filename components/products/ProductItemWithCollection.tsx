@@ -48,7 +48,7 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                 }}
             />
             <div className="rounded-xl bg-[#F3F4F6] flex sm:flex-row flex-col">
-                <div className="sm:w-2/5 w-full aspect-[500/447] bg-center bg-no-repeat bg-cover sm:rounded-l-xl rounded-t-xl" style={{ backgroundImage: `url(${product_image})` }}></div>
+                <div className="sm:w-2/5 w-full aspect-[500/447] bg-center bg-no-repeat bg-cover sm:rounded-bl-xl rounded-tl-xl sm:rounded-tr-none rounded-tr-xl rounded-bl-none" style={{ backgroundImage: `url(${product_image})` }}></div>
                 <div className="sm:w-3/5 w-full flex flex-col justify-start sm:gap-0 gap-8 sm:justify-between py-9 text-[#0B1934] sm:px-[70px] px-3">
                     <div className='flex flex-col sm:gap-11 gap-6'>
                         <div className="flex flex-col sm:gap-3 gap-1">

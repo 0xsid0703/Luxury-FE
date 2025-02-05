@@ -16,7 +16,7 @@ const Header = ({ user }: HeaderProps) => {
   const [toggle, setToggle] = useState(true)
   return (
     <div className={clsx("fixed bg-transparent w-full z-10", toggle ? "h-fit" : 'h-full')}>
-      <div className={clsx("bg-[#F7F7F7] shadow-lg", toggle ? "h-fit" : 'h-full')}>
+      <div className={clsx("bg-white shadow-lg", toggle ? "h-fit" : 'h-full')}>
         <div className="mx-auto px-6 py-1 sm:flex hidden">
           <div className="w-1/2 flex justify-between items-center">
             <Link href="/">
@@ -104,16 +104,16 @@ const Header = ({ user }: HeaderProps) => {
               }
             </div>
           </div>
-          {!toggle && <div className="sm:hidden w-full h-full bg-[#F7F7F7] flex flex-1 flex-col justify-between">
+          {!toggle && <div className="sm:hidden w-full h-full bg-white flex flex-1 flex-col justify-between">
             <div className="flex flex-col text-black">
               <Link href={"/"} className="text-2xl font-light py-3">How It Works</Link>
               <Link href={"/"} className="text-2xl font-light py-3">Private Sales</Link>
               <Link href={"/"} className="text-2xl font-light py-3">Vault Partner</Link>
               <Link href={"/pricing"} className="text-2xl font-light py-3">Pricing</Link>
-              <Link href={"/"} className="text-2xl font-light py-3">FAQ</Link>
+              <Link href={"/faq"} className="text-2xl font-light py-3">FAQ</Link>
             </div>
             <div className="flex flex-col gap-16 pb-6">
-              <div className="flex flex-col gap-6 px-6">
+              <div className="flex flex-col gap-6 px-6 py-5 rounded-xl bg-[#F7F7F7]">
                 <div className="flex flex-col gap-2">
                   <div className="text-base text-[#0B1934]">
                     Join Or Log In

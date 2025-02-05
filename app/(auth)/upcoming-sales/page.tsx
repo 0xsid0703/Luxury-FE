@@ -11,7 +11,7 @@ export default async function UpcomingSalesPage() {
 
     return (
         <div className="min-h-screen">
-            <div className="w-full bg-white">
+            <div className="w-full bg-[#F9F7F6]">
                 <UpcomingSale collections={collections} />
             </div>
         </div>

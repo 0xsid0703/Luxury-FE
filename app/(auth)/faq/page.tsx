@@ -23,8 +23,8 @@ const page = () => {
         },
     ];
     return (
-        <div className='min-h-screen bg-white sm:p-0 p-6'>
-            <div className='pt-36 w-full h-screen flex flex-col justify-between items-center container mx-auto'>
+        <div className='h-screen bg-white sm:p-0 p-6'>
+            <div className='sm:pt-36 pt-20 w-full h-full flex flex-col justify-between items-center container mx-auto'>
                 <div className='flex flex-col sm:gap-20 gap-10 items-center w-full'>
                     <div className='flex flex-col sm:gap-8 gap-4 justify-center items-center'>
                         <div className='sm:text-6xl text-3xl text-[#0B1934] text-center'>Frequently Asked Questions</div>

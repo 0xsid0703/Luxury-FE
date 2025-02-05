@@ -15,8 +15,9 @@ export default function LoginPage() {
   const [signInClicked, setSignInClicked] = useState(false);
   const [email, setEmail] = useState("");
   const searchParams = useSearchParams();
-
+  const [isLoading, setIsLoading] = useState(false);
   async function onSubmit() {
+    setIsLoading(true);
     const signInResult = await signIn("email", {
       email: email.toLowerCase(),
       redirect: false,
@@ -24,7 +25,7 @@ export default function LoginPage() {
     }).catch((error) => {
       console.error("Error during sign in:", error);
     });
-
+    setIsLoading(false);
     if (!signInResult?.ok) {
       return toast({
         title: "Something went wrong.",
@@ -54,7 +55,11 @@ export default function LoginPage() {
               <input type="email" placeholder="Email" className="border border-[#DDE2EA] outline-none rounded-lg px-6 py-3 text-sm" onChange={(e) => setEmail(e.target.value)} />
             </div>
             <div className="flex flex-col gap-2 w-full items-center">
-              <Button className='bg-[#A88573] w-full rounded-xl py-6 text-white hover:bg-[#A88573] hover:text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all text-base font-medium flex flex-row justify-center gap-2' onClick={onSubmit}><span>Continue</span><ArrowRight color='#fff' size={16} /></Button>
+              <Button className='bg-[#A88573] w-full rounded-xl py-6 text-white hover:bg-[#A88573] hover:text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_#F3CF72] hover:-translate-y-2 transition-all text-base font-medium flex flex-row justify-center gap-2' onClick={onSubmit}>
+                {isLoading && (
+                  <Icons.Spinner className="mr-2 h-4 w-4 animate-spin" />
+                )}<span>Continue</span><ArrowRight color='#fff' size={16} />
+              </Button>
               <div className="text-sm text-[#8C99A1] text-center">OR</div>
               <Button
                 variant="default"

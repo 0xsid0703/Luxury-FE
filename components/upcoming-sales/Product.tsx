@@ -9,7 +9,7 @@ type Props = {
 
 const Product = ({ collection }: Props) => {
     return (
-        <div className='w-full flex sm:flex-row flex-col sm:gap-16 gap-4 px-4 py-8 items-center sm:items-stretch sm:justify-center justify-start'>
+        <div className='w-full flex sm:flex-row flex-col sm:gap-16 gap-4 p-9 items-center sm:items-stretch sm:justify-center justify-start bg-white rounded-3xl'>
             <div className='sm:w-[500px] sm:h-[450px] w-[320px] h-[300px] relative'>
                 <Image src={collection.image.url} width={500} height={450} alt={collection.image.altText} className='rounded-xl grayscale hover:grayscale-0 w-full h-full' />
                 <Image

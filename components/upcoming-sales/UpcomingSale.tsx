@@ -10,12 +10,12 @@ type Props = {
 const UpcomingSale = ({ collections }: Props) => {
     const [showMore, setShowMore] = useState(4);
     return (
-        <div className="container mx-auto pt-36 pb-14 flex flex-col gap-12 items-center">
+        <div className="container mx-auto pt-20 sm:pt-36 pb-14 flex flex-col gap-12 items-center">
             <div className='flex flex-col w-full  justify-center items-center gap-7'>
                 <span className="text-[#1E1E1E] sm:text-7xl text-4xl">Upcoming Sales</span>
                 <span className='text-center sm:text-lg text-sm'>Get ready for exclusive, upcoming  releases. Be the first to<br /> get your hands on rares.</span>
             </div>
-            <div className='flex flex-col w-full items-center justify-center'>
+            <div className='flex flex-col w-full items-center justify-center gap-3'>
                 {collections.slice(0, showMore).map((collection, index:number) => (
                     <Product 
                         key={index}

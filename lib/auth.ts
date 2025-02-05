@@ -100,7 +100,6 @@ export const authOptions: NextAuthOptions = {
         const authSubject = userVerified
           ? `Sign-in link for ${(siteConfig as { name: string }).name}`
           : "Activate your account";
-
         try {
           await resend.emails.send({
             from: process.env.RESEND_FROM!,
