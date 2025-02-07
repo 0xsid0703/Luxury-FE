@@ -12,25 +12,25 @@ import { UserSubscriptionPlan } from '@/types';
 import ProductInvestment from './ProductInvestment';
 
 type Props = {
-    products: any[];
-    subscriptionPlan: UserSubscriptionPlan | undefined;
-    collectionData: any
+  products: any[];
+  subscriptionPlan: UserSubscriptionPlan | undefined;
+  collectionData: any;
 }
 
-const ProductPage = ({ products,  subscriptionPlan, collectionData }: Props) => {
-    return (
-      <div className="min-h-screen">
-        <ProductHeader />
-        <ProductHero products={products} subscriptionPlan={subscriptionPlan} collectionData={collectionData} />
-        <ProductEdition />
-        <ProductBrand />
-        <ProductAbout />
-        <ProductArtists />
-        <ProductMarket />
-        <ProductInvestment />
-        <ProductFooter />
-      </div>
-    );
-  };
+const ProductPage = ({ products, subscriptionPlan, collectionData  }: Props) => {
+  return (
+    <div className="min-h-screen">
+      <ProductHeader />
+      <ProductHero products={products} subscriptionPlan={subscriptionPlan} collectionData={collectionData} />
+      <ProductEdition />
+      <ProductBrand />
+      <ProductAbout />
+      <ProductArtists />
+      <ProductMarket />
+      <ProductInvestment />
+      <ProductFooter />
+    </div>
+  );
+};
 
 export default ProductPage

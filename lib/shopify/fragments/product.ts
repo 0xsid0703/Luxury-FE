@@ -55,7 +55,7 @@ const productFragment = /* GraphQL */ `
       ...seo
     }
     tags
-    metafields(identifiers: [{ namespace: "custom", key: "artist" }, { namespace: "custom", key: "type" }, { namespace: "custom", key: "volume" }]) {
+    metafields(identifiers: [{ namespace: "custom", key: "artist" }, { namespace: "custom", key: "type" }, { namespace: "custom", key: "volume" }, { namespace: "auction_pro", key: "start_date" }, { namespace: "auction_pro", key: "end_date" }, { namespace: "auction_pro", key: "min_bid_increment" }, { namespace: "auction_pro", key: "bid_count" }]) {
       namespace
       key
       value

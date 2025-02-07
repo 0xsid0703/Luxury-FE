@@ -3,15 +3,20 @@ import React, { useState } from "react";
 import ProductItemWithCollection from "./ProductItemWithCollection";
 import { UserSubscriptionPlan } from "@/types";
 import VideoModal from "../modal/VideoModal";
+import ProductAuctionWithCollection from "./ProductAuctionWithCollection";
 
 type Props = {
   products: any[];
   subscriptionPlan: UserSubscriptionPlan | undefined;
-  collectionData: any
+  collectionData: any;
 };
 
-const ProductHero = ({ products, subscriptionPlan, collectionData }: Props) => {
-  const [video, setVideo] = useState('');
+const ProductHero = ({
+  products,
+  subscriptionPlan,
+  collectionData,
+}: Props) => {
+  const [video, setVideo] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full h-fit bg-white sm:px-0 px-4 pb-20">
@@ -71,23 +76,45 @@ const ProductHero = ({ products, subscriptionPlan, collectionData }: Props) => {
             <div className="sm:text-3xl text-2xl text-[#0B1934]">Explore Products</div>
             <div className="flex flex-col gap-9">
               {
-                products.length > 0 && products.map((product: any, index: number) => (
-                  <ProductItemWithCollection
-                    key={index}
-                    product={product}
-                    collection={collectionData.handle}
-                    product_image={product.featuredImage.url}
-                    collection_name={product.collection.title}
-                    volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}
-                    product_name={product.title}
-                    edition={product.tags[0]}
-                    artist={product.metafields.find((metafield: any) => metafield.key === "artist").value}
-                    product_type={product.metafields.find((metafield: any) => metafield.key === "type").value}
-                    price_amount={product.variants[0].price.amount}
-                    currency={product.variants[0].price.currencyCode}
-                    subscriptionPlan={subscriptionPlan}
-                  />
-                ))
+                products.length > 0 && products.map((product: any, index: number) => {
+                  const isAuction = product.tags.includes('product_auction');
+
+                  return isAuction ? (
+                    <ProductAuctionWithCollection
+                      key={index}
+                      product={product}
+                      collection={collectionData.handle}
+                      product_image={product.featuredImage.url}
+                      collection_name={product.collection.title}
+                      volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}
+                      product_name={product.title}
+                      edition={product.tags[0]}
+                      artist={product.metafields.find((metafield: any) => metafield.key === "artist").value}
+                      product_type={product.metafields.find((metafield: any) => metafield.key === "type").value}
+                      price_amount={product.variants[0].price.amount}
+                      currency={product.variants[0].price.currencyCode}
+                      subscriptionPlan={subscriptionPlan}
+                      auction={product.auctionProduct}
+                    />
+                  ) : (
+                    <ProductItemWithCollection
+                      key={index}
+                      product={product}
+                      collection={collectionData.handle}
+                      product_image={product.featuredImage.url}
+                      collection_name={product.collection.title}
+                      volume={product.metafields.find((metafield: any) => metafield.key === "volume").value}
+                      product_name={product.title}
+                      edition={product.tags[0]}
+                      artist={product.metafields.find((metafield: any) => metafield.key === "artist").value}
+                      product_type={product.metafields.find((metafield: any) => metafield.key === "type").value}
+                      price_amount={product.variants[0].price.amount}
+                      currency={product.variants[0].price.currencyCode}
+                      subscriptionPlan={subscriptionPlan}
+                    />
+                  )
+                }
+                )
               }
             </div>
           </div>

@@ -1,5 +1,5 @@
 import ProductPage from "@/components/products/ProductMain";
-import { getCollectionProducts } from "@/lib/shopify";
+import { getAuctionProduct, getCollectionProducts } from "@/lib/shopify";
 import { redirect } from "next/navigation";
 import React from "react";
 import CartModal from '@/components/cart/modal';
@@ -11,7 +11,24 @@ export default async function Page(props: { params: Promise<{ collection: string
   const { collection } = await props.params;
   const user = await getCurrentUser();
   const collectionData = await getCollection(collection);
-  const products = await getCollectionProducts({ collection });
+  const products:any[] = await getCollectionProducts({ collection });
+  
+  async function fetchAllAuctionProducts(prods: any[]) {
+    await Promise.all(
+      prods.map(async (product) => {
+        const product_id = product.id.split('/').pop() || "";
+
+        const auctionProduct = await getAuctionProduct(product_id);
+        product.auctionProduct = auctionProduct;
+        return true
+      })
+    );
+
+    return prods; // Return the final list of auction products
+  }
+
+  await fetchAllAuctionProducts(products);
+
   if (!collection) {
     redirect(`/`);
   }

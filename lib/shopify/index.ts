@@ -50,6 +50,7 @@ import {
   ShopifyRemoveFromCartOperation,
   ShopifyUpdateCartOperation
 } from './types';
+import axios from 'axios';
 
 const domain = process.env.SHOPIFY_STORE_DOMAIN
   ? ensureStartsWith(process.env.SHOPIFY_STORE_DOMAIN, 'https://')
@@ -272,6 +273,16 @@ export async function getCart(cartId: string | undefined): Promise<Cart | undefi
   }
 
   return reshapeCart(res.body.data.cart);
+}
+
+export async function getAuctionProduct(product_id: string) {
+  const rest = await axios.get(`${process.env.SHOPIFY_AUCTION_API_LINK}/api/auction/${product_id}`, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${process.env.SHOPIFY_AUCTION_API_KEY}`
+    }
+  });
+  return rest.data
 }
 
 export async function getCollection(handle: string): Promise<Collection | undefined> {
