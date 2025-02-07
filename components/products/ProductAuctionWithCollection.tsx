@@ -1,11 +1,12 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Product } from '@/lib/shopify/types';
 import { ProductProvider } from '../product/product-context';
 import { UserSubscriptionPlan } from '@/types';
 import CustomButton from '../ui/CustomButton';
 import { useSigninModal } from "@/hooks/use-signin-modal";
 import PurchaseButton from '../ui/PurchaseButton';
+import CountdownTimer from './EndTime';
 
 type Props = {
     product: Product,
@@ -24,31 +25,6 @@ type Props = {
 }
 
 const ProductAuctionWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, price_amount, currency, product, subscriptionPlan, auction }: Props) => {
-    console.log({ auction })
-    const calculateTimeLeft = () => {
-        const now = new Date();
-        const diff = new Date(auction.auction.end_date).getTime() - now.getTime();
-
-        if (diff <= 0) {
-            return { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        }
-
-        return {
-            days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-            hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
-            minutes: Math.floor((diff / (1000 * 60)) % 60),
-            seconds: Math.floor((diff / 1000) % 60),
-        };
-    };
-
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
-        }, 1000);
-
-        return () => clearInterval(timer); // Cleanup on unmount
-    }, [auction.auction.end_date])
     const signInModal = useSigninModal();
     const productJsonLd = {
         '@context': 'https://schema.org',
@@ -106,7 +82,7 @@ const ProductAuctionWithCollection = ({ product_image, collection_name, volume, 
                             <div className='font-semibold sm:text-lg text-sm flex flex-row gap-3 items-center'>
                                 <span className='text-[#8C99A1]'>Ends on {new Date(auction.auction.end_date).toLocaleDateString("en-US", { month: "short", day: "2-digit" })}</span>
                                 <div className='h-full my-1 w-[1px] bg-[#8C99A1]'></div>
-                                <span className='text-[#63151F]'>{timeLeft.days}d  {timeLeft.hours}h  {timeLeft.minutes}m  {timeLeft.seconds}s</span>
+                                <CountdownTimer enddate={auction.auction.end_date} />
                             </div>
                             <div className='flex flex-row gap-2 items-end'>
                                 <span className="font-light sm:text-4xl text-3xl  text-[#0B1934]">{`${new Intl.NumberFormat(undefined, {
