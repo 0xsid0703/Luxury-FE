@@ -13,7 +13,7 @@ const AuctionBidDialog = ({ onClose, product, collection_name }: Props) => {
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 pb-36">
             <div className="bg-white shadow-lg w-full sm:w-[612px] relative m-5 rounded-2xl">
-                <Button className='absolute w-8 h-8 top-5 right-5 translate-x-1/2 -translate-y-1/2' onClick={onClose}><X className='w-6 h-6' color='#F9F7F6' /></Button>
+                <Button className='absolute w-8 h-8 top-5 right-5 bg-transparent shadow-none translate-x-1/2 -translate-y-1/2 text-[#0B1934]' onClick={onClose}><X size={20} color='#0B1934' /></Button>
                 <div className='w-full h-full flex flex-col gap-[106px] rounded-2xl sm:py-8 sm:px-10 py-5 px-6'>
                     <div className='flex flex-col gap-12 w-full'>
                         <div className='flex flex-col w-full'>
@@ -55,12 +55,13 @@ const AuctionBidDialog = ({ onClose, product, collection_name }: Props) => {
                     <div className='flex flex-row justify-between items-center w-full h-fit'>
                         <div className='text-[#A88573] text-base font-semibold cursor-pointer' onClick={() => setIsViewHistory(true)}>View bids history</div>
                         <div className='flex flex-row gap-3 items-center'>
-                            <Button className='shadow-none px-6 py-[14px] text-[#0B1934] bg-[#F3F4F6] rounded-full'>Cancel</Button>
+                            <Button className='shadow-none px-6 py-[14px] text-[#0B1934] bg-[#F3F4F6] rounded-full' onClick={onClose}>Cancel</Button>
                             <Button className='shadow-none px-6 py-[14px] text-[#FFFFFF] bg-[#0B1934] rounded-full'>Place Bid</Button>
                         </div>
                     </div>
                 </div>
             </div >
+            {isViewHistory && <div></div>}
         </div >
     )
 }

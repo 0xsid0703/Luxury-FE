@@ -87,7 +87,7 @@ const ProductItemWithCollection = ({ product_image, collection_name, volume, pro
                             subscriptionPlan ? 
                             <AddToCart product={product} collection={collection} subscriptionPlan={subscriptionPlan} />
                             : 
-                            <CustomButton text='Sign Up' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit py-2 px-6' onClick={() => signInModal.onOpen()}/>
+                            <CustomButton text='Sign Up' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit h-fit py-2 px-6' onClick={() => signInModal.onOpen()}/>
                         }
                     </div>
                 </div>
