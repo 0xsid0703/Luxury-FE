@@ -1,15 +1,15 @@
 "use client"
-import React from 'react'
-import { Product } from '@/lib/shopify/types';
+import React, { useState } from 'react'
 import { ProductProvider } from '../product/product-context';
 import { UserSubscriptionPlan } from '@/types';
 import CustomButton from '../ui/CustomButton';
 import { useSigninModal } from "@/hooks/use-signin-modal";
 import PurchaseButton from '../ui/PurchaseButton';
 import CountdownTimer from './EndTime';
+import AuctionBidDialog from '../modal/AuctionBidDialog';
 
 type Props = {
-    product: Product,
+    product: any,
     product_image: string,
     collection_name: string,
     volume: string,
@@ -26,6 +26,8 @@ type Props = {
 
 const ProductAuctionWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, price_amount, currency, product, subscriptionPlan, auction }: Props) => {
     const signInModal = useSigninModal();
+    const [isOpen, setIsOpen] = useState(false);
+    console.log({ product })
     const productJsonLd = {
         '@context': 'https://schema.org',
         '@type': 'Product',
@@ -95,14 +97,13 @@ const ProductAuctionWithCollection = ({ product_image, collection_name, volume, 
                         </div>
                         {
                             subscriptionPlan ?
-                                <PurchaseButton text='Get to Bid' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit px-6 h-fit py-2' onClick={() => {
-                                    console.log('Get to Bid')
-                                }} />
+                                <PurchaseButton text='Get to Bid' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit px-6 h-fit py-2' onClick={() => setIsOpen(true)} />
                                 :
-                                <CustomButton text='Sign Up' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit py-2 px-6' onClick={() => signInModal.onOpen()} />
+                                <CustomButton text='Sign Up' className='bg-[#A88573] text-lg text-white hover:shadow-[0_0_0_0px_black,0_8px_0_0_black] hover:-translate-y-2 w-fit px-6 h-fit py-2' onClick={() => signInModal.onOpen()} />
                         }
                     </div>
                 </div>
+                {isOpen && <AuctionBidDialog product={product} collection_name={collection_name} onClose={() => setIsOpen(false)} />}
             </div>
         </ProductProvider>
     )
