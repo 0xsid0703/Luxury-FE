@@ -7,6 +7,7 @@ import Opportunities from "@/components/dashboard/Opportunities";
 import { getCurrentUser } from "@/lib/auth";
 import { trpc } from "@/trpc/server";
 import { getCollections } from "@/lib/shopify";
+import CommonFooter from "@/components/common/CommonFooter";
 
 const Home = async () => {
   const user = await getCurrentUser();
@@ -32,6 +33,7 @@ const Home = async () => {
       <Description />
       <Opportunities />
       <Footer />
+      <CommonFooter />
     </div>
   );
 };

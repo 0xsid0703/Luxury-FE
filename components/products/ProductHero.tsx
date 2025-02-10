@@ -18,6 +18,7 @@ const ProductHero = ({
 }: Props) => {
   const [video, setVideo] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  console.log({ products })
   return (
     <div className="w-full h-fit bg-white sm:px-0 px-4 pb-20">
       <div className="container mx-auto flex flex-col items-center">

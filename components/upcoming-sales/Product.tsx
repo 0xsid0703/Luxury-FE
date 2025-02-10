@@ -9,8 +9,8 @@ type Props = {
 
 const Product = ({ collection }: Props) => {
     return (
-        <div className='w-full flex sm:flex-row flex-col sm:gap-16 gap-4 p-9 items-center sm:items-stretch sm:justify-center justify-start bg-white rounded-3xl'>
-            <div className='sm:w-[500px] sm:h-[450px] w-[320px] h-[300px] relative'>
+        <div className='w-full flex sm:flex-row flex-col sm:gap-16 gap-4 p-2 items-center sm:items-stretch sm:justify-center justify-start bg-white rounded-3xl'>
+            <div className='sm:w-[500px] sm:h-[450px] w-full h-[300px] relative'>
                 <Image src={collection.image.url} width={500} height={450} alt={collection.image.altText} className='rounded-xl grayscale hover:grayscale-0 w-full h-full' />
                 <Image
                     src={"/play.png"}
@@ -20,7 +20,7 @@ const Product = ({ collection }: Props) => {
                     alt=""
                 />
             </div>
-            <div className='sm:w-2/3 w-full flex flex-col gap-4 sm:justify-between justify-start py-3 sm:px-0 px-11'>
+            <div className='sm:w-2/3 w-full flex flex-col gap-4 sm:justify-between justify-start py-3 sm:px-0 px-6'>
                 <div className='flex flex-col'>
                     <span className='text-lg text-[#A88573] sm:mb-6 mb-2'>{collection.title}</span>
                     <span className='sm:text-4xl text-2xl font-semibold mb-3'>{collection.metafields.find((metafield: any) => metafield.key === "sale_name")?.value}</span>

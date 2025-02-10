@@ -1,3 +1,4 @@
+import CommonFooter from "@/components/common/CommonFooter";
 import Faq from "@/components/pricing/Faq";
 import Pricing from "@/components/pricing/Pricing";
 import { getCurrentUser } from "@/lib/auth";
@@ -14,6 +15,7 @@ const PricingPage = async () => {
     <div className="min-h-screen bg-white sm:p-0 p-6">
       <Pricing subscriptionPlan={subscriptionPlan} userId={user?.id} />
       <Faq />
+      <CommonFooter />
     </div>
   );
 };

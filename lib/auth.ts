@@ -131,7 +131,7 @@ export const authOptions: NextAuthOptions = {
     async redirect({ url, baseUrl }) {
       // Always redirect to the home page after login
       if (url === `${baseUrl}/login`) {
-        return baseUrl; // Redirect to the home page
+        return `${baseUrl}/pricing`; // Redirect to the home page
       }
       return url || baseUrl;
     },

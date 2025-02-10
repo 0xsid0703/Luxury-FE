@@ -43,19 +43,6 @@ const ProductFooter = () => {
           </div>
         </div>
       </div>
-      <div className="border-t border-[#CDCDCD] flex-row justify-between pt-8 sm:flex hidden">
-        <Link href={"/"} className="text-[#99A1A3] text-base">
-          GO FUND ART @copyright
-        </Link>
-        <div className="flex flex-row gap-10">
-          <Link href={"/"} className="text-[#99A1A3] text-base">
-            Terms of use
-          </Link>
-          <Link href={"/"} className="text-[#99A1A3] text-base">
-            Privacy & Terms
-          </Link>
-        </div>
-      </div>
     </div>
   );
 };

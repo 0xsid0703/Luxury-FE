@@ -10,6 +10,7 @@ import ProductFooter from './ProductFooter';
 import ProductHeader from './ProductHeader';
 import { UserSubscriptionPlan } from '@/types';
 import ProductInvestment from './ProductInvestment';
+import CommonFooter from '@/components/common/CommonFooter';
 
 type Props = {
   products: any[];
@@ -29,6 +30,7 @@ const ProductPage = ({ products, subscriptionPlan, collectionData  }: Props) => 
       <ProductMarket />
       <ProductInvestment />
       <ProductFooter />
+      <CommonFooter />
     </div>
   );
 };
