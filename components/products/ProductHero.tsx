@@ -9,12 +9,14 @@ type Props = {
   products: any[];
   subscriptionPlan: UserSubscriptionPlan | undefined;
   collectionData: any;
+  user: any
 };
 
 const ProductHero = ({
   products,
   subscriptionPlan,
   collectionData,
+  user
 }: Props) => {
   const [video, setVideo] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -96,6 +98,7 @@ const ProductHero = ({
                       currency={product.variants[0].price.currencyCode}
                       subscriptionPlan={subscriptionPlan}
                       auction={product.auctionProduct}
+                      user={user}
                     />
                   ) : (
                     <ProductItemWithCollection

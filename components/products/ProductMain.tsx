@@ -16,13 +16,14 @@ type Props = {
   products: any[];
   subscriptionPlan: UserSubscriptionPlan | undefined;
   collectionData: any;
+  user: any
 }
 
-const ProductPage = ({ products, subscriptionPlan, collectionData  }: Props) => {
+const ProductPage = ({ products, subscriptionPlan, collectionData, user }: Props) => {
   return (
     <div className="min-h-screen">
       <ProductHeader />
-      <ProductHero products={products} subscriptionPlan={subscriptionPlan} collectionData={collectionData} />
+      <ProductHero products={products} subscriptionPlan={subscriptionPlan} collectionData={collectionData} user={user} />
       <ProductEdition />
       <ProductBrand />
       <ProductAbout />

@@ -38,7 +38,7 @@ export default async function Page(props: { params: Promise<{ collection: string
   }
   return (
     <div className="relative">
-      <ProductPage products={products} collectionData={collectionData} subscriptionPlan={subscriptionPlan} />
+      <ProductPage products={products} collectionData={collectionData} subscriptionPlan={subscriptionPlan} user={user}/>
       <div className="fixed sm:right-20 sm:bottom-20 right-10 bottom-10 z-50">
         <CartModal />
       </div>

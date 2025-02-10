@@ -21,10 +21,11 @@ type Props = {
     artist: string,
     collection: string,
     subscriptionPlan: UserSubscriptionPlan | undefined;
-    auction: any
+    auction: any;
+    user: any
 }
 
-const ProductAuctionWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, price_amount, currency, product, subscriptionPlan, auction }: Props) => {
+const ProductAuctionWithCollection = ({ product_image, collection_name, volume, product_name, edition, product_type, price_amount, currency, product, subscriptionPlan, auction, user }: Props) => {
     const signInModal = useSigninModal();
     const [isOpen, setIsOpen] = useState(false);
     console.log({ product })
@@ -103,7 +104,7 @@ const ProductAuctionWithCollection = ({ product_image, collection_name, volume, 
                         }
                     </div>
                 </div>
-                {isOpen && <AuctionBidDialog product={product} collection_name={collection_name} onClose={() => setIsOpen(false)} />}
+                {isOpen && <AuctionBidDialog product={product} collection_name={collection_name} onClose={() => setIsOpen(false)} user={user}/>}
             </div>
         </ProductProvider>
     )
